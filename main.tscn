@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=10 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="Script" path="res://mixer.gd" id="1_oy0oi"]
 
@@ -16,6 +16,48 @@ normal = Vector2(0, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xey2i"]
 radius = 32.0
 height = 384.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_el75a"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ryyof"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="GDScript" id="GDScript_nx3ig"]
+resource_name = "DrawMouseLimit"
+script/source = "extends Marker2D
+
+@export var draw_limit: bool = true;
+@export var draw_mouse: bool = true;
+
+func _draw() -> void:
+	if draw_limit:
+		draw_rect(
+			Rect2(
+				Vector2.ZERO,
+				$MouseLimitEnd.position,
+			),
+			Color.DARK_RED,
+			false,
+			4.0,
+		);
+	
+	if draw_mouse:
+		var p := get_global_mouse_position();
+		p = p.clamp(global_position, $MouseLimitEnd.global_position);
+		draw_circle(
+			to_local(p),
+			12.0,
+			Color.RED,
+			false,
+			4.0,
+		);
+
+
+func _process(delta: float) -> void:
+	if draw_mouse:
+		queue_redraw();
+"
 
 [node name="Main" type="Node2D"]
 
@@ -58,6 +100,27 @@ polygon = PackedVector2Array(-16, -192, -32, 176, -16, 192, 16, 192, 32, 176, 16
 position = Vector2(0, 144)
 shape = SubResource("CapsuleShape2D_xey2i")
 
+[node name="Limiter" type="Node2D" parent="Mixing/Mixer"]
+top_level = true
+
+[node name="Walls" type="StaticBody2D" parent="Mixing/Mixer/Limiter"]
+position = Vector2(960, 576)
+
+[node name="Left" type="CollisionShape2D" parent="Mixing/Mixer/Limiter/Walls"]
+position = Vector2(-192, 160)
+shape = SubResource("WorldBoundaryShape2D_el75a")
+
+[node name="Right" type="CollisionShape2D" parent="Mixing/Mixer/Limiter/Walls"]
+position = Vector2(192, 160)
+shape = SubResource("WorldBoundaryShape2D_ryyof")
+
+[node name="MouseLimitStart" type="Marker2D" parent="Mixing/Mixer/Limiter"]
+position = Vector2(800, 192)
+script = SubResource("GDScript_nx3ig")
+
+[node name="MouseLimitEnd" type="Marker2D" parent="Mixing/Mixer/Limiter/MouseLimitStart"]
+position = Vector2(320, 768)
+
 [node name="Bowl" type="StaticBody2D" parent="Mixing"]
 position = Vector2(960, 928)
 metadata/_edit_lock_ = true
@@ -67,14 +130,6 @@ polygon = PackedVector2Array(192, -192, 136, -56, 0, 0, -136, -56, -192, -192, -
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mixing/Bowl"]
 polygon = PackedVector2Array(-192, -192, -136, -56, 0, 0, 136, -56, 192, -192, 232, -192, 160, -32, 0, 32, -160, -32, -232, -192)
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Mixing"]
-position = Vector2(960, 960)
-node_a = NodePath("../Mixer")
-node_b = NodePath("../Bowl")
-disable_collision = false
-length = 1.0
-stiffness = 5.0
 
 [connection signal="mouse_entered" from="Mixing/Mixer" to="Mixing/Mixer" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Mixing/Mixer" to="Mixing/Mixer" method="_on_mouse_exited"]
