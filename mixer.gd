@@ -1,4 +1,4 @@
-extends RigidBody2D
+class_name Pestle extends RigidBody2D;
 
 @export var grab_velocity_expo: float = 1.5;
 @export var angular_force: float = 100_000.0;
@@ -52,6 +52,4 @@ func get_target_velocity(mouse_pos: Vector2) -> Vector2:
 func get_target_torque(global_target_pos: Vector2) -> float:
 	var dir := -global_transform.x.dot(global_position.direction_to(global_target_pos));
 	return dir * 1.5 * angular_force;
-	
-	return 0;
 
