@@ -1,7 +1,7 @@
 extends Node;
 
-signal park_closing;
-signal park_opening;
+signal park_closed;
+signal park_opened;
 
 
 # Park will be open for 60 seconds
@@ -21,9 +21,7 @@ func _process(delta: float) -> void:
 		time_open += delta;
 		
 		if time_open >= TIME_OPEN_MAX:
-			_open = false;
-			park_closing.emit();
-			time_open = 0.0;
+			close();
 
 
 func get_day_progress() -> float:
@@ -31,4 +29,13 @@ func get_day_progress() -> float:
 
 
 func is_open() -> bool: 	return _open;
-func open() -> void:		_open = true; park_opening.emit();
+
+func open() -> void:
+	time_open = 0.0;
+	_open = true;
+	park_opened.emit();
+
+func close() -> void:
+	time_open = 0.0;
+	_open = false;
+	park_closed.emit();
