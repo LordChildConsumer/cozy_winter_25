@@ -119,7 +119,11 @@ position = Vector2(800, 192)
 script = SubResource("GDScript_nx3ig")
 
 [node name="MouseLimitEnd" type="Marker2D" parent="Mixing/Mixer/Limiter/MouseLimitStart"]
-position = Vector2(320, 768)
+position = Vector2(320, 480)
+
+[node name="RotTarget" type="Marker2D" parent="Mixing/Mixer"]
+top_level = true
+position = Vector2(960, 960)
 
 [node name="Bowl" type="StaticBody2D" parent="Mixing"]
 position = Vector2(960, 928)

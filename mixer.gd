@@ -1,7 +1,9 @@
 extends RigidBody2D
 
 @export var grab_velocity_expo: float = 1.5;
+@export var angular_force: float = 100_000.0;
 
+@onready var rotation_target := $RotTarget as Marker2D;
 
 var has_mouse: bool = false;
 var grabbed: bool = false;
@@ -33,10 +35,12 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if grabbed:
-		linear_velocity = get_force_to_mouse(get_global_mouse_position());
+		linear_velocity = get_target_velocity(get_global_mouse_position());
+		#constant_torque = get_target_torque(rotation_target.global_position);
+		apply_torque(get_target_torque(rotation_target.global_position));
 
 
-func get_force_to_mouse(mouse_pos: Vector2) -> Vector2:
+func get_target_velocity(mouse_pos: Vector2) -> Vector2:
 	mouse_pos = mouse_pos.clamp(mouse_limit_s, mouse_limit_e);
 	
 	var d := global_position.direction_to(mouse_pos);
@@ -44,4 +48,10 @@ func get_force_to_mouse(mouse_pos: Vector2) -> Vector2:
 	
 	return d * pow(f, grab_velocity_expo);
 
+
+func get_target_torque(global_target_pos: Vector2) -> float:
+	var dir := -global_transform.x.dot(global_position.direction_to(global_target_pos));
+	return dir * 1.5 * angular_force;
+	
+	return 0;
 
