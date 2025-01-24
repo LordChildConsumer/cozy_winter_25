@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6n7g45btsyjm"]
+[gd_scene load_steps=5 format=3 uid="uid://c6n7g45btsyjm"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_axtgr"]
+vertices = PackedVector2Array(1000, -584, 1000, 584, 792, 376, 792, -376, -1000, 584, -792, 376, -1000, -584, -792, -376)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(768, -352, -1024, -352, -1024, -608, 1024, -608, 1024, 608, -1024, 608, -1024, -352, -768, -352, -768, 352, 768, 352)])
+agent_radius = 24.0
 
 [sub_resource type="GDScript" id="GDScript_125gc"]
 resource_name = "enclosure"
 script/source = "extends Node2D
 
-const PENGUIN_SCENE: PackedScene = preload(\"res://entities/penguin/penguin.tscn\");
+const PENGUIN_SCENE: PackedScene = preload(\"res://entities/actor/penguin/penguin.tscn\");
 
 @export var starting_penguin_count: int = 5;
 
@@ -19,15 +25,15 @@ func _ready() -> void:
 
 
 func spawn_penguin() -> void:
-	var peng := PENGUIN_SCENE.instantiate() as Penguin;
+	var peng := PENGUIN_SCENE.instantiate() as Actor;
 	penguin_parent.add_child(peng);
 	peng.nav_region_rid = nav_mesh_node.get_rid();
 "
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tkusp"]
-vertices = PackedVector2Array(1492.16, 374.102, 1576, 457.938, 1576, 630.609, 1492.07, 721.523, 1342.24, 744, 578.359, 744, 427.828, 713.891, 344, 630.062, 344, 457.938, 427.828, 374.102, 578.359, 344, 1341.64, 344)
+vertices = PackedVector2Array(1492.16, 370.102, 1576, 453.938, 1576, 626.062, 1492.16, 709.891, 1341.64, 740, 578.359, 740, 427.828, 709.891, 344, 626.062, 344, 453.938, 427.828, 370.102, 578.359, 340, 1341.64, 340)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(576, 320, 416, 352, 320, 448, 320, 640, 416, 736, 576, 768, 1344, 768, 1504, 744, 1600, 640, 1600, 448, 1504, 352, 1344, 320)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(576, 316, 416, 348, 320, 444, 320, 636, 416, 732, 576, 764, 1344, 764, 1504, 732, 1600, 636, 1600, 444, 1504, 348, 1344, 316)])
 agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
@@ -43,28 +49,36 @@ follow_viewport_enabled = true
 [node name="Terrain" type="Polygon2D" parent="Art"]
 position = Vector2(-960, -540)
 color = Color(0.647064, 0.710938, 0.704949, 1)
-polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+polygon = PackedVector2Array(0, -4, 1920, -4, 1920, 1084, 0, 1084)
 
 [node name="Enclosure" type="Node2D" parent="Art"]
 position = Vector2(-960, -540)
 
 [node name="Water" type="Polygon2D" parent="Art/Enclosure"]
+position = Vector2(-24, -4)
 color = Color(0.494354, 0.714589, 0.757812, 1)
-polygon = PackedVector2Array(256, 256, 1664, 256, 1664, 832, 256, 832)
+polygon = PackedVector2Array(280, 256, 1688, 256, 1688, 832, 280, 832)
 
 [node name="Ice" type="Polygon2D" parent="Art/Enclosure"]
-polygon = PackedVector2Array(576, 320, 416, 352, 320, 448, 320, 640, 416, 736, 576, 768, 1344, 768, 1504, 744, 1600, 640, 1600, 448, 1504, 352, 1344, 320)
+polygon = PackedVector2Array(576, 316, 416, 348, 320, 444, 320, 636, 416, 732, 576, 764, 1344, 764, 1504, 732, 1600, 636, 1600, 444, 1504, 348, 1344, 316)
 
 [node name="Fence" type="Polygon2D" parent="Art/Enclosure"]
 color = Color(0.109375, 0.109375, 0.109375, 1)
-polygon = PackedVector2Array(1656, 264, 256, 264, 256, 256, 1664, 256, 1664, 832, 256, 832, 256, 264, 264, 264, 264, 824, 1656, 824)
+polygon = PackedVector2Array(1656, 260, 256, 260, 256, 252, 1664, 252, 1664, 828, 256, 828, 256, 260, 264, 260, 264, 820, 1656, 820)
 
 [node name="Path" type="Polygon2D" parent="Art"]
 position = Vector2(-960, -540)
 color = Color(0.286865, 0.301085, 0.3125, 1)
-polygon = PackedVector2Array(1664, 256, 128, 256, 128, 128, 1792, 128, 1792, 960, 128, 960, 128, 256, 256, 256, 256, 832, 1664, 832)
+polygon = PackedVector2Array(1728, 188, -64, 188, -64, -68, 1984, -68, 1984, 1148, -64, 1148, -64, 188, 192, 188, 192, 892, 1728, 892)
 
 [node name="Park" type="Node2D" parent="."]
+
+[node name="NavMesh" type="NavigationRegion2D" parent="Park"]
+navigation_polygon = SubResource("NavigationPolygon_axtgr")
+
+[node name="Attractions" type="Node2D" parent="Park"]
+
+[node name="Pedestrians" type="Node2D" parent="Park"]
 
 [node name="Enclosure" type="Node2D" parent="."]
 script = SubResource("GDScript_125gc")
@@ -75,5 +89,3 @@ navigation_polygon = SubResource("NavigationPolygon_tkusp")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
-
-[node name="Pedestrians" type="Node2D" parent="."]

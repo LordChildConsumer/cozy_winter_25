@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://uyhdl4lbtwrs"]
+
+[ext_resource type="Script" path="res://entities/actor/actor.gd" id="1_60bq0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6n1v2"]
+radius = 16.0
+
+[node name="Actor" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_60bq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6n1v2")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+
+[node name="WanderTimer" type="Timer" parent="."]
+
+[connection signal="navigation_finished" from="NavAgent" to="." method="_on_nav_agent_navigation_finished"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
