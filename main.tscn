@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6n7g45btsyjm"]
+[gd_scene load_steps=4 format=3 uid="uid://c6n7g45btsyjm"]
+
+[ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 
 [sub_resource type="GDScript" id="GDScript_125gc"]
 resource_name = "enclosure"
@@ -30,17 +32,21 @@ agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("1_pqylq")
+
 [node name="Art" type="CanvasLayer" parent="."]
 layer = -1
 follow_viewport_enabled = true
 
 [node name="Terrain" type="Polygon2D" parent="Art"]
+position = Vector2(-960, -540)
 color = Color(0.647064, 0.710938, 0.704949, 1)
 polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
-metadata/_edit_lock_ = true
 
 [node name="Enclosure" type="Node2D" parent="Art"]
-metadata/_edit_lock_ = true
+position = Vector2(-960, -540)
 
 [node name="Water" type="Polygon2D" parent="Art/Enclosure"]
 color = Color(0.494354, 0.714589, 0.757812, 1)
@@ -54,9 +60,9 @@ color = Color(0.109375, 0.109375, 0.109375, 1)
 polygon = PackedVector2Array(1656, 264, 256, 264, 256, 256, 1664, 256, 1664, 832, 256, 832, 256, 264, 264, 264, 264, 824, 1656, 824)
 
 [node name="Path" type="Polygon2D" parent="Art"]
+position = Vector2(-960, -540)
 color = Color(0.286865, 0.301085, 0.3125, 1)
 polygon = PackedVector2Array(1664, 256, 128, 256, 128, 128, 1792, 128, 1792, 960, 128, 960, 128, 256, 256, 256, 256, 832, 1664, 832)
-metadata/_edit_lock_ = true
 
 [node name="Park" type="Node2D" parent="."]
 
@@ -64,6 +70,7 @@ metadata/_edit_lock_ = true
 script = SubResource("GDScript_125gc")
 
 [node name="NavMesh" type="NavigationRegion2D" parent="Enclosure"]
+position = Vector2(-960, -540)
 navigation_polygon = SubResource("NavigationPolygon_tkusp")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
