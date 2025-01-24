@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_dsqag"]
 
 [node name="Pedestrian" instance=ExtResource("1_dsqag")]
+collision_layer = 2
 move_speed = 75.0
 
 [node name="Sprite" type="Node2D" parent="." index="0"]

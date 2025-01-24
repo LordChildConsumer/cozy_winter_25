@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	if _open:
 		time_open += delta;
 		
+		
 		if time_open >= TIME_OPEN_MAX:
 			close();
 

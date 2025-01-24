@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ht1knnffvfw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
+size = Vector2(256, 256)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_robfq"]
+radius = 300.0
+
+[node name="Attraction" type="Node2D"]
+
+[node name="Building" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
+shape = SubResource("RectangleShape2D_wq8pf")
+
+[node name="AttractZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractZone"]
+shape = SubResource("CircleShape2D_robfq")
+
+[node name="CustomerSlots" type="Node2D" parent="."]

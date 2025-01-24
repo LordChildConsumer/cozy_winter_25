@@ -1,0 +1,9 @@
+User Experience:
+	1. Click hammer icon
+	2. Plots are highlighted
+	3. Click plot
+	4. Build menu opens to show options
+	5. Select attraction and confirm. (if affordable)
+
+
+---- Attractions/plots will be resource based ----

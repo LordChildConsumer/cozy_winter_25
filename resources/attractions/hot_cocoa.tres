@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttractionData" load_steps=3 format=3 uid="uid://dam4h1pgjlkyc"]
+
+[ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_u4yj6"]
+
+[sub_resource type="Curve" id="Curve_bug1f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.576294, 0.576294, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_u4yj6")
+name = &"Hot Cocoa"
+cost_to_build = 100
+attractiveness = 0.5
+effective_range = 300.0
+max_customers = 5
+spending_min = 5
+spending_max = 25
+spending_curve = SubResource("Curve_bug1f")
+time_min = 1
+time_max = 5
