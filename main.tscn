@@ -71,7 +71,7 @@ follow_viewport_enabled = true
 [node name="Terrain" type="Polygon2D" parent="Art"]
 position = Vector2(-960, -540)
 color = Color(0.647064, 0.710938, 0.704949, 1)
-polygon = PackedVector2Array(0, -4, 1920, -4, 1920, 1084, 0, 1084)
+polygon = PackedVector2Array(-192, -196, 2112, -196, 2112, 1276, -192, 1276)
 
 [node name="Enclosure" type="Node2D" parent="Art"]
 position = Vector2(-960, -540)

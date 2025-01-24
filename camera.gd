@@ -1,6 +1,8 @@
 extends Camera2D
 
+@export_group("Movement")
 @export var move_speed: float = 1500.0;
+@export var max_distance: Vector2 = Vector2(896.0, 480);
 
 @export_group("Zoom")
 @export var zoom_step: float = 0.1;
@@ -23,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	).normalized() * move_speed / zoom_factor;
 	
 	position += wish_velocity * delta;
-	position = position.clampf(-1000.0, 1000.0);
+	position = position.clamp(-max_distance, max_distance);
 	
 	
 	# ---- Zoom ---- #
@@ -38,7 +40,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _handle_zoom(event: InputEventMouseButton) -> void:
-	if event.is_pressed():
+	if event.is_released():
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_factor += zoom_factor * zoom_step;
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
