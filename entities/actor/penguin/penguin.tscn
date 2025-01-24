@@ -16,7 +16,7 @@ polygon = PackedVector2Array(0, -28, -8, -24, 0, -12, 8, -24)
 
 [node name="Body" type="Polygon2D" parent="Sprite" index="1"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-4, -16, -12, -8, -8.43281, 20.5376, -8, 24, 8, 24, 12, -8, 4, -16)
+polygon = PackedVector2Array(-4, -16, -12, -8, -8, 24, 8, 24, 12, -8, 4, -16)
 
 [node name="White" type="Polygon2D" parent="Sprite/Body" index="0"]
 polygon = PackedVector2Array(0, -20, -8, -8, -4, 20, 4, 20, 8, -8)

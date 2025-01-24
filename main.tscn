@@ -1,6 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6n7g45btsyjm"]
+[gd_scene load_steps=6 format=3 uid="uid://c6n7g45btsyjm"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
+
+[sub_resource type="GDScript" id="GDScript_73nd7"]
+resource_name = "park"
+script/source = "extends Node2D
+
+const PEDESTRIAN_SCENE: PackedScene = preload(\"res://entities/actor/pedestrian/pedestrian.tscn\");
+
+@export var starting_actor_count: int = 5;
+
+@onready var nav_mesh_node := $FullNavMesh as NavigationRegion2D;
+@onready var penguin_parent := $Pedestrians;
+
+func _ready() -> void:
+	for i: int in starting_actor_count:
+		spawn_actor();
+
+
+func spawn_actor() -> void:
+	var peng := PEDESTRIAN_SCENE.instantiate() as Actor;
+	penguin_parent.add_child(peng);
+	peng.nav_region_rid = nav_mesh_node.get_rid();
+"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_axtgr"]
 vertices = PackedVector2Array(1000, -584, 1000, 584, 792, 376, 792, -376, -1000, 584, -792, 376, -1000, -584, -792, -376)
@@ -14,17 +36,17 @@ script/source = "extends Node2D
 
 const PENGUIN_SCENE: PackedScene = preload(\"res://entities/actor/penguin/penguin.tscn\");
 
-@export var starting_penguin_count: int = 5;
+@export var starting_actor_count: int = 5;
 
 @onready var nav_mesh_node := $NavMesh as NavigationRegion2D;
 @onready var penguin_parent := $Penguins;
 
 func _ready() -> void:
-	for i: int in starting_penguin_count:
-		spawn_penguin();
+	for i: int in starting_actor_count:
+		spawn_actor();
 
 
-func spawn_penguin() -> void:
+func spawn_actor() -> void:
 	var peng := PENGUIN_SCENE.instantiate() as Actor;
 	penguin_parent.add_child(peng);
 	peng.nav_region_rid = nav_mesh_node.get_rid();
@@ -72,9 +94,12 @@ color = Color(0.286865, 0.301085, 0.3125, 1)
 polygon = PackedVector2Array(1728, 188, -64, 188, -64, -68, 1984, -68, 1984, 1148, -64, 1148, -64, 188, 192, 188, 192, 892, 1728, 892)
 
 [node name="Park" type="Node2D" parent="."]
+script = SubResource("GDScript_73nd7")
+starting_actor_count = 16
 
-[node name="NavMesh" type="NavigationRegion2D" parent="Park"]
+[node name="FullNavMesh" type="NavigationRegion2D" parent="Park"]
 navigation_polygon = SubResource("NavigationPolygon_axtgr")
+navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
 
