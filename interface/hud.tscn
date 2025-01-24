@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvq1akon7wswp"]
+
+[ext_resource type="Texture2D" uid="uid://kda8eebk6spq" path="res://icon.svg" id="1_h4ubx"]
+[ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
+
+[node name="GameGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_l6f0n")
+
+[node name="TopHUD" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1915.0
+offset_bottom = 255.0
+size_flags_vertical = 0
+
+[node name="BuildingHUD" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(900, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -336.0
+offset_right = 450.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HBoxContainer2" type="CenterContainer" parent="BuildingHUD"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BuildMenuButton" type="TextureButton" parent="BuildingHUD/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("1_h4ubx")
+texture_pressed = ExtResource("1_h4ubx")
+texture_hover = ExtResource("1_h4ubx")
+
+[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_h4ubx")
+texture_pressed = ExtResource("1_h4ubx")
+texture_hover = ExtResource("1_h4ubx")
+stretch_mode = 0
+
+[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_h4ubx")
+texture_pressed = ExtResource("1_h4ubx")
+texture_hover = ExtResource("1_h4ubx")
+stretch_mode = 1
+
+[connection signal="pressed" from="BuildingHUD/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]

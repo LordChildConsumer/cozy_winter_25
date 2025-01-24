@@ -171,18 +171,6 @@ theme_override_font_sizes/font_size = 65
 text = "Start Day 1
 "
 
-[node name="GameGUI" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-
 [connection signal="pressed" from="WelcomeSequence/WelcomePage1/Welcome_1/VBoxContainer/NextButton1" to="WelcomeSequence" method="_on_next_button_1_pressed"]
 [connection signal="pressed" from="WelcomeSequence/WelcomePage2/Welcome_2/VBoxContainer/NextButton2" to="WelcomeSequence" method="_on_next_button_2_pressed"]
 [connection signal="pressed" from="WelcomeSequence/WelcomePage3/Welcome_3/VBoxContainer/NextButton3" to="WelcomeSequence" method="_on_next_button_3_pressed"]
