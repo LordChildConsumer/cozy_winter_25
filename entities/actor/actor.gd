@@ -1,4 +1,6 @@
-class_name Penguin extends CharacterBody2D;
+class_name Actor extends CharacterBody2D;
+
+
 
 @export_group("Wandering")
 @export var wander_time_min: float = 3.0;
@@ -6,7 +8,7 @@ class_name Penguin extends CharacterBody2D;
 
 
 @export_group("Movement")
-@export var waddle_speed: float = 50.0;
+@export var move_speed: float = 50.0;
 @export var acceleration: float = 15.0;
 
 @onready var wander_timer := $WanderTimer as Timer;
@@ -14,40 +16,39 @@ class_name Penguin extends CharacterBody2D;
 
 var nav_region_rid: RID;
 var wandering: bool = false;
-var friendly_wait_time: float = 0.0;
 
 
 func _ready() -> void:
-	nav_agent.max_speed = max(nav_agent.max_speed, waddle_speed);
+	nav_agent.max_speed = max(nav_agent.max_speed, move_speed);
 	wander_timer.start(get_new_wander_time());
-	
-	# Without this await the region is null and I can't find a signal
-	# to wait for that to not be the case but this is fine enough.
-	await get_tree().process_frame;
-	global_position = get_new_wander_point();
+	_place_randomly_on_nav_mesh();
 
 
 func _physics_process(delta: float) -> void:
+	velocity = get_new_velocity(delta);
+	move_and_slide();
+
+
+func get_new_velocity(delta: float) -> Vector2:
 	var wish_velocity := Vector2.ZERO;
 	
 	if wandering:
 		var dir := global_position.direction_to(
 			nav_agent.get_next_path_position()
 		);
-		wish_velocity = dir * waddle_speed;
-		
-	velocity = velocity.lerp(
+		wish_velocity = dir * move_speed;
+	
+	return velocity.lerp(
 		wish_velocity,
 		acceleration * delta
 	);
-	move_and_slide();
 
 
 ## When the wander/wait timer has stopped:
 ## Pick a new random point on the iceberg.
 func _on_wander_timer_timeout() -> void:
 	wander_timer.stop();
-	nav_agent.target_position = get_new_wander_point();
+	nav_agent.target_position = get_random_wander_point();
 	wandering = true;
 
 
@@ -62,9 +63,16 @@ func get_new_wander_time() -> float:
 	return randf_range(wander_time_min, wander_time_max);
 
 
-func get_new_wander_point() -> Vector2:
+func get_random_wander_point() -> Vector2:
 	return NavigationServer2D.region_get_random_point(
 		nav_region_rid,
 		nav_agent.navigation_layers,
 		false
 	);
+
+
+func _place_randomly_on_nav_mesh() -> void:
+	# Without this await the region is null and I can't find a signal
+	# to wait for that to not be the case but this is fine enough.
+	await get_tree().process_frame;
+	global_position = get_random_wander_point();

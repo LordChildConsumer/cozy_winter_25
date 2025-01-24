@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		"move_right",
 		"move_up",
 		"move_down",
-	).normalized() * move_speed;
+	).normalized() * move_speed / zoom_factor;
 	
 	position += wish_velocity * delta;
 	position = position.clampf(-1000.0, 1000.0);

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5hs1ecj8oiui"]
+
+[ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_dsqag"]
+
+[node name="Pedestrian" instance=ExtResource("1_dsqag")]
+move_speed = 75.0
+
+[node name="Sprite" type="Node2D" parent="." index="0"]
+position = Vector2(0, -24)
+
+[node name="Head" type="Polygon2D" parent="Sprite" index="0"]
+color = Color(0.48, 0.30312, 0.1584, 1)
+polygon = PackedVector2Array(-6, -28, -4, -16, 4, -16, 6, -28, 4, -32, -4, -32)
+
+[node name="Skin" type="Polygon2D" parent="Sprite/Head" index="0"]
+polygon = PackedVector2Array(-2, -30, -4, -26, -4, -16, 4, -16, 4, -26, 2, -30)
+
+[node name="Body" type="Polygon2D" parent="Sprite" index="1"]
+color = Color(0.554688, 0.251343, 0.251343, 1)
+polygon = PackedVector2Array(-4, -16, -10, -8, -8, 12, 8, 12, 10, -8, 4, -16)
+
+[node name="Shirt" type="Polygon2D" parent="Sprite/Body" index="0"]
+position = Vector2(0, 24)
+color = Color(0.684128, 0.703325, 0.714844, 1)
+polygon = PackedVector2Array(-2, -40, -4, -32, -4, -12, 4, -12, 4, -32, 2, -40)
+
+[node name="Legs" type="Polygon2D" parent="Sprite" index="2"]
+color = Color(0.226929, 0.31799, 0.40625, 1)
+polygon = PackedVector2Array(-8, 12, -8, 28, -2, 28, 0, 14, 2, 28, 8, 28, 8, 12)
+
+[node name="RFoot" type="Polygon2D" parent="Sprite" index="3"]
+position = Vector2(-10, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, 28, 8, 32, 2, 32, 2, 28)
+
+[node name="Laces" type="Polygon2D" parent="Sprite/RFoot" index="0"]
+color = Color(0.757812, 0.757812, 0.757812, 1)
+polygon = PackedVector2Array(4, 28, 2, 29, 2, 30, 8, 30, 8, 29, 6, 28)
+
+[node name="LFoot" type="Polygon2D" parent="Sprite" index="4"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, 28, 8, 32, 2, 32, 2, 28)
+
+[node name="Laces" type="Polygon2D" parent="Sprite/LFoot" index="0"]
+color = Color(0.757812, 0.757812, 0.757812, 1)
+polygon = PackedVector2Array(4, 28, 2, 29, 2, 30, 8, 30, 8, 29, 6, 28)
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="NavAgent" parent="." index="2"]
+navigation_layers = 2
