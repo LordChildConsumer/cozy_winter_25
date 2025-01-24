@@ -10,6 +10,8 @@ radius = 300.0
 
 [node name="Building" type="StaticBody2D" parent="."]
 
+[node name="Sprite" type="Sprite2D" parent="Building"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
 shape = SubResource("RectangleShape2D_wq8pf")
 
