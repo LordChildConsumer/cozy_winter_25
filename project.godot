@@ -28,7 +28,3 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 [physics]
 
 2d/physics_engine="Rapier2D"
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(0.0625, 0.0625, 0.0625, 1)

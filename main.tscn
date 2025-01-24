@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c6n7g45btsyjm"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Park" type="Node2D" parent="."]
+
+[node name="Terrain" type="Polygon2D" parent="Park"]
+color = Color(0.679688, 0.679688, 0.679688, 1)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="Penguins" type="Node2D" parent="."]
+
+[node name="Water" type="Polygon2D" parent="Penguins"]
+color = Color(0.494354, 0.714589, 0.757812, 1)
+polygon = PackedVector2Array(256, 256, 1664, 256, 1664, 832, 256, 832)
+
+[node name="Ice" type="Polygon2D" parent="Penguins"]
+polygon = PackedVector2Array(576, 320, 416, 352, 320, 448, 320, 640, 416, 736, 576, 768, 1344, 768, 1504, 744, 1600, 640, 1600, 448, 1504, 352, 1344, 320)
+
+[node name="Fence" type="Polygon2D" parent="Penguins"]
+color = Color(0.109375, 0.109375, 0.109375, 1)
+polygon = PackedVector2Array(1656, 264, 256, 264, 256, 256, 1664, 256, 1664, 832, 256, 832, 256, 264, 264, 264, 264, 824, 1656, 824)
+
+[node name="Pedestrians" type="Node2D" parent="."]
+
+[node name="Path" type="Polygon2D" parent="Pedestrians"]
+color = Color(0.308594, 0.308594, 0.308594, 1)
+polygon = PackedVector2Array(1664, 256, 128, 256, 128, 128, 1792, 128, 1792, 960, 128, 960, 128, 256, 256, 256, 256, 832, 1664, 832)
