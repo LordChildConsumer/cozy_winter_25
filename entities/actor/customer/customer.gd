@@ -1,6 +1,6 @@
 class_name Customer extends Actor;
 
-const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
+
 
 var visited_attractions: Array[int] = [];
 var busy: bool = false :
@@ -11,10 +11,7 @@ var busy: bool = false :
 			modulate = Color.BLUE_VIOLET if busy else Color.WHITE;
 
 
-func _ready() -> void:
-	super()
-	# JAMIE IS FUCKING AROUND HERE
-	ParkData.customer_spent_money.connect(_on_customer_spent_money)
+
 
 
 func _on_customer_spent_money(new_value: int, customer_position: Vector2):

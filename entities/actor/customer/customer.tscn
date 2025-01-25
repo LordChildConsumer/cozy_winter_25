@@ -6,6 +6,10 @@
 [node name="Customer" instance=ExtResource("1_humm7")]
 collision_layer = 2
 script = ExtResource("2_rsg5o")
+wander_time_min = null
+wander_time_max = null
+move_speed = null
+acceleration = null
 
 [node name="Sprite" type="Node2D" parent="." index="0"]
 position = Vector2(0, -51)

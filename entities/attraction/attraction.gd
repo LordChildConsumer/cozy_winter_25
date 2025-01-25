@@ -20,6 +20,8 @@ const BUILDING_SIZE: float = 256.0;
 
 var _data: AttractionData;
 
+const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
+
 var busy: bool = false;
 
 func _ready() -> void:
@@ -32,9 +34,6 @@ func _ready() -> void:
 	attract_zone_collider.position = attract_zone_collider.position.rotated(
 		deg_to_rad(90 * side_of_zoo)
 	);
-	
-
-
 
 # ------------------------- #
 # ---- Attraction Data ---- #
@@ -79,6 +78,12 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				var income := _data.get_customer_spending();
 				ParkData.add_money(income);
 				ParkData.customer_spent_money.emit(income, customer.global_position);
+				
+				var floating_money = FLOATING_MONEY_SCENE.instantiate()
+				floating_money.text = "$" + str(income)
+				add_child(floating_money)
+				floating_money.position = position
+				floating_money.move_to_target(position + Vector2(0.0, -50))
 				
 				customer.leave_attraction();
 
