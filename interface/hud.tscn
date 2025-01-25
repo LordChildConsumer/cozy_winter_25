@@ -121,23 +121,27 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/TimerCenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TopHUD/TimerCenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/TimerCenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 25
 
-[node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_1spkn")
 texture_pressed = ExtResource("3_1spkn")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="Control" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
+[node name="VBoxContainer" type="Control" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 offset_top = 29.0
@@ -146,7 +150,7 @@ offset_bottom = 79.0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 offset_top = 97.0
 offset_right = 250.0
@@ -156,10 +160,16 @@ theme_override_font_sizes/font_size = 40
 text = "PENGUIN PARK"
 horizontal_alignment = 1
 
-[node name="FastForwardButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
+[node name="FastForwardButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_t4c74")
 stretch_mode = 3
+
+[node name="StartDayButton" type="Button" parent="TopHUD/TimerCenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 50
+text = "START DAY"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopHUD"]
 layout_mode = 1
@@ -262,8 +272,9 @@ texture_pressed = SubResource("GradientTexture2D_0n4bi")
 texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
 
-[connection signal="pressed" from="TopHUD/TimerCenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="TopHUD/TimerCenterContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
+[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
+[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
 [connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]

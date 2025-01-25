@@ -7,10 +7,11 @@ var is_menu_hidden := true :
 #slide value is 200
 
 @onready var money_label = $TopHUD/MoneyLabel
-@onready var day_progress_bar = $TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer/ProgressBar
-
+@onready var day_progress_bar = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar
+@onready var start_day_button = $TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
+signal start_day_button_pressed()
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 		func(new_money: int) -> void:
 			money_lbl.set_text("$%d" % new_money);
 	);
+	TimeTracker.park_closed.connect(show_start_day_button)
 
 
 func _process(_delta: float) -> void:
@@ -78,3 +80,11 @@ func _on_fast_forward_button_pressed() -> void:
 
 func _on_play_button_pressed() -> void:
 	Engine.time_scale = 1
+
+
+func _on_button_pressed() -> void:
+	TimeTracker.open();
+	start_day_button.hide()
+
+func show_start_day_button():
+	start_day_button.show()
