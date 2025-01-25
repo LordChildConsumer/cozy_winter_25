@@ -12,6 +12,13 @@ const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_mone
 @onready var build_menu_start_pos := $BuildingHUD.position as Vector2
 @export var build_menu_hide_offset = Vector2(0.0, 215.00)
 @onready var building_menu = $BuildingHUD
+@onready var money_lbl := $TopHUD/MoneyLabel;
+
+func _ready() -> void:
+	ParkData.money_changed.connect(
+		func(new_money: int) -> void:
+			money_lbl.set_text("$%d" % new_money);
+	);
 
 
 func _on_build_menu_button_pressed() -> void:
