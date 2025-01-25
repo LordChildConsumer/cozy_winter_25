@@ -157,8 +157,13 @@ polygon = PackedVector2Array(576, 316, 416, 348, 320, 444, 320, 636, 416, 732, 5
 color = Color(0.109375, 0.109375, 0.109375, 1)
 polygon = PackedVector2Array(1656, 260, 256, 260, 256, 252, 1664, 252, 1664, 828, 256, 828, 256, 260, 264, 260, 264, 820, 1656, 820)
 
-[node name="Path" type="Polygon2D" parent="Art"]
+[node name="Entrance" type="Polygon2D" parent="Art"]
 position = Vector2(-960, -540)
+color = Color(0.286865, 0.301085, 0.3125, 1)
+polygon = PackedVector2Array(-32, 412, -1344, 412, -1344, 668, -32, 668)
+metadata/_edit_lock_ = true
+
+[node name="Path" type="Polygon2D" parent="Art/Entrance"]
 color = Color(0.286865, 0.301085, 0.3125, 1)
 polygon = PackedVector2Array(1728, 188, -64, 188, -64, -68, 1984, -68, 1984, 1148, -64, 1148, -64, 188, 192, 188, 192, 892, 1728, 892)
 metadata/_edit_lock_ = true
@@ -249,7 +254,10 @@ side_of_zoo = 1
 [node name="Customers" type="Node2D" parent="Park"]
 
 [node name="ParkEntrance" type="Marker2D" parent="Park"]
-position = Vector2(-974, 0)
+position = Vector2(-2176, 0)
+
+[node name="ParkExit" type="Marker2D" parent="Park"]
+position = Vector2(-2432, 0)
 
 [node name="CustomerSpawnTimer" type="Timer" parent="Park"]
 wait_time = 2.5
