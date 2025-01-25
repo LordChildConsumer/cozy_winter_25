@@ -1,6 +1,7 @@
 extends Node;
 
 signal money_changed(value: int);
+signal customer_spent_money(value: int, customer_pos: Vector2);
 
 var park_name: String = "";
 

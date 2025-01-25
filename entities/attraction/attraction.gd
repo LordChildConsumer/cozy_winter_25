@@ -74,7 +74,10 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				
 				customer_timer.start(_data.get_customer_time());
 				await customer_timer.timeout;
-				ParkData.add_money(_data.get_customer_spending());
+				
+				var income := _data.get_customer_spending();
+				ParkData.add_money(income);
+				ParkData.customer_spent_money.emit(income, customer.global_position);
 				
 				customer.leave_attraction();
 
