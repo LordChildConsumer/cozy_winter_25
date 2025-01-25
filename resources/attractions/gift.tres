@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://bkwpiglh6o1or"]
+[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://mq5hqggjmcwb"]
 
 [ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_nnw8d"]
 [ext_resource type="Texture2D" uid="uid://cv6pqyh7rrqba" path="res://TinyBard art/Souvenir Shop.PNG" id="2_poh8y"]

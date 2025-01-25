@@ -3,6 +3,7 @@ class_name Main extends Node2D;
 const CUSTOMER_SCENE: PackedScene = preload("res://entities/actor/customer/customer.tscn")
 
 @onready var park_entrance = $Park/ParkEntrance
+@onready var build_sfx = $BuildSFX
 
 const ATTRACTION_DATA := {
 	0: preload("res://resources/attractions/coffee.tres"),
@@ -57,4 +58,9 @@ func set_plot_visibilities(value: bool) -> void:
 
 
 func _on_attraction_build_attempted(node: Attraction) -> void:
-	node.load_attraction(ATTRACTION_DATA[selected_attraction_id]);
+	if ParkData.get_money() >= ATTRACTION_DATA[selected_attraction_id].cost_to_build:
+		node.load_attraction(ATTRACTION_DATA[selected_attraction_id]);
+		ParkData.sub_money(ATTRACTION_DATA[selected_attraction_id].cost_to_build)
+		build_sfx.play()
+	else:
+		pass
