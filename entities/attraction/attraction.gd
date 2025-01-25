@@ -5,10 +5,6 @@ enum SIDES_OF_ZOO {TOP, RIGHT, BOTTOM, LEFT};
 const BUILDING_SIZE: float = 256.0;
 
 
-# TODO: Manage available/reserved slots for customers
-
-# TODO: Try to attract customers in range.
-
 # TODO: Unload AttractionData (maybe refund % of cost?)
 #		Could be the remainder of the build cost not made back yet?
 
@@ -19,12 +15,24 @@ const BUILDING_SIZE: float = 256.0;
 @onready var building_sprite := $Building/Sprite;
 @onready var attract_zone := $AttractZone;
 @onready var attract_zone_collider := $AttractZone/Collider as CollisionShape2D;
-@onready var customer_slot_path := $CustomerSlots as Path2D;
-
+@onready var customer_spot := $CustomerSpot;
+@onready var customer_timer := $CustomerTimer;
 
 var _data: AttractionData;
 
+var busy: bool = false;
 
+
+func _ready() -> void:
+	attract_zone.monitoring = false;
+	
+	# HACK: 'Enum as Int' my beloved <3
+	customer_spot.position = customer_spot.position.rotated(
+		deg_to_rad(90 * side_of_zoo)
+	);
+	attract_zone_collider.position = attract_zone_collider.position.rotated(
+		deg_to_rad(90 * side_of_zoo)
+	);
 
 
 # ------------------------- #
@@ -42,13 +50,12 @@ func load_attraction(dat: AttractionData) -> void:
 	building_sprite.set_texture(_data.texture);
 	
 	# ---- Effective Range ---- #
-	var _circle := attract_zone_collider.get_shape() as CircleShape2D;
-	if _circle:
-		_circle.radius = _data.effective_range;
+	#var _circle := attract_zone_collider.get_shape() as CircleShape2D;
+	#if _circle:
+		#_circle.radius = _data.effective_range;
 	
-	# ---- Customer Slots ---- #
-	_clear_customer_slots()
-	_spawn_customer_slots(_data.max_customers);
+	# ---- Enable AttractZone ---- #
+	attract_zone.monitoring = true;
 
 
 func remove_attraction() -> void:
@@ -57,54 +64,47 @@ func remove_attraction() -> void:
 
 
 
-# ------------------------ #
-# ---- Customer Slots ---- #
-# ------------------------ #
+# -------------------------------- #
+# ---- Customers Interactions ---- #
+# -------------------------------- #
 
-func _clear_customer_slots() -> void:
-	for c: Node in customer_slot_path.get_children():
-		c.queue_free();
+func _on_attract_zone_body_entered(body: Node2D) -> void:
+	if _data && !busy:
+		var customer := body as Customer;
+		if customer:
+			if customer.can_visit(self) && should_attract_customer():
+				busy = true;
+				customer.visit_attraction(self, customer_spot.global_position);
+				await customer.nav_agent.navigation_finished;
+				
+				customer_timer.start(_data.get_customer_time());
+				await customer_timer.timeout;
+				customer.leave_attraction();
 
-func _spawn_customer_slots(count: int) -> void:
-	for i: int in count:
-		var t := 1.0 / (count - 1);
-		var slot := Marker2D.new();
-		customer_slot_path.add_child(slot);
-		
-		# HACK: I mean just look at the curve and it's pretty obvious
-		#		just how stupidly hacky this is. I'm honestly proud of myself.
-		var a := customer_slot_path.curve.get_point_position(side_of_zoo * 2);
-		var b := customer_slot_path.curve.get_point_position(side_of_zoo * 2 + 1);
-		
-		# Lerping cuz bezier interpolation fucks this up.
-		slot.position = a.lerp(b, t*i);
 
+func should_attract_customer() -> bool:
+	return randf() < _data.attractiveness;
 
 
 
-
-
-
-
-#region DEBUG DRAW CUSTOMER POINTS
-# FIXME: Remove this debug drawing stuff later.
-
-func _process(_delta: float) -> void:
-	queue_redraw();
-
-func _draw() -> void:
-	#draw_line(
-		#customer_slot_path.curve.sample(side_of_zoo * 2, 0.0),
-		#customer_slot_path.curve.sample(side_of_zoo * 2, 1.0),
-		#Color.GREEN,
-		#2.0
-	#);
-	
-	for c: Node in customer_slot_path.get_children():
-		draw_circle(c.position, 4.0, Color.RED, true);
+# --------------------- #
+# ---- Debug Stuff ---- #
+# --------------------- #
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_1"):
-		print_debug("Debug 1: Loading Hot Cocoa Data");
 		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
-#endregion
+
+func _process(_delta: float) -> void:
+	if OS.is_debug_build():
+		queue_redraw();
+	
+func _draw() -> void:
+	if OS.is_debug_build():
+		draw_circle(
+			customer_spot.position,
+			4.0,
+			Color.BLUE
+		);
+
+

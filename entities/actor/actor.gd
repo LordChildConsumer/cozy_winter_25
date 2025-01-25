@@ -15,7 +15,8 @@ class_name Actor extends CharacterBody2D;
 @onready var nav_agent := $NavAgent as NavigationAgent2D;
 
 var nav_region_rid: RID;
-var wandering: bool = false;
+var moving: bool = false;
+var wandering: bool = true;
 
 
 func _ready() -> void:
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 func get_new_velocity(delta: float) -> Vector2:
 	var wish_velocity := Vector2.ZERO;
 	
-	if wandering:
+	if moving:
 		var dir := global_position.direction_to(
 			nav_agent.get_next_path_position()
 		);
@@ -48,15 +49,19 @@ func get_new_velocity(delta: float) -> Vector2:
 ## Pick a new random point on the iceberg.
 func _on_wander_timer_timeout() -> void:
 	wander_timer.stop();
-	nav_agent.target_position = get_random_wander_point();
-	wandering = true;
+	
+	if wandering:
+		nav_agent.target_position = get_random_wander_point();
+		moving = true;
 
 
 ## When the desired "wander point" is reached:
 ## Wait a random amount of time between wander_time_min and wander_time_max.
 func _on_nav_agent_navigation_finished() -> void:
-	wandering = false;
-	wander_timer.start(get_new_wander_time());
+	moving = false;
+	
+	if wandering:
+		wander_timer.start(get_new_wander_time());
 
 
 func get_new_wander_time() -> float:

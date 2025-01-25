@@ -1,21 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2ht1knnffvfw"]
+[gd_scene load_steps=3 format=3 uid="uid://c2ht1knnffvfw"]
 
 [ext_resource type="Script" path="res://entities/attraction/attraction.gd" id="1_ujc82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
 size = Vector2(192, 192)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_robfq"]
-radius = 300.0
-
-[sub_resource type="Curve2D" id="Curve2D_5lc2j"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 96, 160, 0, 0, 0, 0, -96, 160, 0, 0, 0, 0, -160, 96, 0, 0, 0, 0, -160, -96, 0, 0, 0, 0, -96, -160, 0, 0, 0, 0, 96, -160, 0, 0, 0, 0, 160, -96, 0, 0, 0, 0, 160, 96)
-}
-point_count = 8
-
 [node name="Attraction" type="Node2D"]
 script = ExtResource("1_ujc82")
+
+[node name="CustomerTimer" type="Timer" parent="."]
 
 [node name="Building" type="StaticBody2D" parent="."]
 
@@ -31,9 +24,14 @@ polygon = PackedVector2Array(120, -120, -128, -120, -128, -128, 128, -128, 128, 
 [node name="AttractZone" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="Collider" type="CollisionShape2D" parent="AttractZone"]
-shape = SubResource("CircleShape2D_robfq")
+position = Vector2(0, 192)
+shape = SubResource("RectangleShape2D_wq8pf")
+debug_color = Color(0, 0.7, 0.109375, 0.42)
 
-[node name="CustomerSlots" type="Path2D" parent="."]
-curve = SubResource("Curve2D_5lc2j")
+[node name="CustomerSpot" type="Marker2D" parent="."]
+position = Vector2(0, 160)
+
+[connection signal="body_entered" from="AttractZone" to="." method="_on_attract_zone_body_entered"]

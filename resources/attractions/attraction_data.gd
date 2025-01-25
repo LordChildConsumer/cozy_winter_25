@@ -8,7 +8,6 @@ class_name AttractionData extends Resource;
 
 
 @export_category("Customer Stats")
-@export_range(0, 6, 1) var max_customers: int = 3;
 
 @export_group("Spending")
 @export var spending_min: int = 5;

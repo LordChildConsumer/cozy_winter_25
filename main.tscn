@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=8 format=3 uid="uid://bw16f7ifsmp5s"]
 
+[ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
 
@@ -7,12 +8,12 @@
 resource_name = "park"
 script/source = "extends Node2D
 
-const PEDESTRIAN_SCENE: PackedScene = preload(\"res://entities/actor/pedestrian/pedestrian.tscn\");
+const CUSTOMER_SCENE: PackedScene = preload(\"res://entities/actor/customer/customer.tscn\");
 
 @export var starting_actor_count: int = 5;
 
 @onready var nav_mesh_node := $FullNavMesh as NavigationRegion2D;
-@onready var penguin_parent := $Pedestrians;
+@onready var penguin_parent := $Customers;
 
 func _ready() -> void:
 	for i: int in starting_actor_count:
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 
 func spawn_actor() -> void:
-	var peng := PEDESTRIAN_SCENE.instantiate() as Actor;
+	var peng := CUSTOMER_SCENE.instantiate() as Actor;
 	penguin_parent.add_child(peng);
 	peng.nav_region_rid = nav_mesh_node.get_rid();
 "
@@ -60,6 +61,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(576, 316, 416, 348, 320
 agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="GameGUI" parent="CanvasLayer" instance=ExtResource("1_27dj6")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -130,11 +136,29 @@ navigation_layers = 2
 [node name="Attraction" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-768, -736)
 
+[node name="Attraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-512, -736)
+
+[node name="Attraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-256, -736)
+
+[node name="Attraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(0, -736)
+
+[node name="Attraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(256, -736)
+
+[node name="Attraction7" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(512, -736)
+
+[node name="Attraction8" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(768, -736)
+
 [node name="Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-1152, -384)
 side_of_zoo = 3
 
-[node name="Pedestrians" type="Node2D" parent="Park"]
+[node name="Customers" type="Node2D" parent="Park"]
 
 [node name="Enclosure" type="Node2D" parent="."]
 script = SubResource("GDScript_125gc")

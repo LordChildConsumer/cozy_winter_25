@@ -34,7 +34,7 @@ func _ready() -> void:
 	_set_texture(TEXTURE.DEFAULT);
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.rotation_degrees = -7.5 if Input.is_mouse_button_pressed(
 			MOUSE_BUTTON_LEFT  ) else 0.0;
 	
