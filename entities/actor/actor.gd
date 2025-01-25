@@ -52,6 +52,7 @@ func exit_park() -> void:
 	nav_agent.target_position = park_entrance
 	wandering = false
 	moving = true
+	#TODO: When actor reachs park entrance, queue_free them.
 
 ## When the wander/wait timer has stopped:
 ## Pick a new random point on the iceberg.
