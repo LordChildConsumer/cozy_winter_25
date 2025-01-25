@@ -74,6 +74,8 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				
 				customer_timer.start(_data.get_customer_time());
 				await customer_timer.timeout;
+				ParkData.add_money(_data.get_customer_spending());
+				
 				customer.leave_attraction();
 
 
@@ -91,10 +93,12 @@ func _input(event: InputEvent) -> void:
 		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
 		print_debug("Debug 1: Loading Attraction %s" % _data.name);
 
+
 func _process(_delta: float) -> void:
 	if OS.is_debug_build():
 		queue_redraw();
-	
+
+
 func _draw() -> void:
 	if OS.is_debug_build():
 		draw_circle(
