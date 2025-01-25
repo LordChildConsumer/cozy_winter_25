@@ -106,5 +106,3 @@ func _draw() -> void:
 			4.0,
 			Color.BLUE
 		);
-
-
