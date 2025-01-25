@@ -27,11 +27,11 @@ func _on_next_button_3_pressed() -> void:
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if(new_text != ""):
 		park_name = new_text
-	start_game.emit(park_name)
-	hide()
+	TimeTracker.open()
+	$"..".queue_free()
 
 
 func _on_start_day_1_button_pressed() -> void:
 	park_name = $EnterParkName/EnterParkNameContainer/VBoxContainer/LineEdit.text
-	start_game.emit(park_name)
-	hide()
+	TimeTracker.open()
+	$"..".queue_free()
