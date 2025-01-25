@@ -66,6 +66,7 @@ agent_radius = 24.0
 layer = 10
 
 [node name="GameGUI" parent="CanvasLayer" instance=ExtResource("1_27dj6")]
+build_menu_hide_offset = null
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
