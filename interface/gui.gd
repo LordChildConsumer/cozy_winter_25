@@ -36,8 +36,5 @@ func _on_build_menu_button_pressed() -> void:
 		#await tween.finished;
 		is_menu_hidden = true
 
-
-
-
 func _on_building_button_pressed(building_index: int) -> void:
 	building_button_clicked.emit(building_index)

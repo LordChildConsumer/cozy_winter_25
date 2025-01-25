@@ -110,3 +110,9 @@ func _draw() -> void:
 			4.0,
 			Color.BLUE
 		);
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_1"):
+		print_debug("Debug 1: Loading Hot Cocoa");
+		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
