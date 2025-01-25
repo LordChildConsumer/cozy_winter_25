@@ -135,30 +135,78 @@ navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
 
-[node name="Attraction" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-768, -736)
 
-[node name="Attraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-512, -736)
 
-[node name="Attraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-256, -736)
 
-[node name="Attraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(0, -736)
 
-[node name="Attraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(256, -736)
 
-[node name="Attraction7" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(512, -736)
 
-[node name="Attraction8" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="TAttraction7" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(768, -736)
 
-[node name="Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="BAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-768, 736)
+side_of_zoo = 2
+
+[node name="BAttraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-512, 736)
+side_of_zoo = 2
+
+[node name="BAttraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-256, 736)
+side_of_zoo = 2
+
+[node name="BAttraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(0, 736)
+side_of_zoo = 2
+
+[node name="BAttraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(256, 736)
+side_of_zoo = 2
+
+[node name="BAttraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(512, 736)
+side_of_zoo = 2
+
+[node name="BAttraction7" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(768, 736)
+side_of_zoo = 2
+
+[node name="LAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-1152, -384)
 side_of_zoo = 3
+
+[node name="LAttraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-1152, 384)
+side_of_zoo = 3
+
+[node name="RAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(1152, -384)
+side_of_zoo = 1
+
+[node name="RAttraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(1152, -128)
+side_of_zoo = 1
+
+[node name="RAttraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(1152, 128)
+side_of_zoo = 1
+
+[node name="RAttraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(1152, 384)
+side_of_zoo = 1
 
 [node name="Customers" type="Node2D" parent="Park"]
 

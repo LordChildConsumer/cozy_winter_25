@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=16 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Texture2D" uid="uid://kda8eebk6spq" path="res://icon.svg" id="1_h4ubx"]
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
@@ -7,6 +7,62 @@
 [ext_resource type="Texture2D" uid="uid://bp07tcr5vk7r3" path="res://interface/Icons/Hammer icon.png" id="4_dn6x2"]
 [ext_resource type="Texture2D" uid="uid://cacig2hn7fvji" path="res://interface/Icons/fastForward.png" id="5_t4c74"]
 [ext_resource type="Texture2D" uid="uid://bamvkuk4icsc" path="res://interface/Icons/wrench.png" id="7_o1efb"]
+
+[sub_resource type="Gradient" id="Gradient_dxx2e"]
+offsets = PackedFloat32Array(0.785366, 1)
+colors = PackedColorArray(0.742188, 0.191345, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pp6te"]
+gradient = SubResource("Gradient_dxx2e")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1bfp"]
+gradient = SubResource("Gradient_dxx2e")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xkd6j"]
+gradient = SubResource("Gradient_dxx2e")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_2ev6j"]
+offsets = PackedFloat32Array(0.785366, 1)
+colors = PackedColorArray(0.0405884, 0.742188, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcit6"]
+gradient = SubResource("Gradient_2ev6j")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0n4bi"]
+gradient = SubResource("Gradient_2ev6j")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d17ol"]
+gradient = SubResource("Gradient_2ev6j")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [node name="GameGUI" type="Control"]
 layout_mode = 3
@@ -17,6 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("1_l6f0n")
 
 [node name="TopHUD" type="Control" parent="."]
@@ -27,6 +84,7 @@ anchor_right = 1.0
 offset_bottom = 250.0
 grow_horizontal = 2
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="MoneyLabel" type="Label" parent="TopHUD"]
 custom_minimum_size = Vector2(250, 0)
@@ -61,9 +119,11 @@ offset_right = 500.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/TimerCenterContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 25
 
 [node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
@@ -75,6 +135,7 @@ stretch_mode = 3
 [node name="VBoxContainer" type="Control" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
@@ -83,6 +144,7 @@ offset_top = 29.0
 offset_right = 250.0
 offset_bottom = 79.0
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -112,6 +174,7 @@ offset_right = -56.0
 offset_bottom = 125.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 2
 
@@ -154,11 +217,13 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="HBoxContainer2" type="CenterContainer" parent="BuildingHUD"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="BuildMenuButton" type="TextureButton" parent="BuildingHUD/HBoxContainer2"]
 layout_mode = 2
@@ -169,6 +234,7 @@ stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="BuildingHUD"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
@@ -176,23 +242,24 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 15
 
 [node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("1_h4ubx")
-texture_pressed = ExtResource("1_h4ubx")
-texture_hover = ExtResource("1_h4ubx")
+texture_normal = SubResource("GradientTexture2D_pp6te")
+texture_pressed = SubResource("GradientTexture2D_l1bfp")
+texture_hover = SubResource("GradientTexture2D_xkd6j")
 stretch_mode = 0
 
 [node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_h4ubx")
-texture_pressed = ExtResource("1_h4ubx")
-texture_hover = ExtResource("1_h4ubx")
+texture_normal = SubResource("GradientTexture2D_fcit6")
+texture_pressed = SubResource("GradientTexture2D_0n4bi")
+texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
 
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

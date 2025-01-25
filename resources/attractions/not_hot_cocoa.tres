@@ -6,12 +6,12 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 0.5), 0.162354, 0.162354, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_dxx2e"]
+[sub_resource type="Gradient" id="Gradient_2ev6j"]
 offsets = PackedFloat32Array(0.785366, 1)
 colors = PackedColorArray(0.0405884, 0.742188, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mvpc1"]
-gradient = SubResource("Gradient_dxx2e")
+gradient = SubResource("Gradient_2ev6j")
 width = 200
 height = 200
 fill = 2

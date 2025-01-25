@@ -1,11 +1,15 @@
 class_name GameGUI extends Control;
 
-var is_menu_hidden := true
+var is_menu_hidden := true :
+	set(value):
+		is_menu_hidden = value;
+		building_menu_visibility_changed.emit(!is_menu_hidden);
 #slide value is 200
 
 @onready var money_label = $TopHUD/MoneyLabel
 @onready var day_progress_bar = $TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer/ProgressBar
 
+signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")

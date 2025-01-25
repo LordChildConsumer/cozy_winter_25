@@ -8,6 +8,7 @@ const BUILDING_SIZE: float = 256.0;
 # TODO: Unload AttractionData (maybe refund % of cost?)
 #		Could be the remainder of the build cost not made back yet?
 
+signal build_attempted(node: Attraction);
 
 @export var side_of_zoo: SIDES_OF_ZOO;
 
@@ -18,6 +19,8 @@ const BUILDING_SIZE: float = 256.0;
 @onready var customer_spot := $CustomerSpot;
 @onready var customer_timer := $CustomerTimer;
 @onready var money_sound := $MoneySound;
+@onready var plot := $Plot;
+
 var _data: AttractionData;
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
@@ -25,6 +28,9 @@ const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_mone
 var busy: bool = false;
 
 func _ready() -> void:
+	plot.hide();
+	#ParkData.build_state_changed.connect(_on_park_data_build_state_changed);
+	
 	attract_zone.monitoring = false;
 	
 	# HACK: 'Enum as Int' my beloved <3
@@ -77,7 +83,6 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				
 				var income := _data.get_customer_spending();
 				ParkData.add_money(income);
-				ParkData.customer_spent_money.emit(income, customer.global_position);
 				
 				var floating_money = FLOATING_MONEY_SCENE.instantiate()
 				floating_money.text = "$" + str(income)
@@ -112,7 +117,30 @@ func _draw() -> void:
 		);
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_1"):
-		print_debug("Debug 1: Loading Hot Cocoa");
-		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug_1"):
+		#print_debug("Debug 1: Loading Hot Cocoa");
+		#load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
+
+
+func set_plot_visible(value: bool) -> void:
+	plot.set_visible(value);
+
+
+func _on_plot_mouse_entered() -> void:
+	print("entered")
+	if ParkData.build_state == ParkData.BUILD_STATE.BUILD:
+		MouseCursor.build();
+
+
+func _on_plot_mouse_exited() -> void:
+	print("exited")
+	MouseCursor.default();
+
+
+func _on_plot_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if ParkData.build_state == ParkData.BUILD_STATE.BUILD:
+		var m := event as InputEventMouseButton;
+		if m:
+			if m.button_index == MOUSE_BUTTON_LEFT:
+				build_attempted.emit(self);

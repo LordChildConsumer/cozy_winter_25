@@ -1,7 +1,18 @@
 extends Node;
 
-signal money_changed(value: int);
+enum BUILD_STATE {
+	NONE,
+	BUILD,
+	DEMOLISH,
+};
+var build_state: BUILD_STATE = BUILD_STATE.NONE :
+	set(value):
+		build_state = value;
+		build_state_changed.emit(build_state);
 
+signal build_state_changed(state: BUILD_STATE);
+
+signal money_changed(value: int);
 
 var park_name: String = "";
 
