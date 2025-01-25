@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=8 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Texture2D" uid="uid://kda8eebk6spq" path="res://icon.svg" id="1_h4ubx"]
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
-[ext_resource type="Texture2D" uid="uid://drmj7anwfcehf" path="res://interface/Icons/forward.png" id="3_mmigk"]
+[ext_resource type="Texture2D" uid="uid://c03lvnmktt0rb" path="res://interface/Icons/play.png" id="3_1spkn"]
 [ext_resource type="Texture2D" uid="uid://bp07tcr5vk7r3" path="res://interface/Icons/Hammer icon.png" id="4_dn6x2"]
-[ext_resource type="Texture2D" uid="uid://hb0eo8xlatbl" path="res://interface/Icons/pause.png" id="4_i76oe"]
 [ext_resource type="Texture2D" uid="uid://cacig2hn7fvji" path="res://interface/Icons/fastForward.png" id="5_t4c74"]
 [ext_resource type="Texture2D" uid="uid://bamvkuk4icsc" path="res://interface/Icons/wrench.png" id="7_o1efb"]
 
@@ -65,10 +64,10 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="TextureButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_mmigk")
-texture_pressed = ExtResource("4_i76oe")
+texture_normal = ExtResource("3_1spkn")
+texture_pressed = ExtResource("3_1spkn")
 stretch_mode = 3
 
 [node name="VBoxContainer" type="Control" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
@@ -78,21 +77,22 @@ layout_mode = 2
 [node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+offset_top = 29.0
 offset_right = 250.0
-offset_bottom = 50.0
+offset_bottom = 79.0
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 65.0
+offset_top = 97.0
 offset_right = 250.0
-offset_bottom = 115.0
+offset_bottom = 147.0
 theme_override_fonts/font = ExtResource("2_tq4vb")
 theme_override_font_sizes/font_size = 40
 text = "PENGUIN PARK"
 horizontal_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
+[node name="FastForwardButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_t4c74")
 stretch_mode = 3
@@ -114,6 +114,7 @@ theme_override_constants/separation = 50
 alignment = 2
 
 [node name="TextureButton" type="TextureButton" parent="TopHUD/HBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("1_h4ubx")
 texture_pressed = ExtResource("1_h4ubx")
@@ -121,13 +122,14 @@ texture_hover = ExtResource("1_h4ubx")
 stretch_mode = 3
 
 [node name="TextureButton2" type="TextureButton" parent="TopHUD/HBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("1_h4ubx")
 texture_pressed = ExtResource("1_h4ubx")
 texture_hover = ExtResource("1_h4ubx")
 stretch_mode = 3
 
-[node name="TextureButton3" type="TextureButton" parent="TopHUD/HBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="TopHUD/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_o1efb")
 texture_pressed = ExtResource("7_o1efb")

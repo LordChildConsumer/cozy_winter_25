@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpecqtndtvou6"]
+
+[ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="1_5b5du"]
+[ext_resource type="Script" path="res://interface/floating_money_text.gd" id="2_63spc"]
+
+[node name="FloatingMoneyText" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.270588, 1, 0.160784, 1)
+theme_override_fonts/font = ExtResource("1_5b5du")
+theme_override_font_sizes/font_size = 50
+text = "$5"
+script = ExtResource("2_63spc")
