@@ -9,6 +9,7 @@ var is_menu_hidden := true :
 @onready var money_label = $TopHUD/MoneyLabel
 @onready var day_progress_bar = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar
 @onready var start_day_button = $TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton
+@onready var button_sound = $ButtonSound
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
@@ -71,19 +72,23 @@ func _on_build_menu_button_pressed() -> void:
 
 
 func _on_building_button_pressed(building_index: int) -> void:
+	button_sound.play()
 	building_button_clicked.emit(building_index)
 
 
 func _on_fast_forward_button_pressed() -> void:
+	button_sound.play()
 	Engine.time_scale = 3
 
 
 func _on_play_button_pressed() -> void:
+	button_sound.play()
 	Engine.time_scale = 1
 
 
 func _on_button_pressed() -> void:
 	TimeTracker.open();
+	button_sound.play()
 	start_day_button.hide()
 
 func show_start_day_button():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=17 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Texture2D" uid="uid://kda8eebk6spq" path="res://icon.svg" id="1_h4ubx"]
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bp07tcr5vk7r3" path="res://interface/Icons/Hammer icon.png" id="4_dn6x2"]
 [ext_resource type="Texture2D" uid="uid://cacig2hn7fvji" path="res://interface/Icons/fastForward.png" id="5_t4c74"]
 [ext_resource type="Texture2D" uid="uid://bamvkuk4icsc" path="res://interface/Icons/wrench.png" id="7_o1efb"]
+[ext_resource type="AudioStream" uid="uid://da3dlmpy0xtsr" path="res://interface/SFX/bookOpen.ogg" id="8_hjk7w"]
 
 [sub_resource type="Gradient" id="Gradient_dxx2e"]
 offsets = PackedFloat32Array(0.785366, 1)
@@ -271,6 +272,9 @@ texture_normal = SubResource("GradientTexture2D_fcit6")
 texture_pressed = SubResource("GradientTexture2D_0n4bi")
 texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hjk7w")
 
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
