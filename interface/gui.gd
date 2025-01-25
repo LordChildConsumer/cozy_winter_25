@@ -16,7 +16,7 @@ func _on_build_menu_button_pressed() -> void:
 		tween.tween_property(
 			building_menu,
 			"position",
-			build_menu_start_pos + build_menu_hide_offset,
+			build_menu_start_pos - build_menu_hide_offset,
 			0.5
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;
