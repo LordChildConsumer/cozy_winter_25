@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ngmvd5g0usx"]
+
+[ext_resource type="Script" path="res://_autoload/mouse_cursor/mouse_cursor.gd" id="1_8v8mw"]
+[ext_resource type="Texture2D" uid="uid://b8hm8ftuhcebh" path="res://_autoload/mouse_cursor/cursors/pointer_toon_a.png" id="1_kytts"]
+
+[node name="Cursor" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_8v8mw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(11, 11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kytts")
