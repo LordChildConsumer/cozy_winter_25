@@ -256,7 +256,10 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = SubResource("GradientTexture2D_pp6te")
@@ -264,7 +267,18 @@ texture_pressed = SubResource("GradientTexture2D_l1bfp")
 texture_hover = SubResource("GradientTexture2D_xkd6j")
 stretch_mode = 0
 
-[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+[node name="Cost" type="Label" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 50
+text = "$25"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -273,6 +287,14 @@ texture_pressed = SubResource("GradientTexture2D_0n4bi")
 texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
 
+[node name="Cost2" type="Label" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+horizontal_alignment = 1
+
 [node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_hjk7w")
 
@@ -280,5 +302,5 @@ stream = ExtResource("8_hjk7w")
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
