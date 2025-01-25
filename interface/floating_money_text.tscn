@@ -4,9 +4,13 @@
 [ext_resource type="Script" path="res://interface/floating_money_text.gd" id="2_63spc"]
 
 [node name="FloatingMoneyText" type="Label"]
+top_level = true
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.270588, 1, 0.160784, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
 theme_override_fonts/font = ExtResource("1_5b5du")
 theme_override_font_sizes/font_size = 50
 text = "$5"
