@@ -11,10 +11,15 @@ extends Camera2D
 @export var zoom_max: float = 1.5;
 
 @onready var start_pos := position;
+@onready var start_smoothing := position_smoothing_speed;
 
+var last_time_scale: float = 1.0;
 var zoom_factor: float = 1.0;
 
 func _physics_process(delta: float) -> void:
+	if Engine.time_scale != last_time_scale:
+		last_time_scale = Engine.time_scale;
+		position_smoothing_speed = start_smoothing / last_time_scale;
 	
 	# ---- Velocity ---- #
 	var wish_velocity := Input.get_vector(
@@ -24,14 +29,14 @@ func _physics_process(delta: float) -> void:
 		"move_down",
 	).normalized() * move_speed / zoom_factor;
 	
-	position += wish_velocity * delta;
+	position += (wish_velocity / Engine.time_scale) * delta;
 	position = position.clamp(-max_distance, max_distance);
 	
 	
 	# ---- Zoom ---- #
 	zoom_factor = clampf(zoom_factor, zoom_min, zoom_max);
-	zoom.x = lerp(zoom.x, 1.0 * zoom_factor, zoom_speed * delta);
-	zoom.y = lerp(zoom.y, 1.0 * zoom_factor, zoom_speed * delta);
+	zoom.x = lerp(zoom.x, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
+	zoom.y = lerp(zoom.y, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
 
 
 func _input(event: InputEvent) -> void:
