@@ -15,9 +15,13 @@ class_name Actor extends CharacterBody2D;
 @onready var wander_timer := $WanderTimer as Timer;
 @onready var nav_agent := $NavAgent as NavigationAgent2D;
 @onready var sprite := $Sprite as Sprite2D;
+@onready var anim := $AnimationPlayer as AnimationPlayer;
 
 var nav_region_rid: RID;
-var moving: bool = false;
+var moving: bool = false :
+	set(value):
+		moving = value;
+		anim.play(&"move" if value else &"idle");
 var wandering: bool = true;
 
 
@@ -27,6 +31,7 @@ func _ready() -> void:
 	_on_wander_timer_timeout()
 	wander_timer.start(get_new_wander_time());
 	
+	set_sprite();
 
 
 func _physics_process(delta: float) -> void:
@@ -94,5 +99,8 @@ func _place_randomly_on_nav_mesh() -> void:
 	global_position = get_random_wander_point();
 
 
-func _set_spritesheet() -> void:
-	pass;
+func set_sprite() -> void:
+	if is_penguin:
+		sprite.frame_coords.x = 5;
+	else:
+		sprite.frame_coords.x = randi_range(0, 4);

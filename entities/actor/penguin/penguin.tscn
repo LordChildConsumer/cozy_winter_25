@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_vwhop"]
 
 [node name="Penguin" instance=ExtResource("1_vwhop")]
+is_penguin = true
 
 [node name="Polygon" type="Node2D" parent="." index="0"]
 visible = false
@@ -34,6 +35,4 @@ polygon = PackedVector2Array(-8, 24, -8, 32, 8, 32, 8, 24)
 polygon = PackedVector2Array(-8, 24, 0, 16, 8, 24, 8, 32, 0, 24, -8, 32)
 
 [node name="Sprite" parent="." index="4"]
-hframes = 7
-vframes = 2
-frame = 0
+frame = 5

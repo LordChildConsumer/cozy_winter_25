@@ -248,7 +248,7 @@ script = SubResource("GDScript_125gc")
 position = Vector2(-960, -540)
 navigation_polygon = SubResource("NavigationPolygon_tkusp")
 
-[node name="Penguins2" type="Node2D" parent="Enclosure"]
+[node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
 
 [connection signal="body_entered" from="Park/ParkEntrance/TicketBooth" to="Park/ParkEntrance/TicketBooth" method="_on_body_entered"]
