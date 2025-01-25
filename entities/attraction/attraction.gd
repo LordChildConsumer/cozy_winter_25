@@ -22,7 +22,6 @@ var _data: AttractionData;
 
 var busy: bool = false;
 
-
 func _ready() -> void:
 	attract_zone.monitoring = false;
 	
@@ -33,6 +32,8 @@ func _ready() -> void:
 	attract_zone_collider.position = attract_zone_collider.position.rotated(
 		deg_to_rad(90 * side_of_zoo)
 	);
+	
+
 
 
 # ------------------------- #

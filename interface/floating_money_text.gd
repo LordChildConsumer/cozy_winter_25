@@ -1,8 +1,5 @@
 extends Label
 
-signal reached_destination(value: int)
-
-var value: int
 
 func move_to_target(target_position: Vector2) -> void:
 	var tween := create_tween();
@@ -13,6 +10,4 @@ func move_to_target(target_position: Vector2) -> void:
 		0.5
 		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 	await tween.finished;
-	
-	reached_destination.emit(value)
 	queue_free()
