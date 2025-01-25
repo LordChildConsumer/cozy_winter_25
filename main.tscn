@@ -1,38 +1,56 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=11 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 [ext_resource type="Script" path="res://main.gd" id="1_tu387"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
+[ext_resource type="NavigationPolygon" uid="uid://8qpr7v3mp7sq" path="res://resources/navigation/customer_main_navregion.tres" id="4_8ja88"]
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
 resource_name = "park"
 script/source = "extends Node2D
 
+signal park_emptied;
+
 const CUSTOMER_SCENE: PackedScene = preload(\"res://entities/actor/customer/customer.tscn\");
+
+const MAIN_NAV_DATA := preload(\"res://resources/navigation/customer_main_navregion.tres\") \\
+	as NavigationPolygon;
+
+const FULL_NAV_DATA := preload(\"res://resources/navigation/customer_full_navregion.tres\") \\
+	as NavigationPolygon;
 
 @export var starting_actor_count: int = 5;
 
 @onready var nav_mesh_node := $FullNavMesh as NavigationRegion2D;
 @onready var customer_parent := $Customers;
 @onready var park_entrance := $ParkEntrance
+@onready var park_exit := $ParkExit;
 @onready var customer_spawn_timer := $CustomerSpawnTimer
 
 var customer_spawn_rate : Vector2;
 
+
 func _ready() -> void:
 	TimeTracker.park_opened.connect(open)
 	TimeTracker.park_closed.connect(close)
+	
+	nav_mesh_node.navigation_polygon_changed.connect(
+		func() -> void:
+			nav_mesh_node.bake_navigation_polygon(true);
+	)
 
 
 func open():
+	nav_mesh_node.navigation_polygon = MAIN_NAV_DATA;
+	
 	customer_spawn_rate = calculate_customer_spawn_rate()
 	customer_spawn_timer.wait_time = randf_range(customer_spawn_rate.x, customer_spawn_rate.y)
 	customer_spawn_timer.start()
 
 func close():
+	nav_mesh_node.navigation_polygon = FULL_NAV_DATA;
 	customer_spawn_timer.stop()
-
 
 
 func calculate_customer_spawn_rate() -> Vector2:
@@ -44,31 +62,57 @@ func calculate_customer_spawn_rate() -> Vector2:
 	return Vector2(min_time, max_time)
 
 func spawn_actor() -> void:
-	var customer := CUSTOMER_SCENE.instantiate() as Actor;
+	var customer := CUSTOMER_SCENE.instantiate() as Customer;
 	customer_parent.add_child(customer);
 	customer.nav_region_rid = nav_mesh_node.get_rid();
+	
 	var rand_x_offset = randf_range(-5, 5)
 	var rand_y_offset = randf_range(-50, 50)
-	customer.park_entrance = park_entrance.global_position
-	customer.global_position = park_entrance.global_position + Vector2(rand_x_offset, rand_y_offset)
-	customer.spawn_entrance_fee_money()
-	TimeTracker.park_closed.connect(customer.exit_park)
+	customer.park_entrance = park_entrance.global_position;
+	customer.park_exit = park_exit.global_position;
+	customer.global_position = park_entrance.global_position + Vector2(rand_x_offset, rand_y_offset);
+	#customer.spawn_entrance_fee_money();
+	TimeTracker.park_closed.connect(customer.exit_park);
 	
+	customer.exited_park.connect(_on_customer_exited_park);
 
 
 func _on_customer_spawn_timer_timeout() -> void:
 	spawn_actor()
-	ParkData.add_money(ParkData.get_entrance_fee())
 	customer_spawn_timer.wait_time = randf_range(customer_spawn_rate.x, customer_spawn_rate.y)
 	if TimeTracker.get_day_progress() > 0.7:
 		customer_spawn_timer.stop()
+
+
+func _on_customer_exited_park(node: Customer) -> void:
+	if node.exited_park.is_connected(_on_customer_exited_park):
+		node.exited_park.disconnect(_on_customer_exited_park);
+		print_debug(\"'park_exited' is disconnected!\");
+	
+	node.queue_free();
+	if customer_parent.get_child_count() <= 1:
+		print_debug(\"Park Emptied!\");
+		park_emptied.emit();
 "
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_axtgr"]
-vertices = PackedVector2Array(1000, -584, 1000, 584, 792, 376, 792, -376, -1000, 584, -792, 376, -1000, -584, -792, -376)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(768, -352, -1024, -352, -1024, -608, 1024, -608, 1024, 608, -1024, 608, -1024, -352, -768, -352, -768, 352, 768, 352)])
-agent_radius = 24.0
+[sub_resource type="GDScript" id="GDScript_qp3iy"]
+resource_name = "ticket_booth"
+script/source = "extends Area2D
+
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	var c := body as Customer;
+	if c:
+		if !c.in_park:
+			c.in_park = true;
+			c.spawn_entrance_fee_money();
+			ParkData.add_money(ParkData.get_entrance_fee());
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_irqyw"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="GDScript" id="GDScript_125gc"]
 resource_name = "enclosure"
@@ -173,7 +217,7 @@ script = SubResource("GDScript_73nd7")
 starting_actor_count = 16
 
 [node name="FullNavMesh" type="NavigationRegion2D" parent="Park"]
-navigation_polygon = SubResource("NavigationPolygon_axtgr")
+navigation_polygon = ExtResource("4_8ja88")
 navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
@@ -256,6 +300,15 @@ side_of_zoo = 1
 [node name="ParkEntrance" type="Marker2D" parent="Park"]
 position = Vector2(-2176, 0)
 
+[node name="TicketBooth" type="Area2D" parent="Park/ParkEntrance"]
+position = Vector2(1024, 0)
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_qp3iy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Park/ParkEntrance/TicketBooth"]
+shape = SubResource("WorldBoundaryShape2D_irqyw")
+
 [node name="ParkExit" type="Marker2D" parent="Park"]
 position = Vector2(-2432, 0)
 
@@ -272,4 +325,5 @@ navigation_polygon = SubResource("NavigationPolygon_tkusp")
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
 
+[connection signal="body_entered" from="Park/ParkEntrance/TicketBooth" to="Park/ParkEntrance/TicketBooth" method="_on_body_entered"]
 [connection signal="timeout" from="Park/CustomerSpawnTimer" to="Park" method="_on_customer_spawn_timer_timeout"]

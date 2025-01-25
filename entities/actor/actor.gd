@@ -17,7 +17,6 @@ var nav_region_rid: RID;
 var moving: bool = false;
 var wandering: bool = true;
 
-var park_entrance : Vector2
 
 
 func _ready() -> void:
@@ -46,13 +45,6 @@ func get_new_velocity(delta: float) -> Vector2:
 		acceleration * delta
 	);
 
-func exit_park() -> void:
-	print("exitign park")
-	wander_timer.stop();
-	nav_agent.target_position = park_entrance
-	wandering = false
-	moving = true
-	#TODO: When actor reachs park entrance, queue_free them.
 
 ## When the wander/wait timer has stopped:
 ## Pick a new random point on the iceberg.

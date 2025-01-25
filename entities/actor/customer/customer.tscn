@@ -51,6 +51,7 @@ polygon = PackedVector2Array(4, 28, 2, 29, 2, 30, 8, 30, 8, 29, 6, 28)
 
 [node name="NavAgent" parent="." index="2"]
 navigation_layers = 2
+debug_enabled = true
 
 [node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="4" groups=["customers"]]
 stream = ExtResource("3_bljvw")

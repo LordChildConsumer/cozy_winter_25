@@ -1,9 +1,15 @@
 class_name Customer extends Actor;
 
+signal exited_park(node: Customer);
+
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 @onready var money_sound = $MoneySound
 
 
+var park_entrance: Vector2;
+var park_exit: Vector2;
+
+var in_park: bool = false;
 
 var visited_attractions: Array[int] = [];
 var busy: bool = false :
@@ -13,14 +19,12 @@ var busy: bool = false :
 		if OS.is_debug_build():
 			modulate = Color.BLUE_VIOLET if busy else Color.WHITE;
 
-func spawn_entrance_fee_money():
-	var floating_money = FLOATING_MONEY_SCENE.instantiate()
-	floating_money.text = "$%.2f" % ParkData.get_entrance_fee()
-	add_child(floating_money)
-	floating_money.global_position = global_position
-	floating_money.move_to_target(position + Vector2(0.0, -50))
-	money_sound.play()
 
+
+
+# --------------------------------- #
+# ---- Attraction Interactions ---- #
+# --------------------------------- #
 
 func can_visit(attraction: Attraction) -> bool:
 	return !visited_attractions.has(attraction.get_instance_id());
@@ -40,3 +44,36 @@ func leave_attraction() -> void:
 	moving = true
 	wandering = true
 	nav_agent.target_position = get_random_wander_point();
+
+
+
+
+# ------------------------- #
+# ---- Enter/Exit Park ---- #
+# ------------------------- #
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_3"):
+		print_debug("Debug 4: 6x Time Scale");
+		Engine.time_scale = 6.0;
+
+func exit_park() -> void:
+	#print("exiting park")
+	wander_timer.stop();
+	nav_agent.target_position = park_exit;
+	wandering = false
+	moving = true
+	
+	await nav_agent.navigation_finished;
+	
+	exited_park.emit(self);
+
+
+func spawn_entrance_fee_money():
+	var floating_money = FLOATING_MONEY_SCENE.instantiate()
+	#floating_money.text = "$2.f" % ParkData.get_entrance_fee()
+	floating_money.set_text("$%d" % ParkData.get_entrance_fee());
+	add_child(floating_money)
+	floating_money.global_position = global_position
+	floating_money.move_to_target(position + Vector2(0.0, -50))
+	money_sound.play()
