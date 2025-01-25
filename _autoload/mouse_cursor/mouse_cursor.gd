@@ -31,17 +31,22 @@ const TEXTURE_DATA: Dictionary = {
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
-	set_texture(TEXTURE.DEFAULT);
+	_set_texture(TEXTURE.DEFAULT);
 
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		sprite.rotation_degrees = -7.5;
-	else:
-		sprite.rotation_degrees = 0.0;
+	sprite.rotation_degrees = -7.5 if Input.is_mouse_button_pressed(
+			MOUSE_BUTTON_LEFT  ) else 0.0;
+	
 	sprite.global_position = sprite.get_global_mouse_position();
 
 
-func set_texture(id: TEXTURE) -> void:
+func _set_texture(id: TEXTURE) -> void:
 	sprite.set_texture(TEXTURE_DATA[id]["texture"]);
 	sprite.set_offset(TEXTURE_DATA[id]["offset"]);
+
+
+func default() -> void: 	_set_texture(TEXTURE.DEFAULT);
+func select() -> void:		_set_texture(TEXTURE.SELECT);
+func build() -> void:		_set_texture(TEXTURE.BUILD);
+func demolish() -> void:	_set_texture(TEXTURE.DEMOLISH);
