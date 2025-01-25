@@ -265,11 +265,11 @@ wait_time = 2.5
 [node name="Enclosure" type="Node2D" parent="."]
 script = SubResource("GDScript_125gc")
 
+[node name="Penguins" type="Node2D" parent="Enclosure"]
+y_sort_enabled = true
+
 [node name="NavMesh" type="NavigationRegion2D" parent="Enclosure"]
 position = Vector2(-960, -540)
 navigation_polygon = SubResource("NavigationPolygon_tkusp")
-
-[node name="Penguins" type="Node2D" parent="Enclosure"]
-y_sort_enabled = true
 
 [connection signal="timeout" from="Park/CustomerSpawnTimer" to="Park" method="_on_customer_spawn_timer_timeout"]
