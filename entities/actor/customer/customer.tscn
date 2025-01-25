@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5hs1ecj8oiui"]
+[gd_scene load_steps=3 format=3 uid="uid://c5hs1ecj8oiui"]
 
-[ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_dsqag"]
+[ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_humm7"]
+[ext_resource type="Script" path="res://entities/actor/customer/customer.gd" id="2_rsg5o"]
 
-[node name="Pedestrian" instance=ExtResource("1_dsqag")]
+[node name="Customer" instance=ExtResource("1_humm7")]
 collision_layer = 2
-move_speed = 75.0
+script = ExtResource("2_rsg5o")
 
 [node name="Sprite" type="Node2D" parent="." index="0"]
 position = Vector2(0, -51)
