@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="AttractionData" load_steps=5 format=3 uid="uid://mf14doikeyj4"]
+
+[ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_r7gx2"]
+
+[sub_resource type="Curve" id="Curve_bug1f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 0.5), 0.162354, 0.162354, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_dxx2e"]
+offsets = PackedFloat32Array(0.785366, 1)
+colors = PackedColorArray(0.0405884, 0.742188, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mvpc1"]
+gradient = SubResource("Gradient_dxx2e")
+width = 200
+height = 200
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[resource]
+script = ExtResource("1_r7gx2")
+name = &"Not Hot Cocoa"
+texture = SubResource("GradientTexture2D_mvpc1")
+cost_to_build = 50
+attractiveness = 0.5
+spending_min = 10
+spending_max = 20
+spending_curve = SubResource("Curve_bug1f")
+time_min = 1
+time_max = 5

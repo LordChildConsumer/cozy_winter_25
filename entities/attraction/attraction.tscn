@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
 size = Vector2(192, 192)
 
-[node name="Attraction" type="Node2D"]
+[node name="Attraction" type="Node2D" groups=["attraction"]]
 script = ExtResource("1_ujc82")
 
 [node name="CustomerTimer" type="Timer" parent="."]

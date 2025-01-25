@@ -92,11 +92,6 @@ func should_attract_customer() -> bool:
 # ---- Debug Stuff ---- #
 # --------------------- #
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_1"):
-		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
-		print_debug("Debug 1: Loading Attraction %s" % _data.name);
-
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=9 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
+[ext_resource type="Script" path="res://main.gd" id="1_tu387"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
@@ -61,6 +62,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(576, 316, 416, 348, 320
 agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_tu387")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
