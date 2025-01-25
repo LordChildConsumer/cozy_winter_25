@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TimeTracker="*res://_autoload/time_tracker.gd"
 MouseCursor="*res://_autoload/mouse_cursor/mouse_cursor.tscn"
+ParkData="*res://_autoload/park_data.gd"
 
 [display]
 
