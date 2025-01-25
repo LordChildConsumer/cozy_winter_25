@@ -4,7 +4,6 @@ class_name AttractionData extends Resource;
 @export var texture: Texture2D;
 @export var cost_to_build: int = 100;
 @export_range(0.0, 1.0, 0.01) var attractiveness: float = 0.5;
-@export var effective_range: float = 300.0;
 
 
 @export_category("Customer Stats")

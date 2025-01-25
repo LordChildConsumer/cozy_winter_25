@@ -49,11 +49,6 @@ func load_attraction(dat: AttractionData) -> void:
 	# ---- Sprite / Texture ---- #
 	building_sprite.set_texture(_data.texture);
 	
-	# ---- Effective Range ---- #
-	#var _circle := attract_zone_collider.get_shape() as CircleShape2D;
-	#if _circle:
-		#_circle.radius = _data.effective_range;
-	
 	# ---- Enable AttractZone ---- #
 	attract_zone.monitoring = true;
 
@@ -94,6 +89,7 @@ func should_attract_customer() -> bool:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_1"):
 		load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
+		print_debug("Debug 1: Loading Attraction %s" % _data.name);
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build():
