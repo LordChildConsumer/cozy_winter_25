@@ -4,30 +4,36 @@
 
 [node name="Penguin" instance=ExtResource("1_vwhop")]
 
-[node name="Sprite" type="Node2D" parent="." index="0"]
+[node name="Polygon" type="Node2D" parent="." index="0"]
+visible = false
 position = Vector2(0, -19)
 scale = Vector2(1.6, 1.6)
 
-[node name="Head" type="Polygon2D" parent="Sprite" index="0"]
+[node name="Head" type="Polygon2D" parent="Polygon" index="0"]
 position = Vector2(0, -20)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-8, -28, -8, -16, 8, -16, 8, -28, 4, -32, -4, -32)
 
-[node name="White" type="Polygon2D" parent="Sprite/Head" index="0"]
+[node name="White" type="Polygon2D" parent="Polygon/Head" index="0"]
 polygon = PackedVector2Array(0, -28, -8, -24, 0, -12, 8, -24)
 
-[node name="Body" type="Polygon2D" parent="Sprite" index="1"]
+[node name="Body" type="Polygon2D" parent="Polygon" index="1"]
 position = Vector2(0, -20)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-4, -16, -12, -8, -8, 24, 8, 24, 12, -8, 4, -16)
 
-[node name="White" type="Polygon2D" parent="Sprite/Body" index="0"]
+[node name="White" type="Polygon2D" parent="Polygon/Body" index="0"]
 polygon = PackedVector2Array(0, -20, -8, -8, -4, 20, 4, 20, 8, -8)
 
-[node name="Feet" type="Polygon2D" parent="Sprite" index="2"]
+[node name="Feet" type="Polygon2D" parent="Polygon" index="2"]
 position = Vector2(0, -20)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-8, 24, -8, 32, 8, 32, 8, 24)
 
-[node name="White" type="Polygon2D" parent="Sprite/Feet" index="0"]
+[node name="White" type="Polygon2D" parent="Polygon/Feet" index="0"]
 polygon = PackedVector2Array(-8, 24, 0, 16, 8, 24, 8, 32, 0, 24, -8, 32)
+
+[node name="Sprite" parent="." index="4"]
+hframes = 7
+vframes = 2
+frame = 0

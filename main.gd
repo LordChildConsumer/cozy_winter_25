@@ -5,8 +5,9 @@ const CUSTOMER_SCENE: PackedScene = preload("res://entities/actor/customer/custo
 @onready var park_entrance = $Park/ParkEntrance
 
 const ATTRACTION_DATA := {
-	0: preload("res://resources/attractions/hot_cocoa.tres"),
-	1: preload("res://resources/attractions/not_hot_cocoa.tres"),
+	0: preload("res://resources/attractions/coffee.tres"),
+	1: preload("res://resources/attractions/food.tres"),
+	2: preload("res://resources/attractions/gift.tres"),
 };
 
 var selected_attraction_id: int = -1 :

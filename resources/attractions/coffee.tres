@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://dam4h1pgjlkyc"]
+
+[ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_ccagm"]
+[ext_resource type="Texture2D" uid="uid://cqxhtlhynyue8" path="res://TinyBard art/Coffee Shop.PNG" id="2_j7oi4"]
+
+[sub_resource type="Curve" id="Curve_bug1f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.162354, 0.162354, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_ccagm")
+name = &"Coffee"
+texture = ExtResource("2_j7oi4")
+cost_to_build = 50
+attractiveness = 0.5
+spending_min = 2
+spending_max = 10
+spending_curve = SubResource("Curve_bug1f")
+time_min = 1
+time_max = 5

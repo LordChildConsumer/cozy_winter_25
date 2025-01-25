@@ -76,6 +76,7 @@ script = ExtResource("1_ujc82")
 [node name="Building" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="Building"]
+offset = Vector2(6, -22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
 shape = SubResource("RectangleShape2D_wq8pf")

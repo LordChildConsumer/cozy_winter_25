@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://uyhdl4lbtwrs"]
+[gd_scene load_steps=4 format=3 uid="uid://uyhdl4lbtwrs"]
 
 [ext_resource type="Script" path="res://entities/actor/actor.gd" id="1_60bq0"]
+[ext_resource type="Texture2D" uid="uid://dfach3ymix40t" path="res://TinyBard art/Sprite Sheet.png" id="2_hltb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6n1v2"]
 radius = 16.0
@@ -15,6 +16,15 @@ shape = SubResource("CircleShape2D_6n1v2")
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 
 [node name="WanderTimer" type="Timer" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hltb2")
+centered = false
+offset = Vector2(-32, -106)
+hframes = 7
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="navigation_finished" from="NavAgent" to="." method="_on_nav_agent_navigation_finished"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

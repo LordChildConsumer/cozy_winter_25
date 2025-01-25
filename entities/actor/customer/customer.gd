@@ -58,7 +58,6 @@ func _input(event: InputEvent) -> void:
 		Engine.time_scale = 6.0;
 
 func exit_park() -> void:
-	#print("exiting park")
 	wander_timer.stop();
 	nav_agent.target_position = park_exit;
 	wandering = false

@@ -1,5 +1,7 @@
 class_name Actor extends CharacterBody2D;
 
+@export_group("Sprites")
+@export var is_penguin: bool = false;
 
 @export_group("Wandering")
 @export var wander_time_min: float = 3.0;
@@ -12,6 +14,7 @@ class_name Actor extends CharacterBody2D;
 
 @onready var wander_timer := $WanderTimer as Timer;
 @onready var nav_agent := $NavAgent as NavigationAgent2D;
+@onready var sprite := $Sprite as Sprite2D;
 
 var nav_region_rid: RID;
 var moving: bool = false;
@@ -28,6 +31,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = get_new_velocity(delta);
+	
+	if sign(velocity.x) < 0:
+		sprite.flip_h = true;
+	elif sign(velocity.x) > 0:
+		sprite.flip_h = false;
+	
 	move_and_slide();
 
 
@@ -83,3 +92,7 @@ func _place_randomly_on_nav_mesh() -> void:
 	# to wait for that to not be the case but this is fine enough.
 	await get_tree().process_frame;
 	global_position = get_random_wander_point();
+
+
+func _set_spritesheet() -> void:
+	pass;
