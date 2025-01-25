@@ -60,6 +60,7 @@ func _on_wander_timer_timeout() -> void:
 	wander_timer.stop();
 	
 	if wandering:
+		await get_tree().process_frame;
 		nav_agent.target_position = get_random_wander_point();
 		moving = true;
 
