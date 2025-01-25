@@ -97,7 +97,7 @@ func _on_customer_exited_park(node: Customer) -> void:
 	node.queue_free();
 	if customer_parent.get_child_count() <= 1:
 		print_debug(\"Park Emptied!\");
-		park_emptied.emit();
+		ParkData.park_emptied.emit()
 "
 
 [sub_resource type="GDScript" id="GDScript_qp3iy"]

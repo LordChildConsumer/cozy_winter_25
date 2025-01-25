@@ -26,7 +26,8 @@ func _ready() -> void:
 		func(new_money: int) -> void:
 			money_lbl.set_text("$%d" % new_money);
 	);
-	TimeTracker.park_closed.connect(show_start_day_button)
+	
+	ParkData.park_emptied.connect(show_start_day_button)
 
 
 func _process(_delta: float) -> void:

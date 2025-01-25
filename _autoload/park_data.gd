@@ -11,7 +11,7 @@ var build_state: BUILD_STATE = BUILD_STATE.NONE :
 		build_state_changed.emit(build_state);
 
 signal build_state_changed(state: BUILD_STATE);
-
+signal park_emptied()
 signal attraction_rating_changed(value: int);
 signal money_changed(value: int);
 
