@@ -1,5 +1,7 @@
 class_name Customer extends Actor;
 
+
+
 var visited_attractions: Array[int] = [];
 var busy: bool = false :
 	set(value):
@@ -7,6 +9,17 @@ var busy: bool = false :
 		
 		if OS.is_debug_build():
 			modulate = Color.BLUE_VIOLET if busy else Color.WHITE;
+
+
+
+
+
+func _on_customer_spent_money(new_value: int, customer_position: Vector2):
+	var floating_money = FLOATING_MONEY_SCENE.instantiate()
+	floating_money.text = "$" + str(new_value)
+	add_child(floating_money)
+	floating_money.position = position
+	floating_money.move_to_target(position + Vector2(0, -50))
 
 
 func can_visit(attraction: Attraction) -> bool:
