@@ -64,7 +64,6 @@ func get_new_wander_time() -> float:
 
 
 func get_random_wander_point() -> Vector2:
-	# FIXME: "Region is null" bullshit again.
 	return NavigationServer2D.region_get_random_point(
 		nav_region_rid,
 		nav_agent.navigation_layers,

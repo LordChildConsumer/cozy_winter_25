@@ -10,11 +10,6 @@ var time_open: float = 0.0;
 
 var _open: bool = false;
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_1"):
-		print_debug("Debug 1: Opening Park!");
-		open();
-
 
 func _process(delta: float) -> void:
 	if _open:

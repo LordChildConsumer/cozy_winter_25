@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=7 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
-[ext_resource type="PackedScene" uid="uid://c5hs1ecj8oiui" path="res://entities/actor/pedestrian/pedestrian.tscn" id="2_raptm"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
@@ -77,25 +76,24 @@ polygon = PackedVector2Array(-192, -196, 2112, -196, 2112, 1276, -192, 1276)
 metadata/_edit_lock_ = true
 
 [node name="Bushes" type="Polygon2D" parent="Art"]
-position = Vector2(-960, -540)
 color = Color(0.232086, 0.457031, 0.393765, 1)
-polygon = PackedVector2Array(-64, -68, -64, -324, -320, -324, -320, -68)
+polygon = PackedVector2Array(-1280, -864, -896, -864, -896, -608, -1024, -608, -1024, -512, -1280, -512)
 metadata/_edit_lock_ = true
 
-[node name="Bushes2" type="Polygon2D" parent="Art/Bushes"]
-position = Vector2(2304, -4)
+[node name="Bushes2" type="Polygon2D" parent="Art"]
 color = Color(0.232086, 0.457031, 0.393765, 1)
-polygon = PackedVector2Array(-64, -64, -64, -320, -320, -320, -320, -64)
+polygon = PackedVector2Array(896, -864, 1280, -864, 1280, -512, 1024, -512, 1024, -608, 896, -608)
+metadata/_edit_lock_ = true
 
-[node name="Bushes3" type="Polygon2D" parent="Art/Bushes"]
-position = Vector2(0, 1468)
+[node name="Bushes3" type="Polygon2D" parent="Art"]
 color = Color(0.232086, 0.457031, 0.393765, 1)
-polygon = PackedVector2Array(-64, -64, -64, -320, -320, -320, -320, -64)
+polygon = PackedVector2Array(1024, 512, 1280, 512, 1280, 864, 896, 864, 896, 608, 1024, 608)
+metadata/_edit_lock_ = true
 
-[node name="Bushes4" type="Polygon2D" parent="Art/Bushes"]
-position = Vector2(2304, 1468)
+[node name="Bushes4" type="Polygon2D" parent="Art"]
 color = Color(0.232086, 0.457031, 0.393765, 1)
-polygon = PackedVector2Array(-64, -64, -64, -320, -320, -320, -320, -64)
+polygon = PackedVector2Array(-1280, 512, -1024, 512, -1024, 608, -896, 608, -896, 864, -1280, 864)
+metadata/_edit_lock_ = true
 
 [node name="Enclosure" type="Node2D" parent="Art"]
 position = Vector2(-960, -540)
@@ -119,9 +117,6 @@ color = Color(0.286865, 0.301085, 0.3125, 1)
 polygon = PackedVector2Array(1728, 188, -64, 188, -64, -68, 1984, -68, 1984, 1148, -64, 1148, -64, 188, 192, 188, 192, 892, 1728, 892)
 metadata/_edit_lock_ = true
 
-[node name="Attraction" parent="Art" instance=ExtResource("2_yaoge")]
-position = Vector2(-896, -736)
-
 [node name="Park" type="Node2D" parent="."]
 script = SubResource("GDScript_73nd7")
 starting_actor_count = 16
@@ -131,6 +126,13 @@ navigation_polygon = SubResource("NavigationPolygon_axtgr")
 navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
+
+[node name="Attraction" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-768, -736)
+
+[node name="Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-1152, -384)
+side_of_zoo = 3
 
 [node name="Pedestrians" type="Node2D" parent="Park"]
 
@@ -143,6 +145,3 @@ navigation_polygon = SubResource("NavigationPolygon_tkusp")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
-
-[node name="Pedestrian" parent="." instance=ExtResource("2_raptm")]
-position = Vector2(-256, -536)
