@@ -22,7 +22,7 @@ func _ready() -> void:
 	);
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	day_progress_bar.ratio = TimeTracker.get_day_progress()
 
 
