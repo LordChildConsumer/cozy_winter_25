@@ -2,7 +2,7 @@ extends Label
 
 signal reached_destination(value: int)
 
-var value : int
+var value: int
 
 func move_to_target(target_position: Vector2) -> void:
 	var tween := create_tween();

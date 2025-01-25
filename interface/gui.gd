@@ -40,12 +40,7 @@ func _on_build_menu_button_pressed() -> void:
 
 
 func _on_customer_spent_money(new_value: int, customer_position: Vector2):
-	var floating_money : Node = FLOATING_MONEY_SCENE.instantiate()
-	floating_money.value = new_value
-	
-	add_child(floating_money)
-	floating_money.global_position = customer_position
-	#floating_money.move_to_target(money_label.global_position)
+	pass
 	
 
 
