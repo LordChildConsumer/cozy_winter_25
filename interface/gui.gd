@@ -30,6 +30,21 @@ func _process(_delta: float) -> void:
 	day_progress_bar.ratio = TimeTracker.get_day_progress()
 
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		if(is_menu_hidden == false):
+			hide_menu()
+
+func hide_menu():
+	var tween := building_menu.create_tween();
+	tween.tween_property(
+		building_menu,
+		"position",
+		build_menu_start_pos,
+		0.5
+		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
+	is_menu_hidden = true
+
 func _on_build_menu_button_pressed() -> void:
 	if is_menu_hidden:
 		var tween := building_menu.create_tween();

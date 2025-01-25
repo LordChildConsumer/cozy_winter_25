@@ -12,12 +12,25 @@ var build_state: BUILD_STATE = BUILD_STATE.NONE :
 
 signal build_state_changed(state: BUILD_STATE);
 
+signal attraction_rating_changed(value: int);
 signal money_changed(value: int);
 
 var park_name: String = "";
-
+var _entrance_fee: float = 2.50 : set = set_entrance_fee, get = get_entrance_fee
+# Attracting rating scales between 5 - 100
+var _attraction_rating: int = 50 : set = set_attraction_rating, get = get_attraction_rating;
 var _money: int = 100 : set = set_money, get = get_money;
 
+func set_entrance_fee(value: float) -> void:
+	_entrance_fee = value
+
+func get_entrance_fee() -> float: return _entrance_fee
+
+func set_attraction_rating(value: int) -> void:
+	_attraction_rating = value
+	attraction_rating_changed.emit(_attraction_rating)
+
+func get_attraction_rating() -> int: return _attraction_rating
 
 func set_money(value: int) -> void:
 	print("Money: %d\nNew Money %d\nDifference: %d" % [_money, value, value - _money]);

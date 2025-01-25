@@ -1,5 +1,8 @@
 class_name Customer extends Actor;
 
+const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
+@onready var money_sound = $MoneySound
+
 
 
 var visited_attractions: Array[int] = [];
@@ -9,6 +12,14 @@ var busy: bool = false :
 		
 		if OS.is_debug_build():
 			modulate = Color.BLUE_VIOLET if busy else Color.WHITE;
+
+func spawn_entrance_fee_money():
+	var floating_money = FLOATING_MONEY_SCENE.instantiate()
+	floating_money.text = "$%.2f" % ParkData.get_entrance_fee()
+	add_child(floating_money)
+	floating_money.global_position = global_position
+	floating_money.move_to_target(position + Vector2(0.0, -50))
+	money_sound.play()
 
 
 func can_visit(attraction: Attraction) -> bool:

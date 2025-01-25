@@ -14,17 +14,54 @@ const CUSTOMER_SCENE: PackedScene = preload(\"res://entities/actor/customer/cust
 @export var starting_actor_count: int = 5;
 
 @onready var nav_mesh_node := $FullNavMesh as NavigationRegion2D;
-@onready var penguin_parent := $Customers;
+@onready var customer_parent := $Customers;
+@onready var park_entrance := $ParkEntrance
+@onready var customer_spawn_timer := $CustomerSpawnTimer
+
+var customer_spawn_rate : Vector2;
 
 func _ready() -> void:
-	for i: int in starting_actor_count:
-		spawn_actor();
+	TimeTracker.park_opened.connect(open)
+	TimeTracker.park_closed.connect(close)
 
+
+func open():
+	customer_spawn_rate = calculate_customer_spawn_rate()
+	customer_spawn_timer.wait_time = randf_range(customer_spawn_rate.x, customer_spawn_rate.y)
+	customer_spawn_timer.start()
+
+func close():
+	customer_spawn_timer.stop()
+
+
+
+func calculate_customer_spawn_rate() -> Vector2:
+	var attraction_rating = ParkData.get_attraction_rating()
+	var entrance_fee = ParkData.get_entrance_fee()
+	var min_time : float = 5 - (attraction_rating / 25) + (entrance_fee / 10)
+	var max_time : float = 8 - (attraction_rating / 25) + (entrance_fee / 10)
+	print(\"cutomer spawn rate: \", min_time, \", \", max_time)
+	return Vector2(min_time, max_time)
 
 func spawn_actor() -> void:
-	var peng := CUSTOMER_SCENE.instantiate() as Actor;
-	penguin_parent.add_child(peng);
-	peng.nav_region_rid = nav_mesh_node.get_rid();
+	var customer := CUSTOMER_SCENE.instantiate() as Actor;
+	customer_parent.add_child(customer);
+	customer.nav_region_rid = nav_mesh_node.get_rid();
+	var rand_x_offset = randf_range(-5, 5)
+	var rand_y_offset = randf_range(-50, 50)
+	customer.park_entrance = park_entrance.global_position
+	customer.global_position = park_entrance.global_position + Vector2(rand_x_offset, rand_y_offset)
+	customer.spawn_entrance_fee_money()
+	TimeTracker.park_closed.connect(customer.exit_park)
+	
+
+
+func _on_customer_spawn_timer_timeout() -> void:
+	spawn_actor()
+	ParkData.add_money(ParkData.get_entrance_fee())
+	customer_spawn_timer.wait_time = randf_range(customer_spawn_rate.x, customer_spawn_rate.y)
+	if TimeTracker.get_day_progress() > 0.7:
+		customer_spawn_timer.stop()
 "
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_axtgr"]
@@ -53,6 +90,7 @@ func spawn_actor() -> void:
 	var peng := PENGUIN_SCENE.instantiate() as Actor;
 	penguin_parent.add_child(peng);
 	peng.nav_region_rid = nav_mesh_node.get_rid();
+	peng._place_randomly_on_nav_mesh();
 "
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tkusp"]
@@ -210,6 +248,12 @@ side_of_zoo = 1
 
 [node name="Customers" type="Node2D" parent="Park"]
 
+[node name="ParkEntrance" type="Marker2D" parent="Park"]
+position = Vector2(-974, 0)
+
+[node name="CustomerSpawnTimer" type="Timer" parent="Park"]
+wait_time = 2.5
+
 [node name="Enclosure" type="Node2D" parent="."]
 script = SubResource("GDScript_125gc")
 
@@ -219,3 +263,5 @@ navigation_polygon = SubResource("NavigationPolygon_tkusp")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
+
+[connection signal="timeout" from="Park/CustomerSpawnTimer" to="Park" method="_on_customer_spawn_timer_timeout"]

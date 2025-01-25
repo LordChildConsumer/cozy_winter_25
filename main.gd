@@ -1,5 +1,9 @@
 class_name Main extends Node2D;
 
+const CUSTOMER_SCENE: PackedScene = preload("res://entities/actor/customer/customer.tscn")
+
+@onready var park_entrance = $Park/ParkEntrance
+
 const ATTRACTION_DATA := {
 	0: preload("res://resources/attractions/hot_cocoa.tres"),
 	1: preload("res://resources/attractions/not_hot_cocoa.tres"),

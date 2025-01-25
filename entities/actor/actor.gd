@@ -1,7 +1,6 @@
 class_name Actor extends CharacterBody2D;
 
 
-
 @export_group("Wandering")
 @export var wander_time_min: float = 3.0;
 @export var wander_time_max: float = 10.0;
@@ -18,11 +17,14 @@ var nav_region_rid: RID;
 var moving: bool = false;
 var wandering: bool = true;
 
+var park_entrance : Vector2
+
 
 func _ready() -> void:
 	nav_agent.max_speed = max(nav_agent.max_speed, move_speed);
+	_on_wander_timer_timeout()
 	wander_timer.start(get_new_wander_time());
-	_place_randomly_on_nav_mesh();
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -44,6 +46,12 @@ func get_new_velocity(delta: float) -> Vector2:
 		acceleration * delta
 	);
 
+func exit_park() -> void:
+	print("exitign park")
+	wander_timer.stop();
+	nav_agent.target_position = park_entrance
+	wandering = false
+	moving = true
 
 ## When the wander/wait timer has stopped:
 ## Pick a new random point on the iceberg.

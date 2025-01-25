@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5hs1ecj8oiui"]
+[gd_scene load_steps=4 format=3 uid="uid://c5hs1ecj8oiui"]
 
 [ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_humm7"]
 [ext_resource type="Script" path="res://entities/actor/customer/customer.gd" id="2_rsg5o"]
+[ext_resource type="AudioStream" uid="uid://bo8x1vj5b614o" path="res://entities/attraction/SFX/handleSmallLeather.ogg" id="3_bljvw"]
 
 [node name="Customer" instance=ExtResource("1_humm7")]
 collision_layer = 2
@@ -50,3 +51,6 @@ polygon = PackedVector2Array(4, 28, 2, 29, 2, 30, 8, 30, 8, 29, 6, 28)
 
 [node name="NavAgent" parent="." index="2"]
 navigation_layers = 2
+
+[node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="4" groups=["customers"]]
+stream = ExtResource("3_bljvw")
