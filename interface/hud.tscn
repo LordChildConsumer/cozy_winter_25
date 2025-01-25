@@ -195,6 +195,8 @@ texture_pressed = ExtResource("1_h4ubx")
 texture_hover = ExtResource("1_h4ubx")
 stretch_mode = 1
 
+[connection signal="pressed" from="TopHUD/TimerCenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TopHUD/TimerCenterContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
 [connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]

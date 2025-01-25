@@ -17,7 +17,7 @@ const BUILDING_SIZE: float = 256.0;
 @onready var attract_zone_collider := $AttractZone/Collider as CollisionShape2D;
 @onready var customer_spot := $CustomerSpot;
 @onready var customer_timer := $CustomerTimer;
-
+@onready var money_sound := $MoneySound;
 var _data: AttractionData;
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
@@ -84,7 +84,7 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				add_child(floating_money)
 				floating_money.position = position
 				floating_money.move_to_target(position + Vector2(0.0, -50))
-				
+				money_sound.play()
 				customer.leave_attraction();
 
 

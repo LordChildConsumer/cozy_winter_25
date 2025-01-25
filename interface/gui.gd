@@ -4,6 +4,7 @@ var is_menu_hidden := true
 #slide value is 200
 
 @onready var money_label = $TopHUD/MoneyLabel
+@onready var day_progress_bar = $TopHUD/TimerCenterContainer/HBoxContainer/VBoxContainer/ProgressBar
 
 signal building_button_clicked(building_index: int)
 
@@ -19,6 +20,10 @@ func _ready() -> void:
 		func(new_money: int) -> void:
 			money_lbl.set_text("$%d" % new_money);
 	);
+
+
+func _process(delta: float) -> void:
+	day_progress_bar.ratio = TimeTracker.get_day_progress()
 
 
 func _on_build_menu_button_pressed() -> void:
@@ -43,5 +48,14 @@ func _on_build_menu_button_pressed() -> void:
 		#await tween.finished;
 		is_menu_hidden = true
 
+
 func _on_building_button_pressed(building_index: int) -> void:
 	building_button_clicked.emit(building_index)
+
+
+func _on_fast_forward_button_pressed() -> void:
+	Engine.time_scale = 3
+
+
+func _on_play_button_pressed() -> void:
+	Engine.time_scale = 1

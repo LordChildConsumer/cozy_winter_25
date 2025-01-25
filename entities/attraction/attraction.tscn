@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2ht1knnffvfw"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ht1knnffvfw"]
 
 [ext_resource type="Script" path="res://entities/attraction/attraction.gd" id="1_ujc82"]
+[ext_resource type="AudioStream" uid="uid://bo8x1vj5b614o" path="res://entities/attraction/SFX/handleSmallLeather.ogg" id="2_na455"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
 size = Vector2(192, 192)
@@ -33,5 +34,8 @@ debug_color = Color(0, 0.7, 0.109375, 0.42)
 
 [node name="CustomerSpot" type="Marker2D" parent="."]
 position = Vector2(0, 160)
+
+[node name="MoneySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_na455")
 
 [connection signal="body_entered" from="AttractZone" to="." method="_on_attract_zone_body_entered"]

@@ -10,11 +10,14 @@ var time_open: float = 0.0;
 
 var _open: bool = false;
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_2"):
+		print_debug("Debug 2: Opening Park");
+		TimeTracker.open();
 
 func _process(delta: float) -> void:
 	if _open:
 		time_open += delta;
-		
 		
 		if time_open >= TIME_OPEN_MAX:
 			close();
