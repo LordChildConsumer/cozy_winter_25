@@ -10,7 +10,6 @@ signal building_button_clicked(building_index: int)
 @onready var building_menu = $BuildingHUD
 
 func _on_build_menu_button_pressed() -> void:
-	print("pressed")
 	if is_menu_hidden:
 		var tween := building_menu.create_tween();
 		tween.tween_property(
@@ -34,6 +33,5 @@ func _on_build_menu_button_pressed() -> void:
 
 
 func _on_building_button_pressed(building_index: int) -> void:
-	print("Building: ", building_index)
 	building_button_clicked.emit(building_index)
 	
