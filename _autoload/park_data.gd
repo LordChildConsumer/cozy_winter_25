@@ -26,11 +26,17 @@ func _ready() -> void:
 		func(node: Node) -> void:
 			money_changed.emit(_money);
 	)
+var _attraction_rating: int = 5 : set = set_attraction_rating, get = get_attraction_rating;
+var _money: int = 100 : set = set_money, get = get_money;
 
 func set_entrance_fee(value: int) -> void:
 	_entrance_fee = value
 
 func get_entrance_fee() -> int: return _entrance_fee
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_4"):
+		set_attraction_rating(_attraction_rating + 2)
 
 func set_attraction_rating(value: int) -> void:
 	_attraction_rating = value

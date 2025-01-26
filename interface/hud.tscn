@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=37 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://sqpbf2uah72k" path="res://interface/KenneyUI/TopHUD/red_button_rectangle_depth_flat.png" id="11_30b61"]
 [ext_resource type="PackedScene" uid="uid://ct15w52k577o6" path="res://interface/attraction_select_btn/attraction_select_btn.tscn" id="11_hexew"]
 [ext_resource type="Resource" uid="uid://dam4h1pgjlkyc" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
+[ext_resource type="Texture2D" uid="uid://dfxl34cw3mw7q" path="res://interface/Icons/star.png" id="12_1qg7r"]
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
@@ -252,10 +253,18 @@ texture_pressed = ExtResource("3_1spkn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="StartDayButton" type="Button" parent="TopHUD/vb"]
+[node name="Control" type="Control" parent="TopHUD/vb"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="StartDayButton" type="Button" parent="TopHUD/vb/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 75)
 layout_mode = 2
+offset_left = 678.0
+offset_top = 4.0
+offset_right = 1178.0
+offset_bottom = 79.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rcg0f")
@@ -263,7 +272,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_hcayj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2u46o")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hcayj")
 
-[node name="Text" type="Label" parent="TopHUD/vb/StartDayButton"]
+[node name="Text" type="Label" parent="TopHUD/vb/Control/StartDayButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,6 +283,49 @@ text = "START DAY"
 label_settings = SubResource("LabelSettings_skb73")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ParkRatingLabel2" type="Label" parent="TopHUD/vb/Control"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -1.0
+offset_right = 528.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 45
+text = "5"
+
+[node name="Star" type="TextureRect" parent="TopHUD/vb/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = -44.5
+offset_right = 225.0
+offset_bottom = 83.5
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_1qg7r")
+
+[node name="ParkRatingLabel" type="Label" parent="TopHUD/vb/Control"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 11.0
+offset_right = 393.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 25
+text = "PARK RATING:"
 
 [node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1
@@ -352,7 +404,7 @@ attraction_data = ExtResource("14_fjc2v")
 stream = ExtResource("8_hjk7w")
 
 [connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/SpeedBtn" to="." method="_on_speed_btn_toggled"]
-[connection signal="pressed" from="TopHUD/vb/StartDayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TopHUD/vb/Control/StartDayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]

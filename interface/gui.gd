@@ -4,12 +4,13 @@ var is_menu_hidden := true :
 	set(value):
 		is_menu_hidden = value;
 		building_menu_visibility_changed.emit(!is_menu_hidden);
-#slide value is 200
 
 @onready var money_label = %MoneyLabel;
 @onready var day_progress_bar = %DayProg;
 @onready var start_day_button = %StartDayButton;
-@onready var button_sound = $ButtonSound
+@onready var button_sound = $ButtonSound;
+@onready var park_rating = $TopHUD/vb/Control/ParkRatingLabel;
+
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
@@ -28,10 +29,15 @@ func _ready() -> void:
 	);
 	
 	ParkData.park_emptied.connect(show_start_day_button)
+	ParkData.attraction_rating_changed.connect(_on_attraction_rating_changed)
 
 
 func _process(_delta: float) -> void:
 	day_progress_bar.ratio = TimeTracker.get_day_progress()
+
+
+func _on_attraction_rating_changed(value: int) -> void:
+	park_rating.text = str(value)
 
 
 func _input(_event: InputEvent) -> void:
