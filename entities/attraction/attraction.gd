@@ -12,6 +12,7 @@ signal build_attempted(node: Attraction);
 
 @export var side_of_zoo: SIDES_OF_ZOO;
 
+@export var valid_buildings: Array[int] = [];
 
 @onready var building_sprite := $Building/Sprite;
 @onready var attract_zone := $AttractZone;
@@ -96,7 +97,7 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 
 
 func should_attract_customer() -> bool:
-	return randf() < _data.attractiveness;
+	return randf() < _data.efficacy;
 
 
 

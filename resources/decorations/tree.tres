@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DecorationData" load_steps=4 format=3 uid="uid://blyqitxl5cehx"]
 
-[ext_resource type="Script" path="res://resources/decorations/decoration_data.gd" id="1_k4wic"]
+[ext_resource type="Script" path="res://resources/decorations/olddecoration_data.gd" id="1_k4wic"]
 [ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="2_ygvpc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lu6rm"]

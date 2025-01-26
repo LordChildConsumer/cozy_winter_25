@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4jc2xs40u1so"]
+
+[ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="1_0f22o"]
+
+[node name="Decor" instance=ExtResource("1_0f22o")]
+valid_buildings = Array[int]([3, 4, 5, 6])
+
+[node name="CollisionShape2D" parent="Building" index="1"]
+disabled = true
+
+[node name="AttractZone" parent="." index="2"]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+
+[node name="Collider" parent="AttractZone" index="0"]
+disabled = true
+
+[node name="1" parent="Plot" index="1"]
+polygon = PackedVector2Array(-72, -72, -32, -72, -32, -64, -64, -64, -64, -32, -72, -32)
+
+[node name="2" parent="Plot" index="2"]
+polygon = PackedVector2Array(-71.9995, -72.0005, -31.9995, -72.0002, -31.9996, -64.0002, -63.9996, -64.0004, -63.9998, -32.0004, -71.9998, -32.0005)
+
+[node name="3" parent="Plot" index="3"]
+polygon = PackedVector2Array(-71.9998, -72.0002, -31.9998, -72.0001, -31.9998, -64.0001, -63.9998, -64.0002, -63.9999, -32.0002, -71.9999, -32.0002)
+
+[node name="4" parent="Plot" index="4"]
+polygon = PackedVector2Array(-71.9997, -72.0003, -31.9997, -72.0001, -31.9998, -64.0001, -63.9998, -64.0002, -63.9999, -32.0002, -71.9999, -32.0003)

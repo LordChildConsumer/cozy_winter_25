@@ -3,7 +3,8 @@ class_name AttractionData extends Resource;
 @export var name: StringName = &"";
 @export var texture: Texture2D;
 @export var cost_to_build: int = 50;
-@export_range(0.0, 1.0, 0.01) var attractiveness: float = 0.5;
+@export var attractiveness: int = 5;
+@export_range(0.0, 1.0, 0.01) var efficacy: float = 0.5;
 
 
 @export_category("Customer Stats")
