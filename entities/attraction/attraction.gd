@@ -98,30 +98,6 @@ func should_attract_customer() -> bool:
 
 
 
-# --------------------- #
-# ---- Debug Stuff ---- #
-# --------------------- #
-
-
-func _process(_delta: float) -> void:
-	if OS.is_debug_build():
-		queue_redraw();
-
-
-func _draw() -> void:
-	if OS.is_debug_build():
-		draw_circle(
-			customer_spot.position,
-			4.0,
-			Color.BLUE
-		);
-
-
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("debug_1"):
-		#print_debug("Debug 1: Loading Hot Cocoa");
-		#load_attraction(load("res://resources/attractions/hot_cocoa.tres"));
-
 
 func set_plot_visible(value: bool) -> void:
 	plot.set_visible(value);
@@ -129,7 +105,7 @@ func set_plot_visible(value: bool) -> void:
 
 func _on_plot_mouse_entered() -> void:
 	print("entered")
-	if ParkData.build_state == ParkData.BUILD_STATE.BUILD:
+	if ParkData.build_state == ParkData.BUILD_STATE.BUILD && plot.visible:
 		MouseCursor.build();
 
 
@@ -142,5 +118,5 @@ func _on_plot_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -
 	if ParkData.build_state == ParkData.BUILD_STATE.BUILD:
 		var m := event as InputEventMouseButton;
 		if m:
-			if m.button_index == MOUSE_BUTTON_LEFT:
+			if m.button_index == MOUSE_BUTTON_LEFT && m.is_released():
 				build_attempted.emit(self);

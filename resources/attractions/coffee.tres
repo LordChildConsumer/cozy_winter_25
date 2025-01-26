@@ -1,16 +1,21 @@
-[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://bhe8h6sdbvd5p"]
+[gd_resource type="Resource" script_class="AttractionData" load_steps=5 format=3 uid="uid://dam4h1pgjlkyc"]
 
 [ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_ccagm"]
-[ext_resource type="Texture2D" uid="uid://cqxhtlhynyue8" path="res://TinyBard art/Coffee Shop.PNG" id="2_j7oi4"]
+[ext_resource type="Texture2D" uid="uid://c7rdyb46ie7ux" path="res://TinyBard art/Vendors.png" id="2_wsyvg"]
 
 [sub_resource type="Curve" id="Curve_bug1f"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.162354, 0.162354, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti8qg"]
+atlas = ExtResource("2_wsyvg")
+region = Rect2(6, 36, 89, 157)
+margin = Rect2(0, 16, 0, 16)
+
 [resource]
 script = ExtResource("1_ccagm")
 name = &"Coffee"
-texture = ExtResource("2_j7oi4")
+texture = SubResource("AtlasTexture_ti8qg")
 cost_to_build = 25
 attractiveness = 0.5
 spending_min = 2

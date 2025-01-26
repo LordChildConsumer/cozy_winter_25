@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="Texture2D" uid="uid://cmaunpg4t5y5b" path="res://TinyBard art/Path.png" id="7_ge7rk"]
-[ext_resource type="NavigationPolygon" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
+[ext_resource type="NavigationPolygon" uid="uid://chdo85qm5jfib" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
@@ -142,10 +142,10 @@ func spawn_actor() -> void:
 	peng._place_randomly_on_nav_mesh();
 "
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_tkusp"]
-vertices = PackedVector2Array(1492.16, 370.102, 1576, 453.938, 1576, 626.062, 1492.16, 709.891, 1341.64, 740, 578.359, 740, 427.828, 709.891, 344, 626.062, 344, 453.938, 427.828, 370.102, 578.359, 340, 1341.64, 340)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(576, 316, 416, 348, 320, 444, 320, 636, 416, 732, 576, 764, 1344, 764, 1504, 732, 1600, 636, 1600, 444, 1504, 348, 1344, 316)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v4yu8"]
+vertices = PackedVector2Array(1390.31, 603.57, 1413.29, 612.758, 1390.06, 636, 1202.33, 636, 1426.32, 447.469, 1465.52, 494.508, 1476.09, 552.68, 1393.93, 567.617, 1265.13, 371.102, 1227.92, 356.211, 1055.28, 364.062, 1412.94, 400.656, 1122.33, 676, 981.727, 676, 905.688, 348.312, 777.562, 380.352, 821.594, 706.492, 767.688, 668, 457.633, 563.469, 499.578, 444.617, 644.82, 364.727, 573.273, 668, 482.719, 626.211)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 8, 7, 0, 3, 10), PackedInt32Array(8, 11, 4), PackedInt32Array(10, 3, 12, 13, 14), PackedInt32Array(15, 14, 13, 16, 17), PackedInt32Array(18, 19, 20, 15, 17, 21, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(904, 324, 1056, 340, 1232, 332, 1272, 348, 1432, 380, 1448, 436, 1488, 484, 1504, 572, 1416, 588, 1456, 604, 1400, 660, 1208, 660, 1128, 700, 984, 700, 816, 732, 760, 692, 568, 692, 464, 644, 432, 564, 480, 428, 640, 340, 776, 356)])
 agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
@@ -247,7 +247,7 @@ script = SubResource("GDScript_125gc")
 
 [node name="NavMesh" type="NavigationRegion2D" parent="Enclosure"]
 position = Vector2(-960, -540)
-navigation_polygon = SubResource("NavigationPolygon_tkusp")
+navigation_polygon = SubResource("NavigationPolygon_v4yu8")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true

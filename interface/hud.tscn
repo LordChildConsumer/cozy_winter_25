@@ -1,13 +1,54 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=34 format=3 uid="uid://dvq1akon7wswp"]
 
-[ext_resource type="Texture2D" uid="uid://kda8eebk6spq" path="res://icon.svg" id="1_h4ubx"]
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
 [ext_resource type="Texture2D" uid="uid://c03lvnmktt0rb" path="res://interface/Icons/play.png" id="3_1spkn"]
-[ext_resource type="Texture2D" uid="uid://bp07tcr5vk7r3" path="res://interface/Icons/Hammer icon.png" id="4_dn6x2"]
 [ext_resource type="Texture2D" uid="uid://cacig2hn7fvji" path="res://interface/Icons/fastForward.png" id="5_t4c74"]
-[ext_resource type="Texture2D" uid="uid://bamvkuk4icsc" path="res://interface/Icons/wrench.png" id="7_o1efb"]
+[ext_resource type="Texture2D" uid="uid://ciae0vlg0o80d" path="res://_autoload/mouse_cursor/cursors/tool_hammer.png" id="7_x8dfm"]
+[ext_resource type="Texture2D" uid="uid://d3hu67qjkk0kt" path="res://interface/KenneyUI/BuildMenu/button_square_depth_line.png" id="8_f3mmh"]
 [ext_resource type="AudioStream" uid="uid://da3dlmpy0xtsr" path="res://interface/SFX/bookOpen.ogg" id="8_hjk7w"]
+[ext_resource type="Texture2D" uid="uid://dpxj5yuajyclq" path="res://interface/KenneyUI/BuildMenu/button_square_border.png" id="9_ljj2l"]
+[ext_resource type="Texture2D" uid="uid://8l8f573pbfk6" path="res://interface/KenneyUI/DayProg/arrow_decorative_e_small.png" id="10_i6e3q"]
+[ext_resource type="Texture2D" uid="uid://d3uj7rpewnkdr" path="res://interface/KenneyUI/DayProg/slide_horizontal_color.png" id="10_lqwwi"]
+[ext_resource type="Texture2D" uid="uid://bdfllekltb3i4" path="res://interface/KenneyUI/DayProg/slide_horizontal_grey.png" id="11_3g278"]
+[ext_resource type="PackedScene" uid="uid://ct15w52k577o6" path="res://interface/attraction_select_btn/attraction_select_btn.tscn" id="11_hexew"]
+[ext_resource type="Resource" uid="uid://dam4h1pgjlkyc" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
+[ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
+[ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
+[ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3otf7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u43mx"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("10_lqwwi")
+texture_margin_left = 16.0
+texture_margin_right = 16.0
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_omttw"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("11_3g278")
+texture_margin_left = 16.0
+texture_margin_right = 16.0
+expand_margin_left = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8j0j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_074iq"]
+texture = ExtResource("8_f3mmh")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="Gradient" id="Gradient_dxx2e"]
 offsets = PackedFloat32Array(0.785366, 1)
@@ -65,6 +106,26 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np1y6"]
+texture = ExtResource("9_ljj2l")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 500.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibvh8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a6qgu"]
+texture = ExtResource("12_s16vt")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fcaq"]
+
 [node name="GameGUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -77,143 +138,102 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_l6f0n")
 
-[node name="TopHUD" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 250)
+[node name="TopHUD" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 250.0
+offset_bottom = 238.0
 grow_horizontal = 2
-size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="vb" type="VBoxContainer" parent="TopHUD"]
+layout_mode = 2
 mouse_filter = 2
 
-[node name="MoneyLabel" type="Label" parent="TopHUD"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -47.5
-offset_right = 350.0
-offset_bottom = 47.5
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.272, 1, 0.16, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+[node name="margin" type="MarginContainer" parent="TopHUD/vb"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="TopHUD/vb/margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="margin" type="MarginContainer" parent="TopHUD/vb/margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="hb" type="HBoxContainer" parent="TopHUD/vb/margin/margin"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="centerMoney" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="TopHUD/vb/margin/margin/hb/centerMoney"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.776471)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "$50"
+vertical_alignment = 1
 
-[node name="TimerCenterContainer" type="CenterContainer" parent="TopHUD"]
-custom_minimum_size = Vector2(1000, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -125.0
-offset_right = 500.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TopHUD/TimerCenterContainer"]
+[node name="centerDayProg" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
 layout_mode = 2
-theme_override_constants/separation = 60
+size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/TimerCenterContainer/VBoxContainer"]
+[node name="DayProg" type="HSlider" parent="TopHUD/vb/margin/margin/hb/centerDayProg"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 25
-
-[node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-texture_normal = ExtResource("3_1spkn")
-texture_pressed = ExtResource("3_1spkn")
-stretch_mode = 3
-
-[node name="VBoxContainer" type="Control" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-offset_top = 15.0
-offset_right = 250.0
-offset_bottom = 65.0
 size_flags_vertical = 4
-mouse_filter = 2
+theme_override_icons/grabber = SubResource("CompressedTexture2D_3otf7")
+theme_override_icons/grabber_disabled = ExtResource("10_i6e3q")
+theme_override_styles/slider = SubResource("StyleBoxTexture_u43mx")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_omttw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_r8j0j")
+step = 0.01
+editable = false
+scrollable = false
 
-[node name="ParkName" type="Label" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="centerSpeed" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
 layout_mode = 2
-offset_left = -64.0
-offset_top = 86.0
-offset_right = 337.0
-offset_bottom = 161.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 60
-text = "PENGUIN PARK"
-horizontal_alignment = 1
 
-[node name="FastForwardButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
+[node name="SpeedBtn" type="TextureButton" parent="TopHUD/vb/margin/margin/hb/centerSpeed"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
 texture_normal = ExtResource("5_t4c74")
-stretch_mode = 3
+texture_pressed = ExtResource("3_1spkn")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="StartDayButton" type="Button" parent="TopHUD/TimerCenterContainer/VBoxContainer"]
+[node name="StartDayButton" type="Button" parent="TopHUD/vb"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 75)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_tq4vb")
 theme_override_font_sizes/font_size = 50
 text = "START DAY"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopHUD"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -125.0
-offset_right = -56.0
-offset_bottom = 125.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 50
-alignment = 2
-
-[node name="TextureButton" type="TextureButton" parent="TopHUD/HBoxContainer"]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("1_h4ubx")
-texture_pressed = ExtResource("1_h4ubx")
-texture_hover = ExtResource("1_h4ubx")
-stretch_mode = 3
-
-[node name="TextureButton2" type="TextureButton" parent="TopHUD/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_h4ubx")
-texture_pressed = ExtResource("1_h4ubx")
-texture_hover = ExtResource("1_h4ubx")
-stretch_mode = 3
-
-[node name="SettingsButton" type="TextureButton" parent="TopHUD/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("7_o1efb")
-texture_pressed = ExtResource("7_o1efb")
-texture_hover = ExtResource("7_o1efb")
-stretch_mode = 3
 
 [node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1
@@ -224,8 +244,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="hBox" type="VBoxContainer" parent="BuildingHUD"]
-custom_minimum_size = Vector2(900, 300)
+[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -233,45 +253,53 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -450.0
-offset_top = -137.0
+offset_top = -110.0
 offset_right = 450.0
-offset_bottom = 215.0
+offset_bottom = 214.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="BuildMenu" type="VBoxContainer" parent="BuildingHUD/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 300)
+layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="CenterContainer" parent="BuildingHUD/hBox"]
+[node name="margin" type="MarginContainer" parent="BuildingHUD/MarginContainer/BuildMenu"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="BuildMenuButton" type="TextureButton" parent="BuildingHUD/hBox/HBoxContainer2"]
+[node name="BuildMenuButton" type="Button" parent="BuildingHUD/MarginContainer/BuildMenu/margin"]
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("4_dn6x2")
-texture_pressed = ExtResource("4_dn6x2")
-texture_hover = ExtResource("4_dn6x2")
-stretch_mode = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_074iq")
+icon = ExtResource("7_x8dfm")
+icon_alignment = 1
+expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD/hBox"]
+[node name="margin2" type="MarginContainer" parent="BuildingHUD/MarginContainer/BuildMenu"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/hBox/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer"]
 layout_mode = 2
 
-[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = SubResource("GradientTexture2D_pp6te")
@@ -279,7 +307,7 @@ texture_pressed = SubResource("GradientTexture2D_l1bfp")
 texture_hover = SubResource("GradientTexture2D_xkd6j")
 stretch_mode = 0
 
-[node name="Cost" type="Label" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Cost" type="Label" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
@@ -287,10 +315,10 @@ theme_override_font_sizes/font_size = 50
 text = "$25"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer"]
 layout_mode = 2
 
-[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -299,7 +327,7 @@ texture_pressed = SubResource("GradientTexture2D_0n4bi")
 texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
 
-[node name="Cost2" type="Label" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Cost2" type="Label" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
@@ -307,12 +335,82 @@ theme_override_font_sizes/font_size = 50
 text = "$30"
 horizontal_alignment = 1
 
-[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+[node name="BuildMenu" type="MarginContainer" parent="BuildingHUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -151.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 48
+
+[node name="Panel" type="Panel" parent="BuildingHUD/BuildMenu"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_np1y6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/BuildMenu"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="BuildMenuButton" type="Button" parent="BuildingHUD/BuildMenu/VBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ibvh8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_074iq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a6qgu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_074iq")
+icon = ExtResource("7_x8dfm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="BuildingHUD/BuildMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_8fcaq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/BuildMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CoffeeBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+unique_name_in_owner = true
+layout_mode = 2
+attraction_data = ExtResource("12_0mcp0")
+
+[node name="FoodBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+unique_name_in_owner = true
+layout_mode = 2
+attraction_data = ExtResource("13_vtrt1")
+
+[node name="GiftBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+unique_name_in_owner = true
+layout_mode = 2
+attraction_data = ExtResource("14_fjc2v")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hjk7w")
 
-[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
-[connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/hBox/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
-[connection signal="pressed" from="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
+[connection signal="toggled" from="TopHUD/vb/margin/margin/hb/centerSpeed/SpeedBtn" to="." method="_on_speed_btn_toggled"]
+[connection signal="pressed" from="TopHUD/vb/StartDayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
+[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/FoodBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/FoodBtn" to="." method="_on_food_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/GiftBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/GiftBtn" to="." method="_on_gift_btn_toggled"]

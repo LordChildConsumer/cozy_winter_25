@@ -60,6 +60,9 @@ func set_plot_visibilities(value: bool) -> void:
 
 
 func _on_attraction_build_attempted(node: Attraction) -> void:
+	if selected_attraction_id <= -1:
+		return;
+	
 	if ParkData.get_money() >= ATTRACTION_DATA[selected_attraction_id].cost_to_build:
 		node.load_attraction(ATTRACTION_DATA[selected_attraction_id]);
 		ParkData.sub_money(ATTRACTION_DATA[selected_attraction_id].cost_to_build)

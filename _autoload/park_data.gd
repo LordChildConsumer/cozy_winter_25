@@ -33,7 +33,7 @@ func set_attraction_rating(value: int) -> void:
 func get_attraction_rating() -> int: return _attraction_rating
 
 func set_money(value: int) -> void:
-	print("Money: %d\nNew Money %d\nDifference: %d" % [_money, value, value - _money]);
+	#print("Money: %d\nNew Money %d\nDifference: %d" % [_money, value, value - _money]);
 	_money = max(value, 0.0);
 	money_changed.emit(_money);
 

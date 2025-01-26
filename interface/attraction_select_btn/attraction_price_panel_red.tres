@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c2xg5qkwru686"]
+
+[ext_resource type="Texture2D" uid="uid://cljpj7y0rb1uh" path="res://interface/KenneyUI/AttractionBtn/button_square_flat_red.png" id="1_3lowd"]
+
+[resource]
+texture = ExtResource("1_3lowd")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0

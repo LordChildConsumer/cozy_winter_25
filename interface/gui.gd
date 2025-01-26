@@ -6,30 +6,28 @@ var is_menu_hidden := true :
 		building_menu_visibility_changed.emit(!is_menu_hidden);
 #slide value is 200
 
-@onready var money_label = $TopHUD/MoneyLabel
-@onready var day_progress_bar = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar
-@onready var start_day_button = $TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton
+@onready var money_label = %MoneyLabel;
+@onready var day_progress_bar = %DayProg;
+@onready var start_day_button = %StartDayButton;
 @onready var button_sound = $ButtonSound
-@onready var park_name = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ParkName
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
-@export var build_menu_hide_offset = Vector2(0.0, 215.00)
-@onready var building_menu = $BuildingHUD/hBox;
-@onready var build_menu_start_pos := $BuildingHUD/hBox.get_position() as Vector2;
-@onready var money_lbl := $TopHUD/MoneyLabel;
+@export var build_menu_hide_offset = Vector2(0.0, 296.00) #215
+@onready var building_menu = $BuildingHUD/BuildMenu;
+@onready var build_menu_start_pos := $BuildingHUD/BuildMenu.get_position() as Vector2;
 
 func _ready() -> void:
 	ParkData.money_changed.connect(
 		func(new_money: int) -> void:
-			money_lbl.set_text("$%d" % new_money);
+			print("New Money: %s" % new_money)
+			money_label.set_text("$%d" % new_money);
 	);
 	
 	ParkData.park_emptied.connect(show_start_day_button)
-	park_name.text = ParkData.park_name
 
 
 func _process(_delta: float) -> void:
@@ -75,18 +73,11 @@ func _on_build_menu_button_pressed() -> void:
 
 
 func _on_building_button_pressed(building_index: int) -> void:
-	button_sound.play()
-	building_button_clicked.emit(building_index)
+	## HACK: This isn't used anymore.
+	pass;
+	#button_sound.play()
+	#building_button_clicked.emit(building_index)
 
-
-func _on_fast_forward_button_pressed() -> void:
-	button_sound.play()
-	Engine.time_scale = 3
-
-
-func _on_play_button_pressed() -> void:
-	button_sound.play()
-	Engine.time_scale = 1
 
 
 func _on_button_pressed() -> void:
@@ -96,3 +87,60 @@ func _on_button_pressed() -> void:
 
 func show_start_day_button():
 	start_day_button.show()
+
+
+func _on_speed_btn_toggled(toggled_on: bool) -> void:
+	button_sound.play();
+	Engine.time_scale = 3.0 if toggled_on else 1.0;
+
+
+
+
+# --------------------------------- #
+# ---- Build Selection Buttons ---- #
+# --------------------------------- #
+
+var currently_selected_build_id: int = -1;
+const COFFEE_ID: int = 0;
+const FOOD_ID: int = 1;
+const GIFT_ID: int = 2;
+
+func _on_coffee_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = COFFEE_ID
+		building_button_clicked.emit(COFFEE_ID);
+		
+		%FoodBtn.button_pressed = false;
+		%GiftBtn.button_pressed = false;
+	elif currently_selected_build_id == COFFEE_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+func _on_food_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = FOOD_ID
+		building_button_clicked.emit(FOOD_ID);
+		
+		%CoffeeBtn.button_pressed = false;
+		%GiftBtn.button_pressed = false;
+	elif currently_selected_build_id == FOOD_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+		print(-1)
+
+
+func _on_gift_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = GIFT_ID
+		building_button_clicked.emit(GIFT_ID);
+		
+		%FoodBtn.button_pressed = false;
+		%CoffeeBtn.button_pressed = false;
+	elif currently_selected_build_id == GIFT_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+func _on_shop_btn_pressed() -> void:
+		button_sound.play();

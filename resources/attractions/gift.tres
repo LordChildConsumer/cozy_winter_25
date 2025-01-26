@@ -1,16 +1,21 @@
-[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://mq5hqggjmcwb"]
+[gd_resource type="Resource" script_class="AttractionData" load_steps=5 format=3 uid="uid://bkwpiglh6o1or"]
 
 [ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_nnw8d"]
-[ext_resource type="Texture2D" uid="uid://cv6pqyh7rrqba" path="res://TinyBard art/Souvenir Shop.PNG" id="2_poh8y"]
+[ext_resource type="Texture2D" uid="uid://c7rdyb46ie7ux" path="res://TinyBard art/Vendors.png" id="2_q7g8q"]
 
 [sub_resource type="Curve" id="Curve_bug1f"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 0.5), 0.162354, 0.162354, 0, 0, Vector2(1, 1), 1.7506, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ah23"]
+atlas = ExtResource("2_q7g8q")
+region = Rect2(106, 36, 89, 157)
+margin = Rect2(0, 16, 0, 16)
+
 [resource]
 script = ExtResource("1_nnw8d")
 name = &"Food"
-texture = ExtResource("2_poh8y")
+texture = SubResource("AtlasTexture_1ah23")
 cost_to_build = 50
 attractiveness = 0.5
 spending_min = 10
