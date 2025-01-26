@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=29 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
@@ -10,9 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="Texture2D" uid="uid://djbg62t5afomx" path="res://TinyBard art/Night Iceberg.png" id="9_cq62d"]
-[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 [ext_resource type="PackedScene" uid="uid://c4jc2xs40u1so" path="res://entities/attraction/not_attraction/not_attraction.tscn" id="11_anoqd"]
 
@@ -91,22 +90,6 @@ tracks/2/keys = {
 "values": [Vector2(-6, -51)]
 }
 
-[sub_resource type="Animation" id="Animation_fkikp"]
-resource_name = "flip_iceberg_to_night"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Iceberg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.14159]
-}
-
 [sub_resource type="Animation" id="Animation_6ldc3"]
 resource_name = "flip_iceberg_to-day"
 length = 0.2
@@ -133,6 +116,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-6, -51), Vector2(-6, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_fkikp"]
+resource_name = "flip_iceberg_to_night"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Iceberg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ps14"]
