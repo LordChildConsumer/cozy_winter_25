@@ -5,7 +5,7 @@ signal park_opened;
 
 
 # Park will be open for TIME_OPEN_MAX seconds
-const TIME_OPEN_MAX: float = 100.0;
+const TIME_OPEN_MAX: float = 30.0;
 var time_open: float = TIME_OPEN_MAX;
 var _open: bool = false;
 
