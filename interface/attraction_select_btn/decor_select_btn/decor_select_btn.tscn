@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://y0rxk1oeyxly"]
+
+[ext_resource type="Texture2D" uid="uid://dpxj5yuajyclq" path="res://interface/KenneyUI/BuildMenu/button_square_border.png" id="1_dy4d2"]
+[ext_resource type="Texture2D" uid="uid://cu30ijwxsh7qo" path="res://interface/KenneyUI/AttractionBtn/button_square_line.png" id="2_svtj1"]
+[ext_resource type="Texture2D" uid="uid://v5w1f3n6coog" path="res://interface/KenneyUI/AttractionBtn/button_square_border.png" id="3_tbw1d"]
+[ext_resource type="Script" path="res://interface/attraction_select_btn/attraction_select_btn.gd" id="4_xuulv"]
+[ext_resource type="Texture2D" uid="uid://c7rdyb46ie7ux" path="res://TinyBard art/Vendors.png" id="5_5eylf"]
+[ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="6_o6wfh"]
+[ext_resource type="StyleBox" uid="uid://du1dd75tgxobf" path="res://interface/attraction_select_btn/attraction_price_panel_green.tres" id="7_23hof"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwjgs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_68w0r"]
+texture = ExtResource("1_dy4d2")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lgd12"]
+texture = ExtResource("2_svtj1")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycton"]
+texture = ExtResource("3_tbw1d")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekjqs"]
+atlas = ExtResource("5_5eylf")
+region = Rect2(6, 36, 89, 157)
+margin = Rect2(0, 16, 0, 16)
+
+[node name="AttractionSelectBtn" type="Button"]
+custom_minimum_size = Vector2(160, 256)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mwjgs")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_68w0r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lgd12")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ycton")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lgd12")
+toggle_mode = true
+script = ExtResource("4_xuulv")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ekjqs")
+stretch_mode = 3
+
+[node name="Price" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_o6wfh")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Panel" type="Panel" parent="Margin/VBoxContainer/Price"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_23hof")
