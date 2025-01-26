@@ -2,7 +2,7 @@ extends Camera2D
 
 @export_group("Movement")
 @export var move_speed: float = 1500.0;
-@export var max_distance: Vector2 = Vector2(896.0, 480);
+@export var max_distance: Vector2 = Vector2(496.0, 480);
 
 @export_group("Zoom")
 @export var zoom_step: float = 0.1;

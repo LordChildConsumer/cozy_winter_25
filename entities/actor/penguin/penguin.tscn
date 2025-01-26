@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0akbvuysto80"]
+[gd_scene load_steps=3 format=3 uid="uid://b0akbvuysto80"]
 
 [ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_vwhop"]
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="2_5v4s8"]
 
 [node name="Penguin" instance=ExtResource("1_vwhop")]
 is_penguin = true
 
-[node name="Polygon" type="Node2D" parent="." index="0"]
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 1, 0.482353)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5v4s8")
+
+[node name="Polygon" type="Node2D" parent="." index="1"]
 visible = false
 position = Vector2(0, -19)
 scale = Vector2(1.6, 1.6)

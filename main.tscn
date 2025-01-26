@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 [ext_resource type="Script" path="res://main.gd" id="1_tu387"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
-[ext_resource type="Texture2D" uid="uid://bktw0omrcntk8" path="res://TinyBard art/Ice Background.png" id="4_ux7jf"]
+[ext_resource type="Texture2D" uid="uid://cm5ibrdgayuuw" path="res://TinyBard art/Extended Ice.png" id="4_2xxgq"]
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
+[ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="Texture2D" uid="uid://cmaunpg4t5y5b" path="res://TinyBard art/Path.png" id="7_ge7rk"]
 [ext_resource type="NavigationPolygon" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 
@@ -168,13 +168,13 @@ layer = -1
 follow_viewport_enabled = true
 
 [node name="Ice" type="Sprite2D" parent="Art"]
-texture = ExtResource("4_ux7jf")
+texture = ExtResource("4_2xxgq")
 metadata/_edit_lock_ = true
 
 [node name="Path" type="Sprite2D" parent="Art"]
-texture = ExtResource("7_ge7rk")
+position = Vector2(-335, -5)
+texture = ExtResource("5_lyfn0")
 offset = Vector2(-82.07, 0)
-metadata/_edit_lock_ = true
 
 [node name="Enclosure" type="Sprite2D" parent="Art"]
 texture = ExtResource("5_hfcga")
@@ -235,7 +235,7 @@ position = Vector2(-871, -322.5)
 shape = SubResource("RectangleShape2D_gih3u")
 
 [node name="ParkEntrance" type="Marker2D" parent="Park"]
-position = Vector2(-1088, 0)
+position = Vector2(-1464, 0)
 
 [node name="TicketBooth" type="Area2D" parent="Park/ParkEntrance"]
 top_level = true

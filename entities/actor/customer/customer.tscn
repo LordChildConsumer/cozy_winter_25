@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5hs1ecj8oiui"]
+[gd_scene load_steps=5 format=3 uid="uid://c5hs1ecj8oiui"]
 
 [ext_resource type="PackedScene" uid="uid://uyhdl4lbtwrs" path="res://entities/actor/actor.tscn" id="1_humm7"]
 [ext_resource type="Script" path="res://entities/actor/customer/customer.gd" id="2_rsg5o"]
-[ext_resource type="AudioStream" uid="uid://bo8x1vj5b614o" path="res://entities/attraction/SFX/handleSmallLeather.ogg" id="3_bljvw"]
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="3_a1r1c"]
+[ext_resource type="AudioStream" uid="uid://dm1l3p1a6hdrt" path="res://Title Scene/click-buttons-ui-menu-sounds-effects-button-8-205394.mp3" id="3_lcffl"]
 
 [node name="Customer" instance=ExtResource("1_humm7")]
 collision_layer = 2
@@ -50,8 +51,14 @@ polygon = PackedVector2Array(8, 28, 8, 32, 2, 32, 2, 28)
 color = Color(0.757812, 0.757812, 0.757812, 1)
 polygon = PackedVector2Array(4, 28, 2, 29, 2, 30, 8, 30, 8, 29, 6, 28)
 
-[node name="NavAgent" parent="." index="2"]
+[node name="DropShadow" type="Sprite2D" parent="." index="1"]
+modulate = Color(1, 1, 1, 0.564706)
+position = Vector2(0, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_a1r1c")
+
+[node name="NavAgent" parent="." index="3"]
 navigation_layers = 2
 
-[node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="4" groups=["customers"]]
-stream = ExtResource("3_bljvw")
+[node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="5" groups=["customers"]]
+stream = ExtResource("3_lcffl")
