@@ -96,6 +96,7 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				
 				if is_instance_valid(customer):
 					customer.leave_attraction();
+					busy = false;
 
 
 func should_attract_customer() -> bool:

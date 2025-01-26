@@ -93,7 +93,6 @@ polygon = PackedVector2Array(120, -120, -128, -120, -128, -128, 128, -128, 128, 
 [node name="AttractZone" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
-monitoring = false
 
 [node name="Collider" type="CollisionShape2D" parent="AttractZone"]
 position = Vector2(0, 192)
