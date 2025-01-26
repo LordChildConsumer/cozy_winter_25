@@ -15,6 +15,7 @@ signal park_emptied()
 signal attraction_rating_changed(value: int);
 signal money_changed(value: int);
 
+var money_earned = 0;
 var park_name: String = "";
 var _entrance_fee: int = 3 : set = set_entrance_fee, get = get_entrance_fee
 # Attracting rating scales between 5 - 100
@@ -45,10 +46,13 @@ func get_attraction_rating() -> int: return _attraction_rating
 
 func set_money(value: int) -> void:
 	#print("Money: %d\nNew Money %d\nDifference: %d" % [_money, value, value - _money]);
+	money_earned += value - _money
 	_money = max(value, 0.0);
 	money_changed.emit(_money);
 
 func get_money() -> int: return _money;
 
-func add_money(rhs: int) -> void: _money += rhs;
+func add_money(rhs: int) -> void: 
+	_money += rhs;
+	money_earned += rhs;
 func sub_money(rhs: int) -> void: _money -= rhs;
