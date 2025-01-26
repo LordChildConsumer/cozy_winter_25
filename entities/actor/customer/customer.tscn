@@ -63,3 +63,4 @@ navigation_layers = 2
 
 [node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="5" groups=["customers"]]
 stream = ExtResource("3_lcffl")
+volume_db = 10.0

@@ -95,7 +95,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
-text = "Build attractions, hire vendors, and decorate your penguin's habitat to make them happy."
+text = "Build attractions and hire vendors to increase your park rating and income!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -131,7 +131,7 @@ custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
-text = "Visitors bring income during the day; at night, use it to hire vendors and decorate your park and penguin habitat."
+text = "Visitors bring income during the day; use it to hire vendors and decorate your park"
 horizontal_alignment = 1
 autowrap_mode = 3
 

@@ -27,7 +27,6 @@
 [ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 [ext_resource type="Script" path="res://interface/tool_tip_manager.gd" id="26_da03r"]
 
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
 texture_margin_left = 12.0
@@ -141,6 +140,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_l6f0n")
+
+[node name="ParkName" type="Label" parent="."]
+top_level = true
+layout_mode = 2
+offset_left = 32.0
+offset_top = 6.0
+offset_right = 1888.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 30
+text = "My PARK NAME"
+horizontal_alignment = 1
 
 [node name="TopHUD" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -26,6 +26,7 @@ var is_menu_hidden := true :
 @onready var lamp_button_unlocked: bool;
 @onready var tree_button_unlocked : bool;
 @onready var bench_button_unlocked : bool;
+@onready var park_name = $ParkName
 
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
@@ -34,6 +35,7 @@ signal start_day_button_pressed()
 var unlock_milestones : Array[int] = [25, 75, 150, 225, 350, 500]
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
+
 
 @export var build_menu_hide_offset = Vector2(0.0, 296.00) #215
 @onready var building_menu = $BuildingHUD/BuildMenu;
@@ -49,6 +51,8 @@ func _ready() -> void:
 	ParkData.park_emptied.connect(show_start_day_button)
 	ParkData.attraction_rating_changed.connect(_on_attraction_rating_changed)
 	ParkData.money_changed.connect(_on_money_changed)
+	park_name.text = ParkData.park_name
+
 
 
 func _process(_delta: float) -> void:
@@ -302,7 +306,7 @@ func _on_milestone_progress_mouse_entered() -> void:
 			else:
 				current_money = money_earned
 				goal_money = unlock_milestones[i]
-			message = str(current_money) + "\\" + str(goal_money)
+			message = "$" + str(current_money) + " / $" + str(goal_money) + " earned until next unlock"
 			break
 		elif money_earned >= unlock_milestones[-1]:
 			message = "Everthing unlocked!"
