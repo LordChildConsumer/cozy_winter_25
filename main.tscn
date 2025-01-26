@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="NavigationPolygon" uid="uid://chdo85qm5jfib" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
+[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 
 [sub_resource type="Gradient" id="Gradient_kc6gp"]
@@ -182,10 +182,10 @@ func spawn_actor() -> void:
 	peng._place_randomly_on_nav_mesh();
 "
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_tkusp"]
-vertices = PackedVector2Array(1492.16, 370.102, 1576, 453.938, 1576, 626.062, 1492.16, 709.891, 1341.64, 740, 578.359, 740, 427.828, 709.891, 344, 626.062, 344, 453.938, 427.828, 370.102, 578.359, 340, 1341.64, 340)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(576, 316, 416, 348, 320, 444, 320, 636, 416, 732, 576, 764, 1344, 764, 1504, 732, 1600, 636, 1600, 444, 1504, 348, 1344, 316)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e4vf5"]
+vertices = PackedVector2Array(1194.33, 380, 1223.86, 394.758, 1329.77, 561.57, 1344.54, 613.281, 1177.32, 620.258, 1031.43, 380, 1375.28, 429.172, 1362.48, 461.172, 1416, 496.844, 1416, 544.32, 1106.58, 659.547, 998.031, 651.797, 867.797, 372.203, 839.477, 689.539, 801.938, 652, 803.617, 396.273, 510.859, 489.602, 596.422, 432.562, 677.406, 388.383, 613.203, 652, 537.133, 617.422, 504.562, 558.797)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(1, 6, 7), PackedInt32Array(7, 8, 9, 2, 1), PackedInt32Array(5, 4, 10, 11, 12), PackedInt32Array(12, 11, 13, 14, 15), PackedInt32Array(16, 17, 18, 15, 14, 19, 20, 21)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(864, 348, 1032, 356, 1200, 356, 1232, 372, 1408, 412, 1392, 452, 1440, 484, 1440, 564, 1360, 580, 1376, 636, 1184, 644, 1112, 684, 1000, 676, 832, 716, 792, 676, 608, 676, 520, 636, 480, 564, 488, 476, 584, 412, 672, 364, 800, 372)])
 agent_radius = 24.0
 
 [node name="Main" type="Node2D"]
@@ -220,15 +220,18 @@ camera_node = NodePath("../../../Camera")
 metadata/_edit_lock_ = true
 
 [node name="Path" type="Sprite2D" parent="Art"]
-position = Vector2(-335, -5)
+position = Vector2(-312, 0)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_lyfn0")
 offset = Vector2(-82.07, 0)
 
 [node name="Enclosure" type="Sprite2D" parent="Art"]
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_hfcga")
 metadata/_edit_lock_ = true
 
 [node name="Iceberg" type="Sprite2D" parent="Art"]
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("6_hibdt")
 metadata/_edit_lock_ = true
 
@@ -237,7 +240,7 @@ script = SubResource("GDScript_73nd7")
 starting_actor_count = 16
 
 [node name="FullNavMesh" type="NavigationRegion2D" parent="Park"]
-navigation_polygon = ExtResource("8_n87ce")
+navigation_polygon = ExtResource("9_plxm4")
 navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
@@ -318,7 +321,7 @@ script = SubResource("GDScript_125gc")
 
 [node name="NavMesh" type="NavigationRegion2D" parent="Enclosure"]
 position = Vector2(-960, -540)
-navigation_polygon = SubResource("NavigationPolygon_tkusp")
+navigation_polygon = SubResource("NavigationPolygon_e4vf5")
 
 [node name="Penguins" type="Node2D" parent="Enclosure"]
 y_sort_enabled = true
