@@ -31,6 +31,7 @@ var selected_attraction_id: int = -1 :
 @onready var color_correction := (environment.adjustment_color_correction as GradientTexture1D).gradient;
 
 func _ready() -> void:
+	MusicManager.crossfade(null, MusicManager.night_player);
 	SceneTransition.fade_to_game();
 	
 	game_gui.building_button_clicked.connect(_on_gui_building_button_clicked);

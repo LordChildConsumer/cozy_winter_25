@@ -27,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 [ext_resource type="Script" path="res://interface/tool_tip_manager.gd" id="26_da03r"]
 
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
 texture_margin_left = 12.0

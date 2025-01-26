@@ -9,10 +9,6 @@ const TIME_OPEN_MAX: float = 100.0; # 100
 var time_open: float = TIME_OPEN_MAX;
 var _open: bool = false;
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_2"):
-		print_debug("Debug 2: Opening Park");
-		TimeTracker.open();
 
 func _process(delta: float) -> void:
 	if _open:
@@ -29,6 +25,8 @@ func get_day_progress() -> float:
 func is_open() -> bool: 	return _open;
 
 func open() -> void:
+	MusicManager.crossfade(MusicManager.night_player, MusicManager.day_player);
+	
 	#time_open = 0.0;
 	var current_time_scale := Engine.time_scale;
 	Engine.time_scale = 1.0;
@@ -45,3 +43,4 @@ func open() -> void:
 func close() -> void:
 	_open = false;
 	park_closed.emit();
+	MusicManager.crossfade(MusicManager.day_player, MusicManager.night_player, 5.0);
