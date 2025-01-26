@@ -34,7 +34,7 @@ signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
 
-var unlock_milestones : Array[int] = [20, 50, 90, 140, 200, 270]
+var unlock_milestones : Array[int] = [20, 50, 70, 100, 125, 150]
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
