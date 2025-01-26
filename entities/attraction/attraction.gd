@@ -106,13 +106,11 @@ func set_plot_visible(value: bool) -> void:
 
 
 func _on_plot_mouse_entered() -> void:
-	print("entered")
 	if ParkData.build_state == ParkData.BUILD_STATE.BUILD && plot.visible:
 		MouseCursor.build();
 
 
 func _on_plot_mouse_exited() -> void:
-	print("exited")
 	MouseCursor.default();
 
 

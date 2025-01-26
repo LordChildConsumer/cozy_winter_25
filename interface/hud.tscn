@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=41 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
@@ -20,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
+[ext_resource type="PackedScene" uid="uid://y0rxk1oeyxly" path="res://interface/attraction_select_btn/decor_select_btn/decor_select_btn.tscn" id="20_3lka8"]
+[ext_resource type="Resource" uid="uid://c5c0kifsmhhhj" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
+[ext_resource type="Resource" uid="uid://bv5padqbvx53q" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
+[ext_resource type="Resource" uid="uid://w4jo05m8hsac" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
@@ -378,27 +382,60 @@ layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_8fcaq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/BuildMenu/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BuildingHUD/BuildMenu/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+alignment = 1
+
+[node name="AttractionBtns" type="HBoxContainer" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="CoffeeBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+[node name="CoffeeBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns" instance=ExtResource("11_hexew")]
 unique_name_in_owner = true
 layout_mode = 2
 attraction_data = ExtResource("12_0mcp0")
 
-[node name="FoodBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+[node name="FoodBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns" instance=ExtResource("11_hexew")]
 unique_name_in_owner = true
 layout_mode = 2
 attraction_data = ExtResource("13_vtrt1")
 
-[node name="GiftBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer" instance=ExtResource("11_hexew")]
+[node name="GiftBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns" instance=ExtResource("11_hexew")]
 unique_name_in_owner = true
 layout_mode = 2
 attraction_data = ExtResource("14_fjc2v")
+
+[node name="VSeparator" type="VSeparator" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="DecorationBtns" type="HBoxContainer" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="BushBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LampBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
+unique_name_in_owner = true
+layout_mode = 2
+decor_data = ExtResource("21_oceg4")
+
+[node name="TreeBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
+unique_name_in_owner = true
+layout_mode = 2
+decor_data = ExtResource("21_vqfk7")
+
+[node name="BenchBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
+unique_name_in_owner = true
+layout_mode = 2
+decor_data = ExtResource("23_p2ecd")
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hjk7w")
@@ -406,9 +443,13 @@ stream = ExtResource("8_hjk7w")
 [connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/SpeedBtn" to="." method="_on_speed_btn_toggled"]
 [connection signal="pressed" from="TopHUD/vb/Control/StartDayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
-[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]
-[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/FoodBtn" to="." method="_on_shop_btn_pressed"]
-[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/FoodBtn" to="." method="_on_food_btn_toggled"]
-[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/GiftBtn" to="." method="_on_shop_btn_pressed"]
-[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/GiftBtn" to="." method="_on_gift_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="." method="_on_food_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="." method="_on_gift_btn_toggled"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BushBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/LampBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/TreeBtn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BenchBtn" to="." method="_on_shop_btn_pressed"]

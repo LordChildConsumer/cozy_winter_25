@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://y0rxk1oeyxly"]
+[gd_scene load_steps=14 format=3 uid="uid://y0rxk1oeyxly"]
 
 [ext_resource type="Texture2D" uid="uid://dpxj5yuajyclq" path="res://interface/KenneyUI/BuildMenu/button_square_border.png" id="1_dy4d2"]
 [ext_resource type="Texture2D" uid="uid://cu30ijwxsh7qo" path="res://interface/KenneyUI/AttractionBtn/button_square_line.png" id="2_svtj1"]
 [ext_resource type="Texture2D" uid="uid://v5w1f3n6coog" path="res://interface/KenneyUI/AttractionBtn/button_square_border.png" id="3_tbw1d"]
-[ext_resource type="Script" path="res://interface/attraction_select_btn/attraction_select_btn.gd" id="4_xuulv"]
-[ext_resource type="Texture2D" uid="uid://c7rdyb46ie7ux" path="res://TinyBard art/Vendors.png" id="5_5eylf"]
+[ext_resource type="Script" path="res://interface/attraction_select_btn/decor_select_btn/decor_select_btn.gd" id="4_wh0fw"]
+[ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="5_c7n7y"]
+[ext_resource type="Resource" uid="uid://mu0py6l6vvb2" path="res://resources/decorations/bush.tres" id="5_rhw27"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="6_o6wfh"]
 [ext_resource type="StyleBox" uid="uid://du1dd75tgxobf" path="res://interface/attraction_select_btn/attraction_price_panel_green.tres" id="7_23hof"]
 
@@ -35,11 +36,11 @@ texture_margin_bottom = 16.0
 expand_margin_bottom = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekjqs"]
-atlas = ExtResource("5_5eylf")
-region = Rect2(6, 36, 89, 157)
+atlas = ExtResource("5_c7n7y")
+region = Rect2(31, 52, 100, 118)
 margin = Rect2(0, 16, 0, 16)
 
-[node name="AttractionSelectBtn" type="Button"]
+[node name="DecorSelectBtn" type="Button"]
 custom_minimum_size = Vector2(160, 256)
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +55,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_lgd12")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ycton")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lgd12")
 toggle_mode = true
-script = ExtResource("4_xuulv")
+script = ExtResource("4_wh0fw")
+decor_data = ExtResource("5_rhw27")
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -69,11 +71,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Sprite" type="TextureRect" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(89, 173)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_ekjqs")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Price" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 78)

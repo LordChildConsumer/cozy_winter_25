@@ -10,6 +10,7 @@ class_name DecorSelectBTN extends Button;
 @onready var price := $Margin/VBoxContainer/Price;
 @onready var price_panel := $Margin/VBoxContainer/Price/Panel; # TODO: Change theme for when can't afford.
 
+
 func _ready() -> void:
 	if !decor_data:
 		push_error("No Attraction Data @ %s" % get_path());
@@ -19,7 +20,6 @@ func _ready() -> void:
 	price.set_text("$%d" % decor_data.cost_to_build);
 	
 	ParkData.money_changed.connect(_on_park_data_money_changed);
-
 
 
 func lock() -> void:
