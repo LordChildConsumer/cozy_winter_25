@@ -183,8 +183,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 65
-text = "START FIRST DAY
-"
+text = "ENTER PARK"
 
 [connection signal="pressed" from="WelcomeSequence/WelcomePage1/Welcome_1/VBoxContainer/NextButton1" to="WelcomeSequence" method="_on_next_button_1_pressed"]
 [connection signal="pressed" from="WelcomeSequence/WelcomePage2/Welcome_2/VBoxContainer/NextButton2" to="WelcomeSequence" method="_on_next_button_2_pressed"]

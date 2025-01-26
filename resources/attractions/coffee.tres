@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://dam4h1pgjlkyc"]
+[gd_resource type="Resource" script_class="AttractionData" load_steps=4 format=3 uid="uid://bhe8h6sdbvd5p"]
 
 [ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_ccagm"]
 [ext_resource type="Texture2D" uid="uid://cqxhtlhynyue8" path="res://TinyBard art/Coffee Shop.PNG" id="2_j7oi4"]

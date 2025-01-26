@@ -10,6 +10,7 @@ var is_menu_hidden := true :
 @onready var day_progress_bar = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ProgressBar
 @onready var start_day_button = $TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton
 @onready var button_sound = $ButtonSound
+@onready var park_name = $TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/ParkName
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
@@ -28,6 +29,7 @@ func _ready() -> void:
 	);
 	
 	ParkData.park_emptied.connect(show_start_day_button)
+	park_name.text = ParkData.park_name
 
 
 func _process(_delta: float) -> void:

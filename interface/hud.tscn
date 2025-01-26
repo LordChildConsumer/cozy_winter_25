@@ -124,7 +124,7 @@ mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TopHUD/TimerCenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopHUD/TimerCenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,6 +132,7 @@ mouse_filter = 2
 theme_override_constants/separation = 25
 
 [node name="PlayButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture_normal = ExtResource("3_1spkn")
 texture_pressed = ExtResource("3_1spkn")
@@ -145,23 +146,26 @@ mouse_filter = 2
 [node name="ProgressBar" type="ProgressBar" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-offset_top = 29.0
+offset_top = 15.0
 offset_right = 250.0
-offset_bottom = 79.0
+offset_bottom = 65.0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="ParkName" type="Label" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 97.0
-offset_right = 250.0
-offset_bottom = 147.0
+offset_left = -64.0
+offset_top = 86.0
+offset_right = 337.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60
 text = "PENGUIN PARK"
 horizontal_alignment = 1
 
 [node name="FastForwardButton" type="TextureButton" parent="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture_normal = ExtResource("5_t4c74")
 stretch_mode = 3
@@ -198,7 +202,6 @@ texture_hover = ExtResource("1_h4ubx")
 stretch_mode = 3
 
 [node name="TextureButton2" type="TextureButton" parent="TopHUD/HBoxContainer"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("1_h4ubx")
 texture_pressed = ExtResource("1_h4ubx")
