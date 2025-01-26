@@ -46,7 +46,7 @@ func hide_menu():
 		building_menu,
 		"position:y",
 		build_menu_start_pos.y,
-		0.5
+		0.5 * Engine.time_scale
 		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 
 func _on_build_menu_button_pressed() -> void:
@@ -57,7 +57,7 @@ func _on_build_menu_button_pressed() -> void:
 			building_menu,
 			"position:y",
 			build_menu_start_pos.y - build_menu_hide_offset.y,
-			0.5
+			0.5 * Engine.time_scale
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;
 	else:
@@ -69,7 +69,7 @@ func _on_build_menu_button_pressed() -> void:
 			building_menu,
 			"position:y",
 			build_menu_start_pos.y,
-			0.5
+			0.5 * Engine.time_scale
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;
 		is_menu_hidden = true

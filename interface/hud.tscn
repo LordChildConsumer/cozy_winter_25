@@ -211,7 +211,7 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_fonts/font = ExtResource("2_tq4vb")
 theme_override_font_sizes/font_size = 50
-text = "$50"
+text = "$100"
 vertical_alignment = 1
 
 [node name="Panel2" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
