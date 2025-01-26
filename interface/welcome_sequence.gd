@@ -27,13 +27,14 @@ func _on_next_button_3_pressed() -> void:
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if(new_text != ""):
 		park_name = new_text
-	TimeTracker.open()
-	$"..".queue_free()
+	ParkData.park_name = park_name
+	var wait := await SceneTransition.fade_to_black();
+	get_tree().change_scene_to_file("res://main.tscn");
 
 
 func _on_start_day_1_button_pressed() -> void:
 	park_name = $EnterParkName/EnterParkNameContainer/VBoxContainer/LineEdit.text
-	TimeTracker.open()
+	ParkData.park_name = park_name
 	#$"..".queue_free()
 	
 	var _wait := await SceneTransition.fade_to_black();
