@@ -1,6 +1,6 @@
 extends Control
 
-signal start_game(park_name: String)
+#signal start_game(park_name: String)
 
 @onready var park_name = "Penguin Park"
 
