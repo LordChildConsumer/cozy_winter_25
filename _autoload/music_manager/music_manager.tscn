@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dth7bvln38cvh"]
+[gd_scene load_steps=4 format=3 uid="uid://dth7bvln38cvh"]
 
+[ext_resource type="Script" path="res://_autoload/music_manager/music_manager.gd" id="1_40sli"]
 [ext_resource type="AudioStream" uid="uid://bm0bvc7hpyx28" path="res://_autoload/music_manager/songs/sunset_loop.wav" id="2_gu720"]
 [ext_resource type="AudioStream" uid="uid://snl0otqr4tyv" path="res://_autoload/music_manager/songs/happy_hour_loop.wav" id="2_nbbwr"]
 
 [node name="MusicManager" type="Node2D"]
+script = ExtResource("1_40sli")
 
 [node name="Night" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gu720")
-volume_db = -20.0
 bus = &"Music"
 
 [node name="Day" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nbbwr")
-volume_db = -20.0
 bus = &"Music"
