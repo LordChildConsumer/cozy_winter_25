@@ -55,8 +55,9 @@ func _input(event: InputEvent) -> void:
 func exit_park() -> void:
 	wander_timer.stop();
 	nav_agent.target_position = park_exit;
-	wandering = false
+	busy = true;
 	moving = true
+	wandering = false
 	
 	await nav_agent.navigation_finished;
 	

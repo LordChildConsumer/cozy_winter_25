@@ -133,6 +133,7 @@ scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("11_os2pw")
 texture_pressed = ExtResource("12_7cb5o")
 texture_hover = ExtResource("12_7cb5o")
+texture_disabled = ExtResource("11_os2pw")
 
 [node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_s8qcp")

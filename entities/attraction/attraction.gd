@@ -90,7 +90,9 @@ func _on_attract_zone_body_entered(body: Node2D) -> void:
 				floating_money.position = position
 				floating_money.move_to_target(position + Vector2(0.0, -50))
 				money_sound.play()
-				customer.leave_attraction();
+				
+				if is_instance_valid(customer):
+					customer.leave_attraction();
 
 
 func should_attract_customer() -> bool:

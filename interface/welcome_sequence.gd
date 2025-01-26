@@ -9,6 +9,10 @@ extends Control
 @onready var welcome_page_3 := $WelcomePage3;
 @onready var enter_park_name := $EnterParkName;
 
+func _ready() -> void:
+	SceneTransition.fade_to_game();
+
+
 func _on_next_button_1_pressed() -> void:
 	welcome_page_1.hide()
 	welcome_page_2.show()

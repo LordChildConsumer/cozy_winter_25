@@ -23,6 +23,8 @@ var selected_attraction_id: int = -1 :
 
 @onready var game_gui := $CanvasLayer/GameGUI as GameGUI;
 @onready var attraction_parent := $Park/Attractions;
+@onready var environment := $WorldEnvironment.environment as Environment;
+@onready var color_correction := (environment.adjustment_color_correction as GradientTexture1D).gradient;
 
 func _ready() -> void:
 	SceneTransition.fade_to_game();
@@ -36,6 +38,10 @@ func _ready() -> void:
 		var a := c as Attraction;
 		if a:
 			a.build_attempted.connect(_on_attraction_build_attempted);
+
+
+func _process(delta: float) -> void:
+	adjust_adjustments(TimeTracker.get_day_progress());
 
 
 func _on_gui_building_button_clicked(idx: int) -> void:
@@ -69,3 +75,22 @@ func _on_attraction_build_attempted(node: Attraction) -> void:
 		build_sfx.play()
 	else:
 		pass
+
+
+# ---- Night ---- #
+# Brightness: 0.7
+# Contrast: 1.15
+#Saturation: 1.1
+# Color Correction: 000000 -> d8c8f3
+
+func adjust_adjustments(weight: float) -> void:
+	environment.adjustment_brightness = lerpf(
+		1.0,
+		0.7,
+		weight
+	);
+	
+	color_correction.set_color(
+		1,
+		Color(1.0, 1.0, 1.0).lerp(Color(0.846, 0.786, 0.953), weight)
+	);

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CozyWinter25"
-run/main_scene="res://interface/GUI.tscn"
+run/main_scene="res://Title Scene/title_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -95,4 +95,6 @@ debug_4={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.649384, 0.675781, 0.674131, 1)

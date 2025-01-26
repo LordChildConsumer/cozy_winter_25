@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=23 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
@@ -11,6 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="NavigationPolygon" uid="uid://chdo85qm5jfib" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
+
+[sub_resource type="Gradient" id="Gradient_kc6gp"]
+colors = PackedColorArray(0, 0, 0, 1, 0.845794, 0.785583, 0.953125, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y3b7x"]
+gradient = SubResource("Gradient_kc6gp")
+
+[sub_resource type="Environment" id="Environment_hn4ot"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 0.7
+adjustment_contrast = 1.15
+adjustment_saturation = 1.1
+adjustment_color_correction = SubResource("GradientTexture1D_y3b7x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5jhi"]
 shader = ExtResource("4_v6tt6")
@@ -177,6 +191,9 @@ agent_radius = 24.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tu387")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hn4ot")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
 
@@ -216,6 +233,7 @@ texture = ExtResource("6_hibdt")
 metadata/_edit_lock_ = true
 
 [node name="Park" type="Node2D" parent="."]
+visible = false
 script = SubResource("GDScript_73nd7")
 starting_actor_count = 16
 
@@ -244,27 +262,27 @@ position = Vector2(384, -512)
 position = Vector2(640, -512)
 
 [node name="B-Attraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(-640, 512)
+position = Vector2(-640, 504)
 side_of_zoo = 2
 
 [node name="B-Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(-384, 512)
+position = Vector2(-384, 504)
 side_of_zoo = 2
 
 [node name="B-Attraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(-128, 512)
+position = Vector2(-128, 504)
 side_of_zoo = 2
 
 [node name="B-Attraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(128, 512)
+position = Vector2(128, 504)
 side_of_zoo = 2
 
 [node name="B-Attraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(384, 512)
+position = Vector2(384, 504)
 side_of_zoo = 2
 
 [node name="B-Attraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(640, 512)
+position = Vector2(640, 504)
 side_of_zoo = 2
 
 [node name="Customers" type="Node2D" parent="Park"]
@@ -297,6 +315,7 @@ position = Vector2(-1344, 0)
 wait_time = 2.5
 
 [node name="Enclosure" type="Node2D" parent="."]
+visible = false
 script = SubResource("GDScript_125gc")
 
 [node name="NavMesh" type="NavigationRegion2D" parent="Enclosure"]
