@@ -55,6 +55,3 @@ navigation_layers = 2
 
 [node name="MoneySound" type="AudioStreamPlayer2D" parent="." index="4" groups=["customers"]]
 stream = ExtResource("3_bljvw")
-
-[node name="Sprite" parent="." index="5"]
-frame = 5

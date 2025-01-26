@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CozyWinter25"
-run/main_scene="res://main.tscn"
+run/main_scene="res://interface/GUI.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 TimeTracker="*res://_autoload/time_tracker.gd"
 MouseCursor="*res://_autoload/mouse_cursor/mouse_cursor.tscn"
 ParkData="*res://_autoload/park_data.gd"
+SceneTransition="*res://_autoload/scene_transition/scene_transition.tscn"
 
 [display]
 

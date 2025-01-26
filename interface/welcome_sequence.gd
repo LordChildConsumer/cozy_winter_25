@@ -34,4 +34,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 func _on_start_day_1_button_pressed() -> void:
 	park_name = $EnterParkName/EnterParkNameContainer/VBoxContainer/LineEdit.text
 	TimeTracker.open()
-	$"..".queue_free()
+	#$"..".queue_free()
+	
+	var wait := await SceneTransition.fade_to_black();
+	get_tree().change_scene_to_file("res://main.tscn");

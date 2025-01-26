@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="Texture2D" uid="uid://cmaunpg4t5y5b" path="res://TinyBard art/Path.png" id="7_ge7rk"]
-[ext_resource type="NavigationPolygon" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
+[ext_resource type="NavigationPolygon" uid="uid://chdo85qm5jfib" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]

@@ -33,6 +33,3 @@ polygon = PackedVector2Array(-8, 24, -8, 32, 8, 32, 8, 24)
 
 [node name="White" type="Polygon2D" parent="Polygon/Feet" index="0"]
 polygon = PackedVector2Array(-8, 24, 0, 16, 8, 24, 8, 32, 0, 24, -8, 32)
-
-[node name="Sprite" parent="." index="4"]
-frame = 5

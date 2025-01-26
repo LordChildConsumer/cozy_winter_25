@@ -25,6 +25,8 @@ var selected_attraction_id: int = -1 :
 @onready var attraction_parent := $Park/Attractions;
 
 func _ready() -> void:
+	SceneTransition.fade_to_game();
+	
 	game_gui.building_button_clicked.connect(_on_gui_building_button_clicked);
 	game_gui.building_menu_visibility_changed.connect(
 		_on_gui_build_menu_visibility_changed

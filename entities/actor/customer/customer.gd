@@ -12,12 +12,7 @@ var park_exit: Vector2;
 var in_park: bool = false;
 
 var visited_attractions: Array[int] = [];
-var busy: bool = false :
-	set(value):
-		busy = value;
-		
-		if OS.is_debug_build():
-			modulate = Color.BLUE_VIOLET if busy else Color.WHITE;
+var busy: bool = false;
 
 
 
