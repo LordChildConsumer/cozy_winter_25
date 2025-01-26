@@ -9,6 +9,10 @@ const ATTRACTION_DATA := {
 	0: preload("res://resources/attractions/coffee.tres"),
 	1: preload("res://resources/attractions/food.tres"),
 	2: preload("res://resources/attractions/gift.tres"),
+	3: preload("res://resources/attractions/decor/bush.tres"),
+	4: preload("res://resources/attractions/decor/lamp.tres"),
+	5: preload("res://resources/attractions/decor/tree.tres"),
+	6: preload("res://resources/attractions/decor/bench.tres"),
 };
 
 var selected_attraction_id: int = -1 :
@@ -62,7 +66,12 @@ func set_plot_visibilities(value: bool) -> void:
 	for c: Node in attraction_parent.get_children():
 		var a := c as Attraction;
 		if a:
-			a.set_plot_visible(value);
+			if value:
+				if a.valid_buildings.has(selected_attraction_id):
+					a.set_plot_visible(true);
+					continue;
+			a.set_plot_visible(false);
+			
 
 
 func _on_attraction_build_attempted(node: Attraction) -> void:

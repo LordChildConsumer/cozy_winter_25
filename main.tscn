@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
+[ext_resource type="PackedScene" uid="uid://c4jc2xs40u1so" path="res://entities/attraction/not_attraction/not_attraction.tscn" id="11_anoqd"]
 
 [sub_resource type="Gradient" id="Gradient_kc6gp"]
 colors = PackedColorArray(0, 0, 0, 1, 0.845794, 0.785583, 0.953125, 1)
@@ -136,9 +137,6 @@ func _on_customer_exited_park(node: Customer) -> void:
 		print_debug(\"Park Emptied!\");
 		ParkData.park_emptied.emit()
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gih3u"]
-size = Vector2(162, 449)
 
 [sub_resource type="GDScript" id="GDScript_qp3iy"]
 resource_name = "ticket_booth"
@@ -290,15 +288,24 @@ side_of_zoo = 2
 position = Vector2(640, 504)
 side_of_zoo = 2
 
+[node name="L-Decor1" parent="Park/Attractions" instance=ExtResource("11_anoqd")]
+position = Vector2(-840, -208)
+
+[node name="L-Decor2" parent="Park/Attractions" instance=ExtResource("11_anoqd")]
+position = Vector2(-840, 208)
+
+[node name="R-Decor1" parent="Park/Attractions" instance=ExtResource("11_anoqd")]
+position = Vector2(816, -240)
+
+[node name="R-Decor2" parent="Park/Attractions" instance=ExtResource("11_anoqd")]
+position = Vector2(816, 0)
+
+[node name="R-Decor3" parent="Park/Attractions" instance=ExtResource("11_anoqd")]
+position = Vector2(816, 240)
+
 [node name="Customers" type="Node2D" parent="Park"]
 
 [node name="Decorations" type="Node2D" parent="Park"]
-
-[node name="PlacementAreaNW" type="Area2D" parent="Park/Decorations" groups=["decoration_zone"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Park/Decorations/PlacementAreaNW"]
-position = Vector2(-871, -322.5)
-shape = SubResource("RectangleShape2D_gih3u")
 
 [node name="ParkEntrance" type="Marker2D" parent="Park"]
 position = Vector2(-1464, 0)

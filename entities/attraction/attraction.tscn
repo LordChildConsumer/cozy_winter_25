@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bo8x1vj5b614o" path="res://entities/attraction/SFX/handleSmallLeather.ogg" id="2_na455"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
-size = Vector2(192, 192)
+size = Vector2(184, 184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilrc"]
 size = Vector2(224, 224)
@@ -70,6 +70,7 @@ _data = {
 
 [node name="Attraction" type="Node2D" groups=["attraction"]]
 script = ExtResource("1_ujc82")
+valid_buildings = Array[int]([0, 1, 2])
 
 [node name="CustomerTimer" type="Timer" parent="."]
 

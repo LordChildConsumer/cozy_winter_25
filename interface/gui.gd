@@ -109,10 +109,20 @@ func _on_speed_btn_toggled(toggled_on: bool) -> void:
 # ---- Build Selection Buttons ---- #
 # --------------------------------- #
 
-var currently_selected_build_id: int = -1;
-const COFFEE_ID: int = 0;
-const FOOD_ID: int = 1;
-const GIFT_ID: int = 2;
+var currently_selected_build_id: int = -1 :
+	set(value):
+		currently_selected_build_id = value;
+		print("Selected Build ID: %d" % value);
+enum {
+	COFFEE_ID, FOOD_ID, GIFT_ID,
+	BUSH_ID, LAMP_ID, TREE_ID, BENCH_ID
+};
+#const COFFEE_ID: int = 0;
+#const FOOD_ID: int = 1;
+#const GIFT_ID: int = 2;
+#const BUSH_ID: int = 3;
+#const LAMP_ID: int = 4;
+
 
 func _on_coffee_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -154,44 +164,44 @@ func _on_shop_btn_pressed() -> void:
 
 func _on_bush_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		currently_selected_build_id = GIFT_ID
-		building_button_clicked.emit(GIFT_ID);
+		currently_selected_build_id = BUSH_ID
+		building_button_clicked.emit(BUSH_ID);
 		_turn_off_buttons(%BushBtn);
 		
-	elif currently_selected_build_id == GIFT_ID:
+	elif currently_selected_build_id == BUSH_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
 
 
 func _on_lamp_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		currently_selected_build_id = GIFT_ID
-		building_button_clicked.emit(GIFT_ID);
+		currently_selected_build_id = LAMP_ID
+		building_button_clicked.emit(LAMP_ID);
 		_turn_off_buttons(%LampBtn);
 		
-	elif currently_selected_build_id == GIFT_ID:
+	elif currently_selected_build_id == LAMP_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
 
 
 func _on_tree_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		currently_selected_build_id = GIFT_ID
-		building_button_clicked.emit(GIFT_ID);
+		currently_selected_build_id = TREE_ID
+		building_button_clicked.emit(TREE_ID);
 		_turn_off_buttons(%TreeBtn);
 		
-	elif currently_selected_build_id == GIFT_ID:
+	elif currently_selected_build_id == TREE_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
 
 
 func _on_bench_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		currently_selected_build_id = GIFT_ID
-		building_button_clicked.emit(GIFT_ID);
+		currently_selected_build_id = BENCH_ID
+		building_button_clicked.emit(BENCH_ID);
 		_turn_off_buttons(%BenchBtn);
 		
-	elif currently_selected_build_id == GIFT_ID:
+	elif currently_selected_build_id == BENCH_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
 
