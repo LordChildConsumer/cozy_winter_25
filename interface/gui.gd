@@ -12,6 +12,19 @@ var is_menu_hidden := true :
 @onready var park_rating = $TopHUD/vb/Control/ParkRatingLabel;
 @onready var milestone_progress_ring = $TopHUD/vb/Control/MilestoneProgress
 
+@onready var food_vendor_button = %FoodBtn
+@onready var gift_vendor_button = %GiftBtn
+
+@onready var lamp_button = %LampBtn
+@onready var tree_button = %TreeBtn
+@onready var bench_button = %BenchBtn
+
+@onready var food_vendor_unlocked : bool;
+@onready var gift_vendor_button_unlocked : bool;
+@onready var lamp_button_unlocked: bool;
+@onready var tree_button_unlocked : bool;
+@onready var bench_button_unlocked : bool;
+
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
@@ -43,6 +56,26 @@ func _process(_delta: float) -> void:
 func _on_money_changed(value: int):
 	var money_earned = ParkData.money_earned
 	var progress = 0.0
+	print("money earned: ", str(money_earned))
+	#DONT JUDGE ME ITS LATE
+	if money_earned > unlock_milestones[0] && !lamp_button_unlocked:
+		lamp_button_unlocked = true
+		lamp_button.show()
+	if money_earned > unlock_milestones[1] && !food_vendor_unlocked:
+		#unlock lamp
+		food_vendor_unlocked = true
+		food_vendor_button.show()
+	if money_earned > unlock_milestones[2] && !tree_button_unlocked:
+		tree_button_unlocked = true
+		tree_button.show()
+	if money_earned > unlock_milestones[3] && !bench_button_unlocked:
+		bench_button_unlocked = true
+		bench_button.show()
+	if money_earned > unlock_milestones[4] && !gift_vendor_button_unlocked:
+		gift_vendor_button_unlocked = true
+		gift_vendor_button.show()
+	
+
 
 	# Iterate through milestones to find the current range
 	for i in range(unlock_milestones.size()):
@@ -50,7 +83,7 @@ func _on_money_changed(value: int):
 			# Calculate progress relative to the current milestone range
 			var lower_bound = unlock_milestones[i - 1] if i > 0 else 0
 			var upper_bound = unlock_milestones[i]
-			progress = float(money_earned - lower_bound) / float(upper_bound - lower_bound) * 100.0
+			progress = (float(money_earned - lower_bound) / float(upper_bound - lower_bound)) * 100.0
 			break
 		elif money_earned >= unlock_milestones[-1]:
 			# If money_earned exceeds the last milestone, set progress to 100%

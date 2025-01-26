@@ -293,7 +293,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 177.0
 offset_top = -5.0
-offset_right = 405.0
+offset_right = 280.0
 offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -301,6 +301,20 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
 theme_override_font_sizes/font_size = 55
 text = "5"
+
+[node name="GoalLabel" type="Label" parent="TopHUD/vb/Control"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 70.0
+offset_right = 307.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 35
+text = "Goal: Get a park
+rating of 50"
 
 [node name="Star" type="TextureRect" parent="TopHUD/vb/Control"]
 layout_mode = 1
@@ -423,11 +437,13 @@ attraction_data = ExtResource("12_0mcp0")
 
 [node name="FoodBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns" instance=ExtResource("11_hexew")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 attraction_data = ExtResource("13_vtrt1")
 
 [node name="GiftBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns" instance=ExtResource("11_hexew")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 attraction_data = ExtResource("14_fjc2v")
 
@@ -447,16 +463,19 @@ layout_mode = 2
 
 [node name="LampBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 decor_data = ExtResource("21_oceg4")
 
 [node name="TreeBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 decor_data = ExtResource("21_vqfk7")
 
 [node name="BenchBtn" parent="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns" instance=ExtResource("20_3lka8")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 decor_data = ExtResource("23_p2ecd")
 
