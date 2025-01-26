@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=36 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
@@ -19,17 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erybo"]
-texture = ExtResource("9_ljj2l")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 16.0
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
@@ -169,12 +158,6 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 16
 
-[node name="Panel" type="Panel" parent="TopHUD/vb/margin"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_erybo")
-
 [node name="margin" type="MarginContainer" parent="TopHUD/vb/margin"]
 layout_mode = 2
 theme_override_constants/margin_left = 64
@@ -188,7 +171,7 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Panel" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -207,16 +190,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.776471)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 text = "$100"
 vertical_alignment = 1
 
 [node name="Panel2" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_yk8fk")
 
@@ -244,29 +229,28 @@ editable = false
 scrollable = false
 
 [node name="Panel3" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_di70p")
 
-[node name="centerSpeed" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb/Panel3"]
+[node name="SpeedBtn" type="TextureButton" parent="TopHUD/vb/margin/margin/hb/Panel3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SpeedBtn" type="TextureButton" parent="TopHUD/vb/margin/margin/hb/Panel3/centerSpeed"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
 size_flags_horizontal = 10
 toggle_mode = true
 texture_normal = ExtResource("5_t4c74")
 texture_pressed = ExtResource("3_1spkn")
 ignore_texture_size = true
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="StartDayButton" type="Button" parent="TopHUD/vb"]
 unique_name_in_owner = true
@@ -367,7 +351,7 @@ attraction_data = ExtResource("14_fjc2v")
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hjk7w")
 
-[connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/centerSpeed/SpeedBtn" to="." method="_on_speed_btn_toggled"]
+[connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/SpeedBtn" to="." method="_on_speed_btn_toggled"]
 [connection signal="pressed" from="TopHUD/vb/StartDayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
