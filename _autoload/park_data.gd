@@ -62,3 +62,12 @@ func add_money(rhs: int) -> void:
 
 
 func sub_money(rhs: int) -> void: _money -= rhs;
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_fullscreen"):
+		var win := get_window();
+		if win.mode == Window.MODE_FULLSCREEN:
+			win.mode = Window.MODE_WINDOWED;
+		else:
+			win.mode = Window.MODE_FULLSCREEN;
