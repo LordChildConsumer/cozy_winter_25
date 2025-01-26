@@ -46,7 +46,8 @@ func get_attraction_rating() -> int: return _attraction_rating
 
 func set_money(value: int) -> void:
 	#print("Money: %d\nNew Money %d\nDifference: %d" % [_money, value, value - _money]);
-	money_earned += value - _money
+	if(value > _money):
+		money_earned += value - _money
 	_money = max(value, 0.0);
 	money_changed.emit(_money);
 
@@ -54,5 +55,7 @@ func get_money() -> int: return _money;
 
 func add_money(rhs: int) -> void: 
 	_money += rhs;
-	money_earned += rhs;
+	money_changed.emit(_money);
+
+
 func sub_money(rhs: int) -> void: _money -= rhs;

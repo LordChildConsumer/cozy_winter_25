@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="Texture2D" uid="uid://djbg62t5afomx" path="res://TinyBard art/Night Iceberg.png" id="9_cq62d"]
-[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 [ext_resource type="PackedScene" uid="uid://c4jc2xs40u1so" path="res://entities/attraction/not_attraction/not_attraction.tscn" id="11_anoqd"]
 
@@ -191,8 +191,8 @@ func close():
 func calculate_customer_spawn_rate() -> Vector2:
 	var attraction_rating = ParkData.get_attraction_rating()
 	var entrance_fee = ParkData.get_entrance_fee()
-	var min_time : float = 9 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
-	var max_time : float = 12 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
+	var min_time : float = 9 - (attraction_rating / 10.0) + (entrance_fee / 10.0)
+	var max_time : float = 12 - (attraction_rating / 10.0) + (entrance_fee / 10.0)
 	print(\"cutomer spawn rate: \", min_time, \", \", max_time)
 	return Vector2(min_time, max_time)
 
