@@ -58,7 +58,7 @@ func exit_park() -> void:
 	busy = true;
 	moving = true
 	wandering = false
-	
+	move_speed = 125.0
 	await nav_agent.navigation_finished;
 	
 	exited_park.emit(self);

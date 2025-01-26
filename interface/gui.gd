@@ -34,7 +34,7 @@ signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
 
-var unlock_milestones : Array[int] = [25, 75, 150, 225, 350, 500]
+var unlock_milestones : Array[int] = [20, 50, 90, 140, 200, 270]
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
@@ -177,7 +177,7 @@ func show_start_day_button():
 
 func _on_speed_btn_toggled(toggled_on: bool) -> void:
 	button_sound.play();
-	Engine.time_scale = 3.0 if toggled_on else 1.0;
+	Engine.time_scale = 4.0 if toggled_on else 1.0;
 
 
 

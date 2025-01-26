@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cabs0bcvt7ab0"]
+
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="1_s05hs"]
+[ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="2_h73ja"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvj2i"]
+atlas = ExtResource("2_h73ja")
+region = Rect2(570, 84, 81, 80)
+
+[node name="SignDecoration" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.639216)
+position = Vector2(0, 34)
+scale = Vector2(1.5, 0.8)
+texture = ExtResource("1_s05hs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_dvj2i")

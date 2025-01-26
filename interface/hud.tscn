@@ -22,9 +22,9 @@
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
 [ext_resource type="PackedScene" uid="uid://y0rxk1oeyxly" path="res://interface/attraction_select_btn/decor_select_btn/decor_select_btn.tscn" id="20_3lka8"]
-[ext_resource type="Resource" uid="uid://c5c0kifsmhhhj" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
-[ext_resource type="Resource" uid="uid://bv5padqbvx53q" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
-[ext_resource type="Resource" uid="uid://w4jo05m8hsac" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
+[ext_resource type="Resource" uid="uid://b08d4ysbnslps" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
+[ext_resource type="Resource" uid="uid://blyqitxl5cehx" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
+[ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 [ext_resource type="Script" path="res://interface/tool_tip_manager.gd" id="26_da03r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
@@ -319,8 +319,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
 toggle_mode = true
-texture_normal = ExtResource("5_t4c74")
-texture_pressed = ExtResource("3_1spkn")
+texture_normal = ExtResource("3_1spkn")
+texture_pressed = ExtResource("5_t4c74")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -495,6 +495,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="BuildMenuButton" type="Button" parent="BuildingHUD/BuildMenu/VBoxContainer"]
+modulate = Color(0.348572, 0.671126, 0.367289, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ibvh8")

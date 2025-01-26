@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=27 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
@@ -10,9 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="Texture2D" uid="uid://djbg62t5afomx" path="res://TinyBard art/Night Iceberg.png" id="9_cq62d"]
-[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
+[ext_resource type="PackedScene" uid="uid://dljgr2ldmnlub" path="res://resources/decorations/landscaping_tree.tscn" id="10_7pvu2"]
 [ext_resource type="PackedScene" uid="uid://c4jc2xs40u1so" path="res://entities/attraction/not_attraction/not_attraction.tscn" id="11_anoqd"]
+[ext_resource type="PackedScene" uid="uid://co810e2fuv5bp" path="res://resources/decorations/filler_tree.tscn" id="11_eby7y"]
+[ext_resource type="PackedScene" uid="uid://cabs0bcvt7ab0" path="res://resources/decorations/sign_decoration.tscn" id="11_lmkik"]
 
 [sub_resource type="Gradient" id="Gradient_kc6gp"]
 colors = PackedColorArray(0, 0, 0, 1, 0.845794, 0.785583, 0.953125, 1)
@@ -243,6 +246,337 @@ visible = false
 position = Vector2(-6, -51)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("9_cq62d")
+
+[node name="Trees" type="Node2D" parent="Art"]
+
+[node name="LandscapingTree" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(942, -584)
+
+[node name="LandscapingTree6" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1413, -575)
+
+[node name="LandscapingTree7" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1518, -407)
+
+[node name="LandscapingTree8" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1406, -197)
+
+[node name="LandscapingTree9" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1528, -55)
+
+[node name="LandscapingTree10" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1430, 127)
+
+[node name="LandscapingTree11" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1557, 337)
+
+[node name="LandscapingTree12" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1430, 543)
+
+[node name="LandscapingTree13" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1356, 816)
+
+[node name="LandscapingTree14" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1262, -855)
+
+[node name="LandscapingTree15" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(927, -999)
+
+[node name="LandscapingTree16" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(616, -1082)
+
+[node name="LandscapingTree49" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1376, -1057)
+
+[node name="LandscapingTree50" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1512, -823)
+
+[node name="LandscapingTree51" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1088, -917)
+
+[node name="LandscapingTree53" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(815, -1418)
+
+[node name="LandscapingTree54" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1143, -1435)
+
+[node name="LandscapingTree55" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1329, -1403)
+
+[node name="LandscapingTree75" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1232, -1630)
+
+[node name="LandscapingTree76" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1051, -1664)
+
+[node name="LandscapingTree56" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1526, -1065)
+
+[node name="LandscapingTree57" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1493, -1290)
+
+[node name="LandscapingTree58" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1493, -1290)
+
+[node name="LandscapingTree17" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(507, -1258)
+
+[node name="LandscapingTree19" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(256, -1146)
+
+[node name="LandscapingTree20" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(112, -1402)
+
+[node name="LandscapingTree21" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-2, -1137)
+
+[node name="LandscapingTree22" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-299, -1332)
+
+[node name="LandscapingTree23" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-463, -1140)
+
+[node name="LandscapingTree24" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-647, -1295)
+
+[node name="LandscapingTree25" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-837, -1109)
+
+[node name="LandscapingTree26" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1054, -1155)
+
+[node name="LandscapingTree27" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1238, -941)
+
+[node name="LandscapingTree28" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1360, -1112)
+
+[node name="LandscapingTree59" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1209, -1261)
+
+[node name="LandscapingTree60" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1417, -1397)
+
+[node name="LandscapingTree61" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1548, -1231)
+
+[node name="LandscapingTree62" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1030, -1426)
+
+[node name="LandscapingTree63" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-842, -1411)
+
+[node name="LandscapingTree64" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1236, -1553)
+
+[node name="LandscapingTree65" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-640, -1553)
+
+[node name="LandscapingTree66" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-478, -1424)
+
+[node name="LandscapingTree67" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-299, -1606)
+
+[node name="LandscapingTree68" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-144, -1422)
+
+[node name="LandscapingTree69" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(7, -1628)
+
+[node name="LandscapingTree70" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(294, -1424)
+
+[node name="LandscapingTree71" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(427, -1643)
+
+[node name="LandscapingTree72" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(644, -1479)
+
+[node name="LandscapingTree73" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(900, -1667)
+
+[node name="LandscapingTree74" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(900, -1667)
+
+[node name="LandscapingTree29" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1493, -889)
+
+[node name="LandscapingTree30" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1570, -635)
+
+[node name="LandscapingTree31" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1657, -434)
+
+[node name="LandscapingTree32" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1530, -342)
+
+[node name="LandscapingTree33" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1657, -62)
+
+[node name="LandscapingTree34" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1567, 160)
+
+[node name="LandscapingTree35" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1615, 359)
+
+[node name="LandscapingTree36" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1464, 515)
+
+[node name="LandscapingTree37" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1503, 780)
+
+[node name="LandscapingTree38" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1335, 887)
+
+[node name="LandscapingTree39" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1109, 929)
+
+[node name="LandscapingTree40" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1109, 929)
+
+[node name="LandscapingTree41" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-925, 1141)
+
+[node name="LandscapingTree42" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-663, 1102)
+
+[node name="LandscapingTree96" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-728, 1189)
+
+[node name="LandscapingTree97" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1120, 1152)
+
+[node name="LandscapingTree98" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1288, 1011)
+
+[node name="LandscapingTree99" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1514, 1078)
+
+[node name="LandscapingTree100" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1280, 1205)
+
+[node name="LandscapingTree101" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1389, 659)
+
+[node name="LandscapingTree102" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1652, 575)
+
+[node name="LandscapingTree103" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1750, 149)
+
+[node name="LandscapingTree104" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1750, -285)
+
+[node name="LandscapingTree105" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1750, -285)
+
+[node name="LandscapingTree43" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-545, 1240)
+
+[node name="LandscapingTree44" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-359, 1135)
+
+[node name="LandscapingTree45" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-128, 1244)
+
+[node name="LandscapingTree46" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1, 1113)
+
+[node name="LandscapingTree47" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1, 1113)
+
+[node name="LandscapingTree48" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(82, 1285)
+
+[node name="LandscapingTree52" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(228, 1161)
+
+[node name="LandscapingTree77" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(289, 1311)
+
+[node name="LandscapingTree78" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(439, 1113)
+
+[node name="LandscapingTree79" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(411, 1248)
+
+[node name="LandscapingTree80" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(618, 1246)
+
+[node name="LandscapingTree81" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(768, 1111)
+
+[node name="LandscapingTree82" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(825, 1224)
+
+[node name="LandscapingTree83" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1012, 1056)
+
+[node name="LandscapingTree84" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1190, 1132)
+
+[node name="LandscapingTree85" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1373, 1023)
+
+[node name="LandscapingTree86" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1480, 799)
+
+[node name="LandscapingTree87" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1130, 477)
+
+[node name="LandscapingTree88" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1361, 586)
+
+[node name="LandscapingTree89" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1635, 434)
+
+[node name="LandscapingTree90" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1650, 110)
+
+[node name="LandscapingTree91" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1587, -299)
+
+[node name="LandscapingTree92" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1341, -504)
+
+[node name="LandscapingTree93" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1619, -654)
+
+[node name="LandscapingTree94" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1412, -930)
+
+[node name="LandscapingTree95" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(609, -1309)
+
+[node name="LandscapingTree18" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(771, -1208)
+
+[node name="LandscapingTree2" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1265, -669)
+
+[node name="LandscapingTree3" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(-1088, 562)
+
+[node name="LandscapingTree4" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1256, 455)
+
+[node name="LandscapingTree5" parent="Art/Trees" instance=ExtResource("10_7pvu2")]
+position = Vector2(1072, 593)
+
+[node name="Filler_Tree" parent="Art/Trees" instance=ExtResource("11_eby7y")]
+position = Vector2(1128, -1186)
+
+[node name="Filler_Tree2" parent="Art/Trees" instance=ExtResource("11_eby7y")]
+position = Vector2(-374, -761)
+
+[node name="Signs" type="Node2D" parent="Art"]
+
+[node name="SignDecoration" parent="Art/Signs" instance=ExtResource("11_lmkik")]
+position = Vector2(-1004, -164)
+
+[node name="SignDecoration2" parent="Art/Signs" instance=ExtResource("11_lmkik")]
+position = Vector2(-1003, 115)
 
 [node name="Park" type="Node2D" parent="."]
 script = SubResource("GDScript_73nd7")

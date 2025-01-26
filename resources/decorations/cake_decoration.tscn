@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bminxdab1fw25"]
+
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="1_gge5o"]
+[ext_resource type="Texture2D" uid="uid://cbccnap68lt27" path="res://TinyBard art/Night Time Decoration.png" id="2_5d4mq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86a44"]
+atlas = ExtResource("2_5d4mq")
+region = Rect2(539, 412, 107, 85)
+
+[node name="NightTimeDecoration" type="Node2D"]
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.701961)
+position = Vector2(-1, 23)
+scale = Vector2(2.18, 1.1)
+texture = ExtResource("1_gge5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_86a44")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://q0p8xbh8ejhy"]
+
+[ext_resource type="Texture2D" uid="uid://dfoapn7u1s8an" path="res://TinyBard art/Filler Decoration.png" id="1_7w1cl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epnxs"]
+atlas = ExtResource("1_7w1cl")
+region = Rect2(17, 43, 267, 257)
+
+[node name="Filler_ice_rink" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_epnxs")

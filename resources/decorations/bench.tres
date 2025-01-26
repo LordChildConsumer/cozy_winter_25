@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DecorationData" load_steps=4 format=3 uid="uid://w4jo05m8hsac"]
+[gd_resource type="Resource" script_class="DecorationData" load_steps=4 format=3 uid="uid://deb5l5arg548q"]
 
 [ext_resource type="Script" path="res://resources/decorations/olddecoration_data.gd" id="1_wqdex"]
 [ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="2_dql5p"]
