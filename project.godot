@@ -13,8 +13,9 @@ config_version=5
 config/name="CozyWinter25"
 run/main_scene="res://Title Scene/title_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/bg_color=Color(0.145098, 0.223529, 0.407843, 1)
-boot_splash/image="res://TinyBard art/Title Screen Layers/splash.png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://TinyBard art/Title Screen Layers/splash_logo.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
