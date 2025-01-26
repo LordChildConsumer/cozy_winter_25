@@ -47,10 +47,10 @@ func leave_attraction() -> void:
 # ---- Enter/Exit Park ---- #
 # ------------------------- #
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_3"):
-		print_debug("Debug 4: 6x Time Scale");
-		Engine.time_scale = 6.0;
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug_3"):
+		#print_debug("Debug 4: 6x Time Scale");
+		#Engine.time_scale = 6.0;
 
 func exit_park() -> void:
 	wander_timer.stop();

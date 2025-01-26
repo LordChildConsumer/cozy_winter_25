@@ -35,9 +35,9 @@ func set_entrance_fee(value: int) -> void:
 
 func get_entrance_fee() -> int: return _entrance_fee
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_4"):
-		set_attraction_rating(_attraction_rating + 2)
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug_4"):
+		#set_attraction_rating(_attraction_rating + 2)
 
 func set_attraction_rating(value: int) -> void:
 	_attraction_rating = value
