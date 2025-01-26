@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb44bjnyn56on"]
+
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="1_b1yjw"]
+[ext_resource type="Texture2D" uid="uid://dfoapn7u1s8an" path="res://TinyBard art/Filler Decoration.png" id="2_dd4ra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qk61"]
+atlas = ExtResource("2_dd4ra")
+region = Rect2(326, 331, 116, 117)
+
+[node name="Filler Tree 2" type="Node2D"]
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.615686)
+position = Vector2(-8, 51)
+texture = ExtResource("1_b1yjw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_1qk61")

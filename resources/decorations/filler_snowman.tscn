@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd4a5ey405108"]
+
+[ext_resource type="Texture2D" uid="uid://dfoapn7u1s8an" path="res://TinyBard art/Filler Decoration.png" id="1_iti8y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vq5n"]
+atlas = ExtResource("1_iti8y")
+region = Rect2(325, 502, 97, 88)
+
+[node name="Filler_Snowman" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_1vq5n")

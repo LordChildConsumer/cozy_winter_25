@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8v8s5gi1xawx"]
+
+[ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="1_chpgu"]
+[ext_resource type="Texture2D" uid="uid://dqbmxixsymoa1" path="res://TinyBard art/DropShadow.png" id="1_fy3cw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn8co"]
+atlas = ExtResource("1_chpgu")
+region = Rect2(31, 52, 100, 118)
+
+[node name="Filler_shrub" type="Node2D"]
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.639216)
+position = Vector2(3, 52)
+scale = Vector2(1.4, 1)
+texture = ExtResource("1_fy3cw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_vn8co")

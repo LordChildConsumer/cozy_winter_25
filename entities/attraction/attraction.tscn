@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ht1knnffvfw"]
+[gd_scene load_steps=9 format=3 uid="uid://c2ht1knnffvfw"]
 
 [ext_resource type="Script" path="res://entities/attraction/attraction.gd" id="1_ujc82"]
 [ext_resource type="AudioStream" uid="uid://bo8x1vj5b614o" path="res://entities/attraction/SFX/handleSmallLeather.ogg" id="2_na455"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq8pf"]
 size = Vector2(184, 184)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlnaw"]
+radius = 300.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilrc"]
 size = Vector2(224, 224)
@@ -94,7 +97,8 @@ monitoring = false
 
 [node name="Collider" type="CollisionShape2D" parent="AttractZone"]
 position = Vector2(0, 192)
-shape = SubResource("RectangleShape2D_wq8pf")
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_qlnaw")
 debug_color = Color(0, 0.7, 0.109375, 0.42)
 
 [node name="CustomerSpot" type="Marker2D" parent="."]
