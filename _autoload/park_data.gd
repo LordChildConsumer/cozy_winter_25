@@ -14,6 +14,7 @@ signal build_state_changed(state: BUILD_STATE);
 signal park_emptied()
 signal attraction_rating_changed(value: int);
 signal money_changed(value: int);
+signal game_won()
 
 var money_earned = 0;
 var park_name: String = "";
@@ -41,6 +42,8 @@ func _input(event: InputEvent) -> void:
 func set_attraction_rating(value: int) -> void:
 	_attraction_rating = value
 	attraction_rating_changed.emit(_attraction_rating)
+	if(_attraction_rating >= 50):
+		game_won.emit()
 
 func get_attraction_rating() -> int: return _attraction_rating
 

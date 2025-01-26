@@ -27,6 +27,7 @@ var is_menu_hidden := true :
 @onready var tree_button_unlocked : bool;
 @onready var bench_button_unlocked : bool;
 @onready var park_name = $ParkName
+@onready var you_win_box = $YouWin
 
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
@@ -52,6 +53,7 @@ func _ready() -> void:
 	ParkData.attraction_rating_changed.connect(_on_attraction_rating_changed)
 	ParkData.money_changed.connect(_on_money_changed)
 	park_name.text = ParkData.park_name
+	ParkData.game_won.connect(show_you_win)
 
 
 
@@ -101,7 +103,8 @@ func _on_money_changed(value: int):
 	# Update the progress bar value
 	milestone_progress_ring.value = progress
 
-
+func show_you_win():
+	you_win_box.show()
 
 func _on_new_building_unlocked():
 	new_building_unlocked_label.show()
@@ -311,3 +314,7 @@ func _on_milestone_progress_mouse_entered() -> void:
 		elif money_earned >= unlock_milestones[-1]:
 			message = "Everthing unlocked!"
 	$ToolTipManager.show_tooltip(message)
+
+
+func _on_you_win_button_pressed() -> void:
+	you_win_box.hide()
