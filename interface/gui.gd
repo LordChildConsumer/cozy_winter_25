@@ -17,9 +17,9 @@ signal start_day_button_pressed()
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
-@onready var build_menu_start_pos := $BuildingHUD.position as Vector2
 @export var build_menu_hide_offset = Vector2(0.0, 215.00)
-@onready var building_menu = $BuildingHUD
+@onready var building_menu = $BuildingHUD/hBox;
+@onready var build_menu_start_pos := $BuildingHUD/hBox.get_position() as Vector2;
 @onready var money_lbl := $TopHUD/MoneyLabel;
 
 func _ready() -> void:
@@ -42,32 +42,32 @@ func _input(_event: InputEvent) -> void:
 			hide_menu()
 
 func hide_menu():
+	is_menu_hidden = true
 	var tween := building_menu.create_tween();
 	tween.tween_property(
 		building_menu,
-		"position",
-		build_menu_start_pos,
+		"position:y",
+		build_menu_start_pos.y,
 		0.5
 		).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
-	is_menu_hidden = true
 
 func _on_build_menu_button_pressed() -> void:
 	if is_menu_hidden:
+		is_menu_hidden = false
 		var tween := building_menu.create_tween();
 		tween.tween_property(
 			building_menu,
-			"position",
-			build_menu_start_pos - build_menu_hide_offset,
+			"position:y",
+			build_menu_start_pos.y - build_menu_hide_offset.y,
 			0.5
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;
-		is_menu_hidden = false
 	else:
 		var tween := building_menu.create_tween();
 		tween.tween_property(
 			building_menu,
-			"position",
-			build_menu_start_pos,
+			"position:y",
+			build_menu_start_pos.y,
 			0.5
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;

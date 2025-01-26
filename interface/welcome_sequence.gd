@@ -37,5 +37,5 @@ func _on_start_day_1_button_pressed() -> void:
 	ParkData.park_name = park_name
 	#$"..".queue_free()
 	
-	var wait := await SceneTransition.fade_to_black();
+	var _wait := await SceneTransition.fade_to_black();
 	get_tree().change_scene_to_file("res://main.tscn");
