@@ -118,9 +118,8 @@ func _on_coffee_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		currently_selected_build_id = COFFEE_ID
 		building_button_clicked.emit(COFFEE_ID);
+		_turn_off_buttons(%CoffeeBtn);
 		
-		%FoodBtn.button_pressed = false;
-		%GiftBtn.button_pressed = false;
 	elif currently_selected_build_id == COFFEE_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
@@ -130,9 +129,8 @@ func _on_food_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		currently_selected_build_id = FOOD_ID
 		building_button_clicked.emit(FOOD_ID);
+		_turn_off_buttons(%FoodBtn);
 		
-		%CoffeeBtn.button_pressed = false;
-		%GiftBtn.button_pressed = false;
 	elif currently_selected_build_id == FOOD_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
@@ -143,9 +141,8 @@ func _on_gift_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		currently_selected_build_id = GIFT_ID
 		building_button_clicked.emit(GIFT_ID);
+		_turn_off_buttons(%GiftBtn);
 		
-		%FoodBtn.button_pressed = false;
-		%CoffeeBtn.button_pressed = false;
 	elif currently_selected_build_id == GIFT_ID:
 		currently_selected_build_id = -1;
 		building_button_clicked.emit(-1);
@@ -153,3 +150,57 @@ func _on_gift_btn_toggled(toggled_on: bool) -> void:
 
 func _on_shop_btn_pressed() -> void:
 		button_sound.play();
+
+
+func _on_bush_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = GIFT_ID
+		building_button_clicked.emit(GIFT_ID);
+		_turn_off_buttons(%BushBtn);
+		
+	elif currently_selected_build_id == GIFT_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+func _on_lamp_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = GIFT_ID
+		building_button_clicked.emit(GIFT_ID);
+		_turn_off_buttons(%LampBtn);
+		
+	elif currently_selected_build_id == GIFT_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+func _on_tree_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = GIFT_ID
+		building_button_clicked.emit(GIFT_ID);
+		_turn_off_buttons(%TreeBtn);
+		
+	elif currently_selected_build_id == GIFT_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+func _on_bench_btn_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		currently_selected_build_id = GIFT_ID
+		building_button_clicked.emit(GIFT_ID);
+		_turn_off_buttons(%BenchBtn);
+		
+	elif currently_selected_build_id == GIFT_ID:
+		currently_selected_build_id = -1;
+		building_button_clicked.emit(-1);
+
+
+@onready var shop_buttons: Array[Button] = [
+	%CoffeeBtn, %FoodBtn, %GiftBtn,
+	%BushBtn, %LampBtn, %TreeBtn, %BenchBtn
+];
+func _turn_off_buttons(except: Button) -> void:
+	for b: Button in shop_buttons:
+		if b != except:
+			b.button_pressed = false;
