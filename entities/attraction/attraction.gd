@@ -51,6 +51,9 @@ func has_attraction() -> bool:
 
 
 func load_attraction(dat: AttractionData) -> void:
+	if _data:
+		ParkData._attraction_rating -= _data.attractiveness;
+		
 	_data = dat;
 	
 	# ---- Sprite / Texture ---- #
@@ -58,10 +61,9 @@ func load_attraction(dat: AttractionData) -> void:
 	
 	# ---- Enable AttractZone ---- #
 	attract_zone.monitoring = true;
+	
+	ParkData._attraction_rating += _data.attractiveness;
 
-
-func remove_attraction() -> void:
-	pass;
 
 
 

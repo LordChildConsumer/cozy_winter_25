@@ -5,7 +5,7 @@ signal park_opened;
 
 
 # Park will be open for TIME_OPEN_MAX seconds
-const TIME_OPEN_MAX: float = 30.0;
+const TIME_OPEN_MAX: float = 100.0; # 100
 var time_open: float = TIME_OPEN_MAX;
 var _open: bool = false;
 
@@ -35,7 +35,8 @@ func open() -> void:
 	var tween := create_tween().tween_property(self, "time_open", 0.0, 5.0);
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await tween.finished;
-	Engine.time_scale = current_time_scale;
+	if current_time_scale != 1.0:
+		Engine.time_scale = current_time_scale;
 	print("Open!")
 	
 	_open = true;
