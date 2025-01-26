@@ -1,21 +1,53 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=37 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
 [ext_resource type="Texture2D" uid="uid://c03lvnmktt0rb" path="res://interface/Icons/play.png" id="3_1spkn"]
+[ext_resource type="Texture2D" uid="uid://dkwtxv1ka6lre" path="res://interface/KenneyUI/TopHUD/green_button_rectangle_flat.png" id="3_674pa"]
 [ext_resource type="Texture2D" uid="uid://cacig2hn7fvji" path="res://interface/Icons/fastForward.png" id="5_t4c74"]
 [ext_resource type="Texture2D" uid="uid://ciae0vlg0o80d" path="res://_autoload/mouse_cursor/cursors/tool_hammer.png" id="7_x8dfm"]
+[ext_resource type="Texture2D" uid="uid://1d3lfdgalaip" path="res://interface/KenneyUI/TopHUD/blue_button_rectangle_flat.png" id="8_1r1f8"]
 [ext_resource type="Texture2D" uid="uid://d3hu67qjkk0kt" path="res://interface/KenneyUI/BuildMenu/button_square_depth_line.png" id="8_f3mmh"]
 [ext_resource type="AudioStream" uid="uid://da3dlmpy0xtsr" path="res://interface/SFX/bookOpen.ogg" id="8_hjk7w"]
 [ext_resource type="Texture2D" uid="uid://dpxj5yuajyclq" path="res://interface/KenneyUI/BuildMenu/button_square_border.png" id="9_ljj2l"]
 [ext_resource type="Texture2D" uid="uid://8l8f573pbfk6" path="res://interface/KenneyUI/DayProg/arrow_decorative_e_small.png" id="10_i6e3q"]
 [ext_resource type="Texture2D" uid="uid://d3uj7rpewnkdr" path="res://interface/KenneyUI/DayProg/slide_horizontal_color.png" id="10_lqwwi"]
 [ext_resource type="Texture2D" uid="uid://bdfllekltb3i4" path="res://interface/KenneyUI/DayProg/slide_horizontal_grey.png" id="11_3g278"]
+[ext_resource type="Texture2D" uid="uid://sqpbf2uah72k" path="res://interface/KenneyUI/TopHUD/red_button_rectangle_depth_flat.png" id="11_30b61"]
 [ext_resource type="PackedScene" uid="uid://ct15w52k577o6" path="res://interface/attraction_select_btn/attraction_select_btn.tscn" id="11_hexew"]
 [ext_resource type="Resource" uid="uid://dam4h1pgjlkyc" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erybo"]
+texture = ExtResource("9_ljj2l")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
+texture = ExtResource("3_674pa")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yk8fk"]
+texture = ExtResource("9_ljj2l")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3otf7"]
 
@@ -42,69 +74,36 @@ expand_margin_left = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8j0j"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_074iq"]
-texture = ExtResource("8_f3mmh")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_di70p"]
+texture = ExtResource("8_1r1f8")
 texture_margin_left = 12.0
 texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="Gradient" id="Gradient_dxx2e"]
-offsets = PackedFloat32Array(0.785366, 1)
-colors = PackedColorArray(0.742188, 0.191345, 0, 1, 0, 0, 0, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcg0f"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pp6te"]
-gradient = SubResource("Gradient_dxx2e")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hcayj"]
+texture = ExtResource("11_30b61")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1bfp"]
-gradient = SubResource("Gradient_dxx2e")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2u46o"]
+texture = ExtResource("11_30b61")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xkd6j"]
-gradient = SubResource("Gradient_dxx2e")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_2ev6j"]
-offsets = PackedFloat32Array(0.785366, 1)
-colors = PackedColorArray(0.0405884, 0.742188, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcit6"]
-gradient = SubResource("Gradient_2ev6j")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0n4bi"]
-gradient = SubResource("Gradient_2ev6j")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d17ol"]
-gradient = SubResource("Gradient_2ev6j")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
+[sub_resource type="LabelSettings" id="LabelSettings_skb73"]
+font = ExtResource("2_tq4vb")
+font_size = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np1y6"]
 texture = ExtResource("9_ljj2l")
@@ -115,6 +114,14 @@ texture_margin_bottom = 16.0
 expand_margin_bottom = 500.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibvh8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_074iq"]
+texture = ExtResource("8_f3mmh")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a6qgu"]
 texture = ExtResource("12_s16vt")
@@ -163,8 +170,10 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 16
 
 [node name="Panel" type="Panel" parent="TopHUD/vb/margin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_erybo")
 
 [node name="margin" type="MarginContainer" parent="TopHUD/vb/margin"]
 layout_mode = 2
@@ -175,13 +184,25 @@ theme_override_constants/margin_right = 64
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/separation = 128
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="centerMoney" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
+[node name="Panel" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mkd75")
 
-[node name="MoneyLabel" type="Label" parent="TopHUD/vb/margin/margin/hb/centerMoney"]
+[node name="centerMoney" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoneyLabel" type="Label" parent="TopHUD/vb/margin/margin/hb/Panel/centerMoney"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -193,11 +214,22 @@ theme_override_font_sizes/font_size = 50
 text = "$50"
 vertical_alignment = 1
 
-[node name="centerDayProg" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
+[node name="Panel2" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yk8fk")
 
-[node name="DayProg" type="HSlider" parent="TopHUD/vb/margin/margin/hb/centerDayProg"]
+[node name="centerDayProg" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="DayProg" type="HSlider" parent="TopHUD/vb/margin/margin/hb/Panel2/centerDayProg"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
@@ -211,12 +243,23 @@ step = 0.01
 editable = false
 scrollable = false
 
-[node name="centerSpeed" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb"]
+[node name="Panel3" type="Panel" parent="TopHUD/vb/margin/margin/hb"]
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_di70p")
 
-[node name="SpeedBtn" type="TextureButton" parent="TopHUD/vb/margin/margin/hb/centerSpeed"]
+[node name="centerSpeed" type="CenterContainer" parent="TopHUD/vb/margin/margin/hb/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeedBtn" type="TextureButton" parent="TopHUD/vb/margin/margin/hb/Panel3/centerSpeed"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 10
 toggle_mode = true
@@ -231,9 +274,22 @@ custom_minimum_size = Vector2(500, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rcg0f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hcayj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2u46o")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hcayj")
+
+[node name="Text" type="Label" parent="TopHUD/vb/StartDayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "START DAY"
+label_settings = SubResource("LabelSettings_skb73")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1
@@ -243,97 +299,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -450.0
-offset_top = -110.0
-offset_right = 450.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
-
-[node name="BuildMenu" type="VBoxContainer" parent="BuildingHUD/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(900, 300)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="margin" type="MarginContainer" parent="BuildingHUD/MarginContainer/BuildMenu"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="BuildMenuButton" type="Button" parent="BuildingHUD/MarginContainer/BuildMenu/margin"]
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_074iq")
-icon = ExtResource("7_x8dfm")
-icon_alignment = 1
-expand_icon = true
-
-[node name="margin2" type="MarginContainer" parent="BuildingHUD/MarginContainer/BuildMenu"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_constants/separation = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer"]
-layout_mode = 2
-
-[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = SubResource("GradientTexture2D_pp6te")
-texture_pressed = SubResource("GradientTexture2D_l1bfp")
-texture_hover = SubResource("GradientTexture2D_xkd6j")
-stretch_mode = 0
-
-[node name="Cost" type="Label" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
-theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 50
-text = "$25"
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer"]
-layout_mode = 2
-
-[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource("GradientTexture2D_fcit6")
-texture_pressed = SubResource("GradientTexture2D_0n4bi")
-texture_hover = SubResource("GradientTexture2D_d17ol")
-stretch_mode = 1
-
-[node name="Cost2" type="Label" parent="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
-theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 50
-text = "$30"
-horizontal_alignment = 1
 
 [node name="BuildMenu" type="MarginContainer" parent="BuildingHUD"]
 layout_mode = 1
@@ -402,11 +367,8 @@ attraction_data = ExtResource("14_fjc2v")
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hjk7w")
 
-[connection signal="toggled" from="TopHUD/vb/margin/margin/hb/centerSpeed/SpeedBtn" to="." method="_on_speed_btn_toggled"]
+[connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/centerSpeed/SpeedBtn" to="." method="_on_speed_btn_toggled"]
 [connection signal="pressed" from="TopHUD/vb/StartDayButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/BuildMenu/margin2/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]

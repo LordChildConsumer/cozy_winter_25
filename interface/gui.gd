@@ -61,6 +61,9 @@ func _on_build_menu_button_pressed() -> void:
 			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT);
 		#await tween.finished;
 	else:
+		%CoffeeBtn.button_pressed = false;
+		%FoodBtn.button_pressed = false;
+		%GiftBtn.button_pressed = false;
 		var tween := building_menu.create_tween();
 		tween.tween_property(
 			building_menu,

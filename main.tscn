@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=16 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
@@ -61,8 +61,8 @@ func close():
 func calculate_customer_spawn_rate() -> Vector2:
 	var attraction_rating = ParkData.get_attraction_rating()
 	var entrance_fee = ParkData.get_entrance_fee()
-	var min_time : float = 9 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
-	var max_time : float = 12 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
+	var min_time : float = 5 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
+	var max_time : float = 8 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
 	print(\"cutomer spawn rate: \", min_time, \", \", max_time)
 	return Vector2(min_time, max_time)
 
@@ -99,9 +99,6 @@ func _on_customer_exited_park(node: Customer) -> void:
 		print_debug(\"Park Emptied!\");
 		ParkData.park_emptied.emit()
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gih3u"]
-size = Vector2(162, 449)
 
 [sub_resource type="GDScript" id="GDScript_qp3iy"]
 resource_name = "ticket_booth"
@@ -225,14 +222,6 @@ position = Vector2(1152, -384)
 side_of_zoo = 1
 
 [node name="Customers" type="Node2D" parent="Park"]
-
-[node name="Decorations" type="Node2D" parent="Park"]
-
-[node name="PlacementAreaNW" type="Area2D" parent="Park/Decorations" groups=["decoration_zone"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Park/Decorations/PlacementAreaNW"]
-position = Vector2(-871, -322.5)
-shape = SubResource("RectangleShape2D_gih3u")
 
 [node name="ParkEntrance" type="Marker2D" parent="Park"]
 position = Vector2(-1088, 0)
