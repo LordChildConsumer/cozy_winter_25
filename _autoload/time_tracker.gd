@@ -9,6 +9,8 @@ const TIME_OPEN_MAX: float = 100.0; # 100
 var time_open: float = TIME_OPEN_MAX;
 var _open: bool = false;
 
+var days_open: int = 0;
+
 
 func _process(delta: float) -> void:
 	if _open:

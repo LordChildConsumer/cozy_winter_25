@@ -1,8 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnd1rpbhrolag"]
+[gd_scene load_steps=12 format=3 uid="uid://bnd1rpbhrolag"]
 
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="1_1scnk"]
 [ext_resource type="Script" path="res://interface/welcome_sequence.gd" id="1_6qfoj"]
 [ext_resource type="Texture2D" uid="uid://cvjttsuwq6t2r" path="res://TinyBard art/Title Screen Layers/Background.png" id="1_tqxen"]
+[ext_resource type="Texture2D" uid="uid://dpxj5yuajyclq" path="res://interface/KenneyUI/BuildMenu/button_square_border.png" id="4_813xb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvbxr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vl58q"]
+texture = ExtResource("4_813xb")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpn6e"]
+texture = ExtResource("4_813xb")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxuum"]
+texture = ExtResource("4_813xb")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vimbc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4r3sd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le46i"]
 
 [node name="gui" type="Control"]
 layout_mode = 3
@@ -65,6 +95,10 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 65
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mvbxr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vl58q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rpn6e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxuum")
 text = "Next"
 
 [node name="WelcomePage2" type="Control" parent="WelcomeSequence"]
@@ -103,6 +137,10 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 65
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vimbc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxuum")
 text = "Next"
 
 [node name="WelcomePage3" type="Control" parent="WelcomeSequence"]
@@ -139,6 +177,10 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 65
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4r3sd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxuum")
 text = "Next"
 
 [node name="EnterParkName" type="Control" parent="WelcomeSequence"]
@@ -182,6 +224,11 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 65
+theme_override_styles/focus = SubResource("StyleBoxEmpty_le46i")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jxuum")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxuum")
 text = "ENTER PARK"
 
 [node name="YouWinAudio" type="AudioStreamPlayer2D" parent="."]

@@ -37,6 +37,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 
 func _on_start_day_1_button_pressed() -> void:
+	$EnterParkName/EnterParkNameContainer/VBoxContainer/StartDay1Button.disabled = true;
 	park_name = $EnterParkName/EnterParkNameContainer/VBoxContainer/LineEdit.text
 	ParkData.park_name = park_name
 	#$"..".queue_free()
