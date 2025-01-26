@@ -212,7 +212,16 @@ texture_pressed = ExtResource("7_o1efb")
 texture_hover = ExtResource("7_o1efb")
 stretch_mode = 3
 
-[node name="BuildingHUD" type="VBoxContainer" parent="."]
+[node name="BuildingHUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="hBox" type="VBoxContainer" parent="BuildingHUD"]
 custom_minimum_size = Vector2(900, 300)
 layout_mode = 1
 anchors_preset = 7
@@ -221,45 +230,45 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -450.0
-offset_top = -141.0
+offset_top = -137.0
 offset_right = 450.0
-offset_bottom = 211.0
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="CenterContainer" parent="BuildingHUD"]
+[node name="HBoxContainer2" type="CenterContainer" parent="BuildingHUD/hBox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="BuildMenuButton" type="TextureButton" parent="BuildingHUD/HBoxContainer2"]
+[node name="BuildMenuButton" type="TextureButton" parent="BuildingHUD/hBox/HBoxContainer2"]
 layout_mode = 2
 texture_normal = ExtResource("4_dn6x2")
 texture_pressed = ExtResource("4_dn6x2")
 texture_hover = ExtResource("4_dn6x2")
 stretch_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD"]
+[node name="MarginContainer" type="MarginContainer" parent="BuildingHUD/hBox"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingHUD/hBox/MarginContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="BuildingButton0" type="TextureButton" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = SubResource("GradientTexture2D_pp6te")
@@ -267,7 +276,7 @@ texture_pressed = SubResource("GradientTexture2D_l1bfp")
 texture_hover = SubResource("GradientTexture2D_xkd6j")
 stretch_mode = 0
 
-[node name="Cost" type="Label" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Cost" type="Label" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
@@ -275,10 +284,10 @@ theme_override_font_sizes/font_size = 50
 text = "$25"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="BuildingButton1" type="TextureButton" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -287,7 +296,7 @@ texture_pressed = SubResource("GradientTexture2D_0n4bi")
 texture_hover = SubResource("GradientTexture2D_d17ol")
 stretch_mode = 1
 
-[node name="Cost2" type="Label" parent="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Cost2" type="Label" parent="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.318348, 0.91, 0.1547, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
@@ -301,6 +310,6 @@ stream = ExtResource("8_hjk7w")
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/HBoxContainer/FastForwardButton" to="." method="_on_fast_forward_button_pressed"]
 [connection signal="pressed" from="TopHUD/TimerCenterContainer/VBoxContainer/StartDayButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
-[connection signal="pressed" from="BuildingHUD/MarginContainer/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
+[connection signal="pressed" from="BuildingHUD/hBox/HBoxContainer2/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
+[connection signal="pressed" from="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer/BuildingButton0" to="." method="_on_building_button_pressed" binds= [0]]
+[connection signal="pressed" from="BuildingHUD/hBox/MarginContainer/HBoxContainer/VBoxContainer2/BuildingButton1" to="." method="_on_building_button_pressed" binds= [1]]
