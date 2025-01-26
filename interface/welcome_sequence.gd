@@ -16,12 +16,12 @@ func _on_next_button_1_pressed() -> void:
 
 func _on_next_button_2_pressed() -> void:
 	welcome_page_2.hide()
-	welcome_page_3.show()
+	enter_park_name.show()
 
 
 func _on_next_button_3_pressed() -> void:
 	welcome_page_3.hide()
-	enter_park_name.show()
+	
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:

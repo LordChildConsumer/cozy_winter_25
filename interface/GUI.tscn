@@ -53,6 +53,8 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/WelcomePage1/Welcome_1/VBoxContainer"]
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "Welcome to My Penguin Park! You have inherited your uncle’s run-down penguin exhibit. It’s up to you to bring it back to its former glory. "
@@ -89,6 +91,8 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/WelcomePage2/Welcome_2/VBoxContainer"]
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "Build attractions, hire vendors, and decorate your penguin's habitat to make them happy."

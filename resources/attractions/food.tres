@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttractionData" load_steps=5 format=3 uid="uid://mf14doikeyj4"]
+[gd_resource type="Resource" script_class="AttractionData" load_steps=5 format=3 uid="uid://b2v6kcopj7wp6"]
 
 [ext_resource type="Script" path="res://resources/attractions/attraction_data.gd" id="1_r7gx2"]
 [ext_resource type="Texture2D" uid="uid://c7rdyb46ie7ux" path="res://TinyBard art/Vendors.png" id="2_jssv8"]
