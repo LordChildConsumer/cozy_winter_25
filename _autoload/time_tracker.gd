@@ -9,7 +9,7 @@ const TIME_OPEN_MAX: float = 100.0; # 100
 var time_open: float = TIME_OPEN_MAX;
 var _open: bool = false;
 
-var days_open: int = 0;
+var current_day: int = 1;
 
 
 func _process(delta: float) -> void:
@@ -38,6 +38,8 @@ func open() -> void:
 	if current_time_scale != 1.0:
 		Engine.time_scale = current_time_scale;
 	print("Open!")
+	
+	current_day += 1;
 	
 	_open = true;
 	park_opened.emit();

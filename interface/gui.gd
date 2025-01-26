@@ -8,6 +8,7 @@ var is_menu_hidden := true :
 @onready var money_label = %MoneyLabel;
 @onready var day_progress_bar = %DayProg;
 @onready var start_day_button = %StartDayButton;
+@onready var start_day_text := $TopHUD/vb/Control/StartDayButton/Text;
 @onready var button_sound = $ButtonSound;
 @onready var park_rating = $TopHUD/vb/Control/ParkRatingLabel;
 @onready var milestone_progress_ring = $TopHUD/vb/Control/MilestoneProgress
@@ -170,6 +171,7 @@ func _on_button_pressed() -> void:
 	start_day_button.hide()
 
 func show_start_day_button():
+	start_day_text.set_text("START DAY: %d" % TimeTracker.current_day);
 	start_day_button.show()
 
 
