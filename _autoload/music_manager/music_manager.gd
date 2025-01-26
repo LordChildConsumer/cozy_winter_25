@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var day_player := $Day as AudioStreamPlayer;
 @onready var night_player := $Night as AudioStreamPlayer;
+@onready var title_player := $Title as AudioStreamPlayer;
 
 func _ready() -> void:
 	day_player.volume_db = linear_to_db(0.0);
@@ -29,7 +30,7 @@ func crossfade(a: AudioStreamPlayer, b: AudioStreamPlayer, secs: float = fade_ti
 				a,
 				"volume_db",
 				silence_db,
-				fade_time
+				secs
 			).finished;
 			a.stop();
 	
@@ -40,5 +41,5 @@ func crossfade(a: AudioStreamPlayer, b: AudioStreamPlayer, secs: float = fade_ti
 			b,
 			"volume_db",
 			linear_to_db(1.0),
-			fade_time
+			secs
 		).finished;

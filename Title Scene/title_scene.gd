@@ -4,6 +4,9 @@ extends Node2D
 @onready var play_game_sound = $PlayGameSound
 
 
+func _ready() -> void:
+	MusicManager.crossfade(null, MusicManager.title_player, 0.1);
+
 func _on_texture_button_pressed() -> void:
 	$TextureButton.disabled = true;
 	

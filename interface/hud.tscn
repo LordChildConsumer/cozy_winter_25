@@ -22,9 +22,9 @@
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
 [ext_resource type="PackedScene" uid="uid://y0rxk1oeyxly" path="res://interface/attraction_select_btn/decor_select_btn/decor_select_btn.tscn" id="20_3lka8"]
-[ext_resource type="Resource" uid="uid://b08d4ysbnslps" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
-[ext_resource type="Resource" uid="uid://blyqitxl5cehx" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
-[ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
+[ext_resource type="Resource" uid="uid://c5c0kifsmhhhj" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
+[ext_resource type="Resource" uid="uid://bv5padqbvx53q" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
+[ext_resource type="Resource" uid="uid://w4jo05m8hsac" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 [ext_resource type="Script" path="res://interface/tool_tip_manager.gd" id="26_da03r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
