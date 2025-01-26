@@ -11,6 +11,8 @@ var is_menu_hidden := true :
 @onready var button_sound = $ButtonSound;
 @onready var park_rating = $TopHUD/vb/Control/ParkRatingLabel;
 @onready var milestone_progress_ring = $TopHUD/vb/Control/MilestoneProgress
+@onready var new_building_unlocked_label = $TopHUD/vb/Control/NewBuildingUnlocked
+@onready var new_building_unlocked_timer = $TopHUD/vb/Control/NewBuildingUnlockedTimer
 
 @onready var food_vendor_button = %FoodBtn
 @onready var gift_vendor_button = %GiftBtn
@@ -58,25 +60,28 @@ func _on_money_changed(value: int):
 	var progress = 0.0
 	print("money earned: ", str(money_earned))
 	#DONT JUDGE ME ITS LATE
-	if money_earned > unlock_milestones[0] && !lamp_button_unlocked:
+	if money_earned >= unlock_milestones[0] && !lamp_button_unlocked:
 		lamp_button_unlocked = true
+		_on_new_building_unlocked()
 		lamp_button.show()
-	if money_earned > unlock_milestones[1] && !food_vendor_unlocked:
+	if money_earned >= unlock_milestones[1] && !food_vendor_unlocked:
 		#unlock lamp
 		food_vendor_unlocked = true
+		_on_new_building_unlocked()
 		food_vendor_button.show()
-	if money_earned > unlock_milestones[2] && !tree_button_unlocked:
+	if money_earned >= unlock_milestones[2] && !tree_button_unlocked:
 		tree_button_unlocked = true
+		_on_new_building_unlocked()
 		tree_button.show()
-	if money_earned > unlock_milestones[3] && !bench_button_unlocked:
+	if money_earned >= unlock_milestones[3] && !bench_button_unlocked:
 		bench_button_unlocked = true
+		_on_new_building_unlocked()
 		bench_button.show()
-	if money_earned > unlock_milestones[4] && !gift_vendor_button_unlocked:
+	if money_earned >= unlock_milestones[4] && !gift_vendor_button_unlocked:
 		gift_vendor_button_unlocked = true
+		_on_new_building_unlocked()
 		gift_vendor_button.show()
 	
-
-
 	# Iterate through milestones to find the current range
 	for i in range(unlock_milestones.size()):
 		if money_earned < unlock_milestones[i]:
@@ -91,6 +96,12 @@ func _on_money_changed(value: int):
 
 	# Update the progress bar value
 	milestone_progress_ring.value = progress
+
+
+
+func _on_new_building_unlocked():
+	new_building_unlocked_label.show()
+	new_building_unlocked_timer.start()
 
 
 func _on_attraction_rating_changed(value: int) -> void:
@@ -271,3 +282,28 @@ func _turn_off_buttons(except: Button) -> void:
 	for b: Button in shop_buttons:
 		if b != except:
 			b.button_pressed = false;
+
+
+func _on_new_building_unlocked_timer_timeout() -> void:
+	new_building_unlocked_label.hide()
+
+
+func _on_milestone_progress_mouse_entered() -> void:
+	var message : String;
+	var money_earned = ParkData.money_earned
+	var next_milestone : int
+	var current_money : int
+	var goal_money : int
+	for i in range(unlock_milestones.size()):
+		if money_earned < unlock_milestones[i]:
+			if(i > 0):
+				current_money = money_earned - unlock_milestones[i-1]
+				goal_money = unlock_milestones[i] - unlock_milestones[i-1]
+			else:
+				current_money = money_earned
+				goal_money = unlock_milestones[i]
+			message = str(current_money) + "\\" + str(goal_money)
+			break
+		elif money_earned >= unlock_milestones[-1]:
+			message = "Everthing unlocked!"
+	$ToolTipManager.show_tooltip(message)

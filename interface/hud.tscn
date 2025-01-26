@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=43 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://b08d4ysbnslps" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
 [ext_resource type="Resource" uid="uid://blyqitxl5cehx" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
 [ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
+[ext_resource type="Script" path="res://interface/tool_tip_manager.gd" id="26_da03r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
@@ -357,7 +358,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -161.0
 offset_top = -31.5
-offset_right = 67.0
+offset_right = -122.0
 offset_bottom = 38.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -367,6 +368,31 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
 theme_override_font_sizes/font_size = 55
 text = "$"
+
+[node name="NewBuildingUnlocked" type="Label" parent="TopHUD/vb/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -531.0
+offset_top = -24.5
+offset_right = -201.0
+offset_bottom = 45.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.00999999, 1, 0.208, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 40
+text = "New building unlocked!"
+horizontal_alignment = 2
+
+[node name="NewBuildingUnlockedTimer" type="Timer" parent="TopHUD/vb/Control"]
+wait_time = 15.0
 
 [node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1
@@ -482,20 +508,82 @@ decor_data = ExtResource("23_p2ecd")
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_hjk7w")
 
+[node name="ToolTipManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("26_da03r")
+
+[node name="Tooltip" type="Panel" parent="ToolTipManager"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_left = 587.0
+offset_top = 845.0
+offset_right = 997.0
+offset_bottom = 989.0
+pivot_offset = Vector2(0, 145)
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mkd75")
+metadata/_edit_group_ = true
+
+[node name="CenterBox" type="CenterContainer" parent="ToolTipManager/Tooltip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TooltipLabel" type="Label" parent="ToolTipManager/Tooltip/CenterBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.776471)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_tq4vb")
+theme_override_font_sizes/font_size = 30
+text = "Coffee Shop
+Income: $2-$5
+Park Rating +5"
+vertical_alignment = 1
+
 [connection signal="toggled" from="TopHUD/vb/margin/margin/hb/Panel3/SpeedBtn" to="." method="_on_speed_btn_toggled"]
 [connection signal="pressed" from="TopHUD/vb/Control/StartDayButton" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="TopHUD/vb/Control/MilestoneProgress" to="." method="_on_milestone_progress_mouse_entered"]
+[connection signal="mouse_exited" from="TopHUD/vb/Control/MilestoneProgress" to="ToolTipManager" method="_on_btn_mouse_exited"]
+[connection signal="timeout" from="TopHUD/vb/Control/NewBuildingUnlockedTimer" to="." method="_on_new_building_unlocked_timer_timeout"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/BuildMenuButton" to="." method="_on_build_menu_button_pressed"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [0]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/CoffeeBtn" to="." method="_on_coffee_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/FoodBtn" to="." method="_on_food_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/AttractionBtns/GiftBtn" to="." method="_on_gift_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BushBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [3]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BushBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BushBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BushBtn" to="." method="_on_bush_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/LampBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [4]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/LampBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/LampBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/LampBtn" to="." method="_on_lamp_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/TreeBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [5]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/TreeBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/TreeBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/TreeBtn" to="." method="_on_tree_btn_toggled"]
+[connection signal="mouse_entered" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BenchBtn" to="ToolTipManager" method="_on_btn_mouse_entered" binds= [6]]
+[connection signal="mouse_exited" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BenchBtn" to="ToolTipManager" method="_on_btn_mouse_exited"]
 [connection signal="pressed" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BenchBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="toggled" from="BuildingHUD/BuildMenu/VBoxContainer/HBoxContainer2/DecorationBtns/BenchBtn" to="." method="_on_bench_btn_toggled"]
