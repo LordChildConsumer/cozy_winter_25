@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bdfllekltb3i4" path="res://interface/KenneyUI/DayProg/slide_horizontal_grey.png" id="11_3g278"]
 [ext_resource type="Texture2D" uid="uid://sqpbf2uah72k" path="res://interface/KenneyUI/TopHUD/red_button_rectangle_depth_flat.png" id="11_30b61"]
 [ext_resource type="PackedScene" uid="uid://ct15w52k577o6" path="res://interface/attraction_select_btn/attraction_select_btn.tscn" id="11_hexew"]
-[ext_resource type="Resource" uid="uid://bhe8h6sdbvd5p" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
+[ext_resource type="Resource" uid="uid://dam4h1pgjlkyc" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
-[ext_resource type="Resource" uid="uid://b2v6kcopj7wp6" path="res://resources/attractions/food.tres" id="13_vtrt1"]
-[ext_resource type="Resource" uid="uid://mq5hqggjmcwb" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
+[ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
+[ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erybo"]
 texture = ExtResource("9_ljj2l")

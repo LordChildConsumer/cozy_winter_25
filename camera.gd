@@ -1,4 +1,6 @@
-extends Camera2D
+class_name PlayerCamera extends Camera2D;
+
+@export var enable_zoom: bool = false;
 
 @export_group("Movement")
 @export var move_speed: float = 1500.0;
@@ -34,19 +36,19 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# ---- Zoom ---- #
-	zoom_factor = clampf(zoom_factor, zoom_min, zoom_max);
-	zoom.x = lerp(zoom.x, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
-	zoom.y = lerp(zoom.y, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
+	#zoom_factor = clampf(zoom_factor, zoom_min, zoom_max);
+	#zoom.x = lerp(zoom.x, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
+	#zoom.y = lerp(zoom.y, 1.0 * zoom_factor, (zoom_speed / Engine.time_scale) * delta);
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		_handle_zoom(event as InputEventMouseButton);
-
-
-func _handle_zoom(event: InputEventMouseButton) -> void:
-	if event.is_released():
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			zoom_factor += zoom_factor * zoom_step;
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			zoom_factor -= zoom_factor * zoom_step;
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#_handle_zoom(event as InputEventMouseButton);
+#
+#
+#func _handle_zoom(event: InputEventMouseButton) -> void:
+	#if event.is_released():
+		#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			#zoom_factor += zoom_factor * zoom_step;
+		#elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#zoom_factor -= zoom_factor * zoom_step;

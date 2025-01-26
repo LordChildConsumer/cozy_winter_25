@@ -1,15 +1,38 @@
-[gd_scene load_steps=17 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=20 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 [ext_resource type="Script" path="res://main.gd" id="1_tu387"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
-[ext_resource type="Texture2D" uid="uid://cm5ibrdgayuuw" path="res://TinyBard art/Extended Ice.png" id="4_2xxgq"]
+[ext_resource type="Texture2D" uid="uid://65jnu657fy0i" path="res://TinyBard art/Tiling Ice.png" id="4_ktkd6"]
+[ext_resource type="Shader" path="res://resources/shaders/infinite_ice.gdshader" id="4_v6tt6"]
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="NavigationPolygon" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
+[ext_resource type="NavigationPolygon" uid="uid://chdo85qm5jfib" path="res://resources/navigation/customer_full_navigation.tres" id="8_n87ce"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5jhi"]
+shader = ExtResource("4_v6tt6")
+shader_parameter/camera_position = Vector2(0, 0)
+
+[sub_resource type="GDScript" id="GDScript_vp1pe"]
+resource_name = "infinite_ice"
+script/source = "extends Sprite2D
+
+
+@export var camera_node: PlayerCamera;
+
+@onready var shader := material as ShaderMaterial;
+
+
+func _process(_delta: float) -> void:
+	if camera_node:
+		shader.set_shader_parameter(
+			&\"camera_position\",
+			camera_node.get_screen_center_position()
+		);
+"
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
 resource_name = "park"
@@ -167,8 +190,16 @@ script = ExtResource("1_pqylq")
 layer = -1
 follow_viewport_enabled = true
 
-[node name="Ice" type="Sprite2D" parent="Art"]
-texture = ExtResource("4_2xxgq")
+[node name="CanvasLayer" type="CanvasLayer" parent="Art"]
+layer = -1
+
+[node name="Ice" type="Sprite2D" parent="Art/CanvasLayer" node_paths=PackedStringArray("camera_node")]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_v5jhi")
+scale = Vector2(2, 2)
+texture = ExtResource("4_ktkd6")
+script = SubResource("GDScript_vp1pe")
+camera_node = NodePath("../../../Camera")
 metadata/_edit_lock_ = true
 
 [node name="Path" type="Sprite2D" parent="Art"]
@@ -194,35 +225,47 @@ navigation_layers = 2
 
 [node name="Attractions" type="Node2D" parent="Park"]
 
-[node name="TAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-640, -512)
 
-[node name="TAttraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-384, -512)
 
-[node name="TAttraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(-128, -512)
 
-[node name="TAttraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(128, -512)
 
-[node name="TAttraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(384, -512)
 
-[node name="TAttraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+[node name="T-Attraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
 position = Vector2(640, -512)
 
-[node name="BAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(-768, 736)
+[node name="B-Attraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-640, 512)
 side_of_zoo = 2
 
-[node name="LAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(-1152, -384)
-side_of_zoo = 3
+[node name="B-Attraction2" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-384, 512)
+side_of_zoo = 2
 
-[node name="RAttraction1" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
-position = Vector2(1152, -384)
-side_of_zoo = 1
+[node name="B-Attraction3" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(-128, 512)
+side_of_zoo = 2
+
+[node name="B-Attraction4" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(128, 512)
+side_of_zoo = 2
+
+[node name="B-Attraction5" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(384, 512)
+side_of_zoo = 2
+
+[node name="B-Attraction6" parent="Park/Attractions" instance=ExtResource("2_yaoge")]
+position = Vector2(640, 512)
+side_of_zoo = 2
 
 [node name="Customers" type="Node2D" parent="Park"]
 
