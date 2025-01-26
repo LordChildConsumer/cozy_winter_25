@@ -328,7 +328,6 @@ offset_right = -95.0
 offset_bottom = 51.5
 grow_horizontal = 0
 grow_vertical = 2
-step = 5.0
 fill_mode = 4
 texture_under = ExtResource("13_nwgtn")
 texture_progress = ExtResource("13_nwgtn")
