@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dvq1akon7wswp"]
+[gd_scene load_steps=42 format=3 uid="uid://dvq1akon7wswp"]
 
 [ext_resource type="Script" path="res://interface/gui.gd" id="1_l6f0n"]
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="2_tq4vb"]
@@ -18,12 +18,13 @@
 [ext_resource type="Resource" uid="uid://dam4h1pgjlkyc" path="res://resources/attractions/coffee.tres" id="12_0mcp0"]
 [ext_resource type="Texture2D" uid="uid://dfxl34cw3mw7q" path="res://interface/Icons/star.png" id="12_1qg7r"]
 [ext_resource type="Texture2D" uid="uid://dxe3tq2tek8ek" path="res://interface/KenneyUI/BuildMenu/button_square_line.png" id="12_s16vt"]
+[ext_resource type="Texture2D" uid="uid://cgos1c06jxagv" path="res://interface/Icons/Ring Texture.png" id="13_nwgtn"]
 [ext_resource type="Resource" uid="uid://mf14doikeyj4" path="res://resources/attractions/food.tres" id="13_vtrt1"]
 [ext_resource type="Resource" uid="uid://bkwpiglh6o1or" path="res://resources/attractions/gift.tres" id="14_fjc2v"]
 [ext_resource type="PackedScene" uid="uid://y0rxk1oeyxly" path="res://interface/attraction_select_btn/decor_select_btn/decor_select_btn.tscn" id="20_3lka8"]
-[ext_resource type="Resource" uid="uid://c5c0kifsmhhhj" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
-[ext_resource type="Resource" uid="uid://bv5padqbvx53q" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
-[ext_resource type="Resource" uid="uid://w4jo05m8hsac" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
+[ext_resource type="Resource" uid="uid://b08d4ysbnslps" path="res://resources/decorations/lamp.tres" id="21_oceg4"]
+[ext_resource type="Resource" uid="uid://blyqitxl5cehx" path="res://resources/decorations/tree.tres" id="21_vqfk7"]
+[ext_resource type="Resource" uid="uid://deb5l5arg548q" path="res://resources/decorations/bench.tres" id="23_p2ecd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkd75"]
 texture = ExtResource("3_674pa")
@@ -288,21 +289,17 @@ label_settings = SubResource("LabelSettings_skb73")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ParkRatingLabel2" type="Label" parent="TopHUD/vb/Control"]
+[node name="ParkRatingLabel" type="Label" parent="TopHUD/vb/Control"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = -1.0
-offset_right = 528.0
-offset_bottom = 62.0
+offset_left = 177.0
+offset_top = -5.0
+offset_right = 405.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 55
 text = "5"
 
 [node name="Star" type="TextureRect" parent="TopHUD/vb/Control"]
@@ -318,18 +315,45 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_1qg7r")
 
-[node name="ParkRatingLabel" type="Label" parent="TopHUD/vb/Control"]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 11.0
-offset_right = 393.0
-offset_bottom = 74.0
-theme_override_colors/font_color = Color(1, 0.8, 0.00784314, 1)
+[node name="MilestoneProgress" type="TextureProgressBar" parent="TopHUD/vb/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -48.5
+offset_right = -95.0
+offset_bottom = 51.5
+grow_horizontal = 0
+grow_vertical = 2
+step = 5.0
+fill_mode = 4
+texture_under = ExtResource("13_nwgtn")
+texture_progress = ExtResource("13_nwgtn")
+tint_under = Color(0.31, 0.31, 0.31, 1)
+tint_progress = Color(0, 0.97, 0.1455, 1)
+
+[node name="ParkRatingLabel2" type="Label" parent="TopHUD/vb/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -31.5
+offset_right = 67.0
+offset_bottom = 38.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.00999999, 1, 0.208, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tq4vb")
-theme_override_font_sizes/font_size = 25
-text = "PARK RATING:"
+theme_override_font_sizes/font_size = 55
+text = "$"
 
 [node name="BuildingHUD" type="Control" parent="."]
 layout_mode = 1

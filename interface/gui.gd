@@ -10,10 +10,13 @@ var is_menu_hidden := true :
 @onready var start_day_button = %StartDayButton;
 @onready var button_sound = $ButtonSound;
 @onready var park_rating = $TopHUD/vb/Control/ParkRatingLabel;
+@onready var milestone_progress_ring = $TopHUD/vb/Control/MilestoneProgress
 
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
 signal start_day_button_pressed()
+
+var unlock_milestones : Array[int] = [25, 75, 150, 225, 350, 500]
 
 const FLOATING_MONEY_SCENE: PackedScene = preload("res://interface/floating_money_text.tscn")
 
@@ -30,10 +33,31 @@ func _ready() -> void:
 	
 	ParkData.park_emptied.connect(show_start_day_button)
 	ParkData.attraction_rating_changed.connect(_on_attraction_rating_changed)
+	ParkData.money_changed.connect(_on_money_changed)
 
 
 func _process(_delta: float) -> void:
 	day_progress_bar.ratio = TimeTracker.get_day_progress()
+	
+
+func _on_money_changed(value: int):
+	var money_earned = ParkData.money_earned
+	var progress = 0.0
+
+	# Iterate through milestones to find the current range
+	for i in range(unlock_milestones.size()):
+		if money_earned < unlock_milestones[i]:
+			# Calculate progress relative to the current milestone range
+			var lower_bound = unlock_milestones[i - 1] if i > 0 else 0
+			var upper_bound = unlock_milestones[i]
+			progress = float(money_earned - lower_bound) / float(upper_bound - lower_bound) * 100.0
+			break
+		elif money_earned >= unlock_milestones[-1]:
+			# If money_earned exceeds the last milestone, set progress to 100%
+			progress = 100.0
+
+	# Update the progress bar value
+	milestone_progress_ring.value = progress
 
 
 func _on_attraction_rating_changed(value: int) -> void:

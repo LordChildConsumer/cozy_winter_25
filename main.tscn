@@ -1,15 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://bw16f7ifsmp5s"]
+[gd_scene load_steps=28 format=3 uid="uid://bw16f7ifsmp5s"]
 
 [ext_resource type="PackedScene" uid="uid://dvq1akon7wswp" path="res://interface/hud.tscn" id="1_27dj6"]
 [ext_resource type="Script" path="res://camera.gd" id="1_pqylq"]
 [ext_resource type="Script" path="res://main.gd" id="1_tu387"]
 [ext_resource type="PackedScene" uid="uid://c2ht1knnffvfw" path="res://entities/attraction/attraction.tscn" id="2_yaoge"]
+[ext_resource type="Script" path="res://art.gd" id="4_6m61c"]
 [ext_resource type="Texture2D" uid="uid://65jnu657fy0i" path="res://TinyBard art/Tiling Ice.png" id="4_ktkd6"]
 [ext_resource type="Shader" path="res://resources/shaders/infinite_ice.gdshader" id="4_v6tt6"]
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
 [ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="Texture2D" uid="uid://djbg62t5afomx" path="res://TinyBard art/Night Iceberg.png" id="9_cq62d"]
+[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 [ext_resource type="PackedScene" uid="uid://c4jc2xs40u1so" path="res://entities/attraction/not_attraction/not_attraction.tscn" id="11_anoqd"]
 
@@ -48,6 +51,96 @@ func _process(_delta: float) -> void:
 			camera_node.get_screen_center_position()
 		);
 "
+
+[sub_resource type="Animation" id="Animation_kyhd0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Iceberg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Iceberg2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Iceberg2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, -51)]
+}
+
+[sub_resource type="Animation" id="Animation_fkikp"]
+resource_name = "flip_iceberg_to_night"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Iceberg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_6ldc3"]
+resource_name = "flip_iceberg_to-day"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Iceberg2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Iceberg2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6, -51), Vector2(-6, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ps14"]
+_data = {
+"RESET": SubResource("Animation_kyhd0"),
+"flip_iceberg_to-day": SubResource("Animation_6ldc3"),
+"flip_iceberg_to_night": SubResource("Animation_fkikp")
+}
 
 [sub_resource type="GDScript" id="GDScript_73nd7"]
 resource_name = "park"
@@ -207,6 +300,7 @@ script = ExtResource("1_pqylq")
 [node name="Art" type="CanvasLayer" parent="."]
 layer = -1
 follow_viewport_enabled = true
+script = ExtResource("4_6m61c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Art"]
 layer = -1
@@ -225,6 +319,7 @@ position = Vector2(-312, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_lyfn0")
 offset = Vector2(-82.07, 0)
+metadata/_edit_lock_ = true
 
 [node name="Enclosure" type="Sprite2D" parent="Art"]
 scale = Vector2(0.9, 0.9)
@@ -234,7 +329,17 @@ metadata/_edit_lock_ = true
 [node name="Iceberg" type="Sprite2D" parent="Art"]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("6_hibdt")
-metadata/_edit_lock_ = true
+
+[node name="Iceberg2" type="Sprite2D" parent="Art"]
+visible = false
+position = Vector2(-6, -51)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_cq62d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Art"]
+libraries = {
+"": SubResource("AnimationLibrary_2ps14")
+}
 
 [node name="Park" type="Node2D" parent="."]
 script = SubResource("GDScript_73nd7")
