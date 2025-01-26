@@ -18,16 +18,15 @@ signal money_changed(value: int);
 var park_name: String = "";
 var _entrance_fee: int = 3 : set = set_entrance_fee, get = get_entrance_fee
 # Attracting rating scales between 5 - 100
-var _attraction_rating: int = 50 : set = set_attraction_rating, get = get_attraction_rating;
-var _money: int = 50 : set = set_money, get = get_money;
+var _attraction_rating: int = 5 : set = set_attraction_rating, get = get_attraction_rating;
+var _money: int = 100 : set = set_money, get = get_money;
+
 
 func _ready() -> void:
 	get_tree().node_added.connect(
 		func(node: Node) -> void:
 			money_changed.emit(_money);
 	)
-var _attraction_rating: int = 5 : set = set_attraction_rating, get = get_attraction_rating;
-var _money: int = 100 : set = set_money, get = get_money;
 
 func set_entrance_fee(value: int) -> void:
 	_entrance_fee = value
