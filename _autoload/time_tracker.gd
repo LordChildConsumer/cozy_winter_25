@@ -30,7 +30,7 @@ func is_open() -> bool: 	return _open;
 
 func open() -> void:
 	#time_open = 0.0;
-	var tween := create_tween().tween_property(self, "time_open", 0.0, 5.0);
+	var tween := create_tween().tween_property(self, "time_open", 0.0, 5.0 * Engine.time_scale);
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await tween.finished;
 	print("Open!")
