@@ -61,8 +61,8 @@ func close():
 func calculate_customer_spawn_rate() -> Vector2:
 	var attraction_rating = ParkData.get_attraction_rating()
 	var entrance_fee = ParkData.get_entrance_fee()
-	var min_time : float = 5 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
-	var max_time : float = 8 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
+	var min_time : float = 9 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
+	var max_time : float = 12 - (attraction_rating / 25.0) + (entrance_fee / 10.0)
 	print(\"cutomer spawn rate: \", min_time, \", \", max_time)
 	return Vector2(min_time, max_time)
 

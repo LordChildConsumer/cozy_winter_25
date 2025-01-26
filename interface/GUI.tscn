@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://ckqseea2vsqu8" path="res://interface/Fonts/Naturaly.otf" id="1_1scnk"]
 [ext_resource type="Script" path="res://interface/welcome_sequence.gd" id="1_6qfoj"]
-[ext_resource type="Texture2D" uid="uid://bktw0omrcntk8" path="res://TinyBard art/Ice Background.png" id="1_wbt31"]
+[ext_resource type="Texture2D" uid="uid://cvjttsuwq6t2r" path="res://TinyBard art/Title Screen Layers/Background.png" id="1_tqxen"]
 
 [node name="gui" type="Control"]
 layout_mode = 3
@@ -13,14 +13,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.5963, 0.845945, 0.89, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wbt31")
+texture = ExtResource("1_tqxen")
 
 [node name="WelcomeSequence" type="Control" parent="."]
 layout_mode = 1
@@ -54,7 +53,6 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/WelcomePage1/Welcome_1/VBoxContainer"]
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "Welcome to My Penguin Park! You have inherited your uncle’s run-down penguin exhibit. It’s up to you to bring it back to its former glory. "
@@ -91,7 +89,6 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/WelcomePage2/Welcome_2/VBoxContainer"]
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "Build attractions, hire vendors, and decorate your penguin's habitat to make them happy."
@@ -128,7 +125,6 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/WelcomePage3/Welcome_3/VBoxContainer"]
 custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "Visitors bring income during the day; at night, use it to hire vendors and decorate your park and penguin habitat."
@@ -165,7 +161,6 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="WelcomeSequence/EnterParkName/EnterParkNameContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1250, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_1scnk")
 theme_override_font_sizes/font_size = 120
 text = "ENTER PARK NAME"
