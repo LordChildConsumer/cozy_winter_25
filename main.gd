@@ -80,7 +80,7 @@ func _on_attraction_build_attempted(node: Attraction) -> void:
 # ---- Night ---- #
 # Brightness: 0.7
 # Contrast: 1.15
-#Saturation: 1.1
+# Saturation: 1.1
 # Color Correction: 000000 -> d8c8f3
 
 func adjust_adjustments(weight: float) -> void:

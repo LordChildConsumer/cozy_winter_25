@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dk3uv7343ejwj" path="res://TinyBard art/Enclosure.png" id="5_hfcga"]
 [ext_resource type="Texture2D" uid="uid://c0d88xl03qto5" path="res://TinyBard art/Extended Path.png" id="5_lyfn0"]
 [ext_resource type="Texture2D" uid="uid://dsqfi4qm6btyo" path="res://TinyBard art/Day Iceberg.png" id="6_hibdt"]
-[ext_resource type="NavigationPolygon" uid="uid://v0dpk28mdnbf" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
+[ext_resource type="NavigationPolygon" uid="uid://bkkjfytnxpdyx" path="res://resources/navigation/customer_main_navigation.tres" id="9_plxm4"]
 [ext_resource type="AudioStream" uid="uid://76x2dgk3dgy6" path="res://resources/SFX/cloth4.ogg" id="10_6vy8d"]
 
 [sub_resource type="Gradient" id="Gradient_kc6gp"]
@@ -200,6 +200,7 @@ layer = 10
 [node name="GameGUI" parent="CanvasLayer" instance=ExtResource("1_27dj6")]
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 script = ExtResource("1_pqylq")
 
