@@ -29,6 +29,7 @@ var is_menu_hidden := true :
 @onready var bench_button_unlocked : bool;
 @onready var park_name = $ParkName
 @onready var you_win_box = $YouWin
+var has_game_been_won = false
 
 signal building_menu_visibility_changed(shown: bool);
 signal building_button_clicked(building_index: int)
@@ -105,7 +106,9 @@ func _on_money_changed(value: int):
 	milestone_progress_ring.value = progress
 
 func show_you_win():
-	you_win_box.show()
+	if !has_game_been_won:
+		you_win_box.show()
+		has_game_been_won = true
 
 func _on_new_building_unlocked():
 	new_building_unlocked_label.show()
