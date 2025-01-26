@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DecorationData" load_steps=4 format=3 uid="uid://w4jo05m8hsac"]
+
+[ext_resource type="Script" path="res://resources/decorations/decoration_data.gd" id="1_wqdex"]
+[ext_resource type="Texture2D" uid="uid://d1bgqsch6xcyd" path="res://resources/decorations/Day Time Decoration.png" id="2_dql5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu6rm"]
+atlas = ExtResource("2_dql5p")
+region = Rect2(352, 71, 148, 98)
+
+[resource]
+script = ExtResource("1_wqdex")
+name = &"bench"
+texture = SubResource("AtlasTexture_lu6rm")
+cost_to_build = 50
+attractiveness = 2
